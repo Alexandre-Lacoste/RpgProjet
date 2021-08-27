@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -27,6 +28,9 @@ public class Potion {
 	@Column
 	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	@Version
+	@JsonView(Views.ViewCommon.class)
+	private int version;
 	@Column
 	@Enumerated(EnumType.STRING)
 	@JsonView(Views.ViewCommon.class)
@@ -76,6 +80,17 @@ public class Potion {
 	public String getNom() {
 		return nom;
 	}
+	
+
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 
 	public void setNom(String nom) {
 		this.nom = nom;
