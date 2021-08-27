@@ -1,8 +1,13 @@
 package spring.boot.tptRpg.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,10 +40,29 @@ public class Compte {
 	@JsonView(Views.ViewCommon.class)
 	private String mdp;
 	
+	@JsonView(Views.ViewCommon.class)
+	private boolean enable;
+//	@OneToMany(mappedBy = "compte")
+//	private Set<CompteRole> roles;
+	
+	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
+	private Role role;
+	
 	public Compte() {
 		super();
 		// TODO Auto-generated constructor stub
+		
 	}
+	public Compte(Long id, int version, String pseudo, String mail, String mdp, Role role) {
+		this.id = id;
+		this.version = version;
+		this.pseudo = pseudo;
+		this.mail = mail;
+		this.mdp = mdp;
+		this.role = role;
+	}
+	
 	public Compte(Long id, int version, String pseudo, String mail, String mdp) {
 		this.id = id;
 		this.version = version;
@@ -83,6 +107,37 @@ public class Compte {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+	public boolean isEnable() {
+		return enable;
+	}
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+//	public Set<CompteRole> getRoles() {
+//		return roles;
+//	}
+//	public void setRoles(Set<CompteRole> roles) {
+//		this.roles = roles;
+//	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
+	
+	public List<String> getStringRoles() {
+		List<String> stringRoles = new ArrayList<>();
+
+//		for (Compte role : roles) {
+			stringRoles.add("ROLE_" + getRole().name());
+//		}
+
+		return stringRoles;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Compte [id=" + id + ", version=" + version + ", pseudo=" + pseudo + ", mail=" + mail + ", mdp=" + mdp
