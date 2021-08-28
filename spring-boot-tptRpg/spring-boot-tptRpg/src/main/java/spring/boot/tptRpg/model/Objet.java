@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "Objet")
@@ -15,6 +16,11 @@ public class Objet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Version
+	private int version;
+	
+
+
 	@Column
 	private String nom;
 	@Column
@@ -42,6 +48,13 @@ public class Objet {
 		this.qte = qte;
 		}
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public Long getId() {
 		return id;
