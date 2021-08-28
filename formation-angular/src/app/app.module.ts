@@ -7,13 +7,15 @@ import {FormsModule} from "@angular/forms";
 import {AgePipe} from "./age.pipe";
 import {HttpClientModule} from "@angular/common/http";
 import { HeroComponent } from './hero/hero.component';
+import { MarchandComponent } from './marchand/marchand.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     AgePipe,
-    HeroComponent
+    HeroComponent,
+    MarchandComponent
   ],
   imports: [
     BrowserModule,
