@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -20,6 +21,9 @@ public class InventairePotion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
+	@Version
+	@JsonView(Views.ViewCommon.class)
+	private int version;
 	@Column
 	@JsonView(Views.ViewCommon.class)
 	private double qte;
@@ -36,6 +40,17 @@ public class InventairePotion {
 	public InventairePotion() {
 		super();
 	}
+
+	
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 
 	public InventairePotion(Long id, double qte, Inventaire inventaire, Potion potion) {
 		this.id = id;

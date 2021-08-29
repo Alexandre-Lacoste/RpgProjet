@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -23,6 +24,10 @@ public class Inventaire {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewInventaire.class)
 	private Long id;
+	
+	@Version
+	@JsonView(Views.ViewInventaire.class)
+	private int version;
 	
 	@OneToOne
 	@JoinColumn(name = "objet_id")
@@ -47,6 +52,16 @@ public class Inventaire {
 	private List<InventaireArmure> inventaireArmure = new ArrayList<InventaireArmure>();
 
 	
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
 	public Inventaire() {
 		super();
 	}
