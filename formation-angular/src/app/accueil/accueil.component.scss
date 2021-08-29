@@ -7,4 +7,16 @@
 d-block {
 
   text-align: center;
+
+}
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 45%;
+  left: 15%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
 }
