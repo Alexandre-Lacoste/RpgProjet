@@ -13,13 +13,14 @@ import { HeroComponent } from './hero/hero.component';
     AppComponent,
     AccueilComponent,
     AgePipe,
-    HeroComponent
+    HeroComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
