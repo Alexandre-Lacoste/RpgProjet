@@ -106,15 +106,60 @@ public class AdminRestController {
 
 	
 	
+	@GetMapping("")
+	@JsonView(Views.ViewAdmin.class)
+//	@PreAuthorize("hasAnyRole('ADMIN')")
+	public List<Admin> findAllAdmin() {
+		return adminRepo.findAll();
+	}
 	
-	@PostMapping("/addadmin")
+	@GetMapping("/{id}")
+	@JsonView(Views.ViewAdmin.class)
+	public Admin findAdminById(@PathVariable Long id) {
+		Optional<Admin> optAdmin = adminRepo.findById(id);
+		
+		if (optAdmin.isPresent()) {
+			return optAdmin.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+	}
+	
+	@PostMapping("")
+	@JsonView(Views.ViewAdmin.class)
+	//@PreAuthorize("hasAnyRole('ADMIN')")
+	public Admin creatAdmin(@RequestBody Admin admin) {
+
+		admin = adminRepo.save(admin);
+		return admin;
+	}
+	
+	@PutMapping("/{id}")
 //	@PreAuthorize("hasAnyRole('ADMIN')")
 	@JsonView(Views.ViewAdmin.class)
-	public Admin createAdmin(@RequestBody Admin admin) {
+	public Admin updateAdmin(@RequestBody Admin admin, @PathVariable Long id) {
+		if (!adminRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+
 		admin = adminRepo.save(admin);
 
 		return admin;
 	}
+	
+	@DeleteMapping("/{id}")
+//	@PreAuthorize("hasAnyRole('ADMIN')")
+	public void deleteAdmin(@PathVariable Long id) {
+		if (!adminRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+		
+		adminRepo.deleteById(id);
+	}
+	
+	
+	
+	
 	
 	@PostMapping("/adduser")
 //	@PreAuthorize("hasAnyRole('ADMIN')")

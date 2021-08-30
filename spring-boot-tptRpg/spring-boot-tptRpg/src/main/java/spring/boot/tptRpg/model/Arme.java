@@ -47,17 +47,16 @@ public class Arme{
 	
 	@Column(name="attaque")
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
-	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
+//	Views.ViewArme.class
 	private double attaque;
 	
 	@Column(name="agilite")
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
-	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
+//	Views.ViewArme.class
 	private double agilite;
 	
 	@Column(name="prixAchat")
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
-	@JsonView({Views.ViewArmeDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixAchat;
 	
 	@Column(name="prixVente")

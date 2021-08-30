@@ -1,26 +1,49 @@
 import { Injectable } from '@angular/core';
-import {Arme} from "../model/Arme";
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
+import {Admin} from "../model/Admin";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminHttpService {
 
-  armes: Array<Arme> = new Array<Arme>();
+  admins: Array<Admin> = new Array<Admin>();
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.loadArme();
+    this.load();
   }
 
+  findAll(): Array<Admin> {
+    // return this.http.get<Array<Admin>>(this.appConfigService.backEndUrl + "admin/admin");
+    return this.admins;
+  }
 
-  loadArme() {
-    this.http.get<Array<Arme>>(this.appConfigService.backEndUrl + "arme/").subscribe(response => {
-      this.armes = response;
+  findById(id: number):  Observable<Admin> {
+    return this.http.get<Admin>(this.appConfigService.backEndUrl + "admin/" + id);
+  }
+
+  create(admin: Admin) {
+    this.http.post<Admin>(this.appConfigService.backEndUrl + "admin/", admin).subscribe(response => {
+      this.load();
     }, error => console.log(error));
   }
 
+  modify(admin: Admin) {
+    this.http.put<Admin>(this.appConfigService.backEndUrl + "admin/" + admin.id, admin).subscribe(response => {
+      this.load();
+    }, error => console.log(error));
+  }
 
+  deleteById(id: number): Observable<void> {
+    return this.http.delete<void>(this.appConfigService.backEndUrl + "admin/" + id);
+  }
+
+  load() {
+    this.http.get<Array<Admin>>(this.appConfigService.backEndUrl + "admin/").subscribe(response => {
+      this.admins = response;
+    }, error => console.log(error));
+  }
 
 }

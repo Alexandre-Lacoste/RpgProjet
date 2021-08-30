@@ -32,7 +32,7 @@ import { PotionComponent } from './potion/potion.component';
     MarchandComponent,
     MarchandPotionComponent,
     MarchandArmeComponent,
-    MarchandArmureComponent
+    MarchandArmureComponent,
     AdminComponent,
     ArmeComponent,
     ArmureComponent,

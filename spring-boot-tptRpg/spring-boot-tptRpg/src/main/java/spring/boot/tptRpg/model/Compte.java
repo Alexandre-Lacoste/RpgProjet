@@ -23,19 +23,24 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
 public class Compte {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
+	
 	@Version
-	@JsonView(Views.Compte.class)
+	@JsonView({Views.Compte.class, Views.ViewCommon.class})
 	private int version;
+	
 	@Column()
 	@JsonView(Views.ViewCommon.class)
 	private String pseudo;
+	
 	@Column()
 	@JsonView(Views.ViewCommon.class)
 	private String mail;
+	
 	@Column()
 	@JsonView(Views.ViewCommon.class)
 	private String mdp;
