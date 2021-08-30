@@ -26,4 +26,6 @@ export class Arme{
     this.prixVente=prixVente;
   }
 
+
+
 }

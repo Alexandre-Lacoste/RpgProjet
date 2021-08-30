@@ -1,5 +1,5 @@
 package spring.boot.tptRpg.model;
 
 public enum TypePotion {
-	Soigner, AttaquePlus, VitessePlus,DefensePlus, AgilitePlus,PoisonMoins,SaignerMoins,BrulureMoins,EtourdissementMoins;
+	soin, attaquePlus, vitessePlus,defensePlus, agilitePlus,poisonMoins,saignerMoins,brulureMoins,etourdissementMoins;
 }

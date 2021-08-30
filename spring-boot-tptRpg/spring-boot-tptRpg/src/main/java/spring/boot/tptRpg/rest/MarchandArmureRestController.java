@@ -79,6 +79,7 @@ public class MarchandArmureRestController {
 	}
 
 	@PatchMapping("/{id}")
+	@JsonView(Views.ViewMarchandArmure.class)
 	public MarchandArmure partialUpdate(@RequestBody Map<String, Object> updates, @PathVariable Long id) {
 		if (!marchandArmureRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
@@ -92,6 +93,7 @@ public class MarchandArmureRestController {
 	}
 
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewMarchandArmure.class)
 	public void delete(@PathVariable Long id) {
 		if (!marchandArmureRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
