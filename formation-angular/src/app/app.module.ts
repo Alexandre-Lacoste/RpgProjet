@@ -16,6 +16,7 @@ import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
 import { AdminComponent } from './admin/admin.component';
 import { ArmeComponent } from './arme/arme.component';
 import { ArmureComponent } from './armure/armure.component';
+import { PotionComponent } from './potion/potion.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ArmureComponent } from './armure/armure.component';
     HeroComponent,
     AdminComponent,
     ArmeComponent,
-    ArmureComponent
+    ArmureComponent,
+    PotionComponent
   ],
   imports: [
     BrowserModule,

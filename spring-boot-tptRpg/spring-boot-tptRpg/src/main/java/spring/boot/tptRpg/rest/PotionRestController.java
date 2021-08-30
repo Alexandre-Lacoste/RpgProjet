@@ -49,7 +49,8 @@ public class PotionRestController {
 		}
 	}
 	
-	@PostMapping
+	@PostMapping("")
+	@JsonView(Views.ViewPotion.class)
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Potion create(@RequestBody Potion Potion) {
@@ -70,7 +71,7 @@ public class PotionRestController {
 		return potion;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
