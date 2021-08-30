@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Compte} from "../model/compte";
 import {Utilisateur} from "../model/utilisateur";
 import {Observable} from "rxjs";
@@ -6,10 +6,8 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {InventaireArme} from "../model/inventaireArme";
 
-@Component({
-  selector: 'app-utilisateur',
-  templateUrl: './inventaire-arme.component.html',
-  styleUrls: ['./utilisateur.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
 export class InventaireArmeService  {
 

@@ -5,7 +5,8 @@ import {Hero} from "./Hero";
 
 export class Utilisateur extends Compte{
 
-
+  id: number;
+  version: number;
   vie: number;
   attaque: number;
   defense: number;

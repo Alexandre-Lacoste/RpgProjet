@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Utilisateur} from "../model/utilisateur";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 
-@Component({
-  selector: 'app-utilisateur',
-  templateUrl: './utilisateur.component.html',
-  styleUrls: ['./utilisateur.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
 export class UtilisateurService  {
 
