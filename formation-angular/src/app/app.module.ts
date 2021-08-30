@@ -26,6 +26,7 @@ import { MarchandArmeComponent } from './marchand-arme/marchand-arme.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
