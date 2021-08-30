@@ -8,7 +8,7 @@ import {MarchandComponent} from "./marchand/marchand.component";
 const routes: Routes = [
   {path: "accueil", component: AccueilComponent},
   {path: "hero", component: HeroComponent},
-  {path: "marchand", component: MarchandComponent},
+  {path: "marchand/:mar", component: MarchandComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 

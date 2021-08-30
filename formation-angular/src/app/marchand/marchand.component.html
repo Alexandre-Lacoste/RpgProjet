@@ -1,10 +1,10 @@
 
-  <div class="row ml-5 mr-5 mt-2" *ngIf="switchMarchand==1" >
+  <div class="row ml-5 mr-5 mt-2" *ngIf="mar==1" >
     <div class="col-md-1 col-sm-1">
       <br>
-      <div class="container border double rounded-lg border-info  " style="width: 18rem;">
+      <div class="container border double rounded-lg border-info" style="width: 18rem;">
         <div class="card-body">
-          <div> Bienvenue cher voyageur !</div>
+          <div> Bienvenue cher voyageur ! </div>
           <div> Que souhaitez vous faire ?</div>
       </div>
     </div>
@@ -13,32 +13,32 @@
 
       <div class="card-body">
         <div class="list-group">
-          <a href="#" (click)="listeAchatArme()" class="list-group-item list-group-item-action">
+            <a href="http://localhost:4200/marchand/2"  class="list-group-item list-group-item-action">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
              <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
             </svg>
               Acheter une arme</a>
-          <a href="#" (click)="listeAchatArmure()" class="list-group-item list-group-item-action">
+          <a href="http://localhost:4200/marchand/3"  class="list-group-item list-group-item-action">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
               <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
             </svg>
               Acheter une armure</a>
-          <a href="#" (click)="listeAchatPotion()" class="list-group-item list-group-item-action">
+          <a href="http://localhost:4200/marchand/4"  class="list-group-item list-group-item-action">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
               <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
             </svg>
               Acheter une potion</a>
-          <a href="#" (click)="listeVenteArme()" class="list-group-item list-group-item-action">
+          <a href="http://localhost:4200/marchand/5" class="list-group-item list-group-item-action">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
               <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
             </svg>
               Vendre une arme</a>
-          <a href="#" (click)="listeVenteArmure()" class="list-group-item list-group-item-action">
+          <a href="http://localhost:4200/marchand/6"  class="list-group-item list-group-item-action">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
               <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
             </svg>
               Vendre une armure</a>
-          <a href="#" (click)="listeVentePotion()" class="list-group-item list-group-item-action">
+          <a href="http://localhost:4200/marchand/7"  class="list-group-item list-group-item-action">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
               <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z"/>
             </svg>
@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <div class="row ml-5 mr-5 mt-2" *ngIf="switchMarchand==2" >
+  <div class="row ml-5 mr-5 mt-2" *ngIf="mar==2" >
     <div class="col-md-1 col-sm-1">
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
@@ -62,49 +62,19 @@
       </div>
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
-
-<!--        <div class="card-body">-->
-<!--          <table class="table table-striped">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--              <th>Identifiant</th>-->
-<!--              <th>Version</th>-->
-<!--              <th>Note comportementale</th>-->
-<!--              <th>Note technique</th>-->
-<!--              <th>Commentaires</th>-->
-<!--              <th>Date d'évaluation</th>-->
-<!--              <th></th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr *ngFor="let marchArme of list()">-->
-<!--              <td>{{marchArme.id}}</td>-->
-<!--              <td>{{marchArme.version}}</td>-->
-<!--              <td>{{marchArme.comportemental}}</td>-->
-
-<!--              <td>-->
-<!--                <div class="btn-group btn-group-sm">-->
-<!--                  <a class="btn btn-primary" (click)="edit(march.id)"><i class="fa fa-edit"></i></a>-->
-<!--                  <a class="btn btn-danger" (click)="delete(march.id)"><i class="fa fa-trash"></i></a>-->
-<!--                </div>-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--          </table>-->
-<!--        </div>-->
-<!--        <div class="card-footer">-->
-<!--          <a class="btn btn-success btn-lg" (click)="add()">-->
-<!--            <i class="fa fa-plus"></i>-->
-<!--          </a>-->
-<!--        </div>-->
-
+        <div class="card-body">
+        </div>
       </div>
-
+    </div>
+    <div class="container-fluid border double rounded-lg border-info  " style="width: 60rem;">
+      <div class="card-body float-left" content="width=device-width, initial-scale=1" >
+        <marchand-arme></marchand-arme>
+      </div>
     </div>
   </div>
 
 
-  <div class="row ml-5 mr-5 mt-2" *ngIf="switchMarchand==3" >
+  <div class="row ml-5 mr-5 mt-2" *ngIf="mar==3" >
     <div class="col-md-1 col-sm-1">
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
@@ -115,12 +85,18 @@
       </div>
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
-
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid border double rounded-lg border-info  " style="width: 60rem;">
+      <div class="card-body float-left" content="width=device-width, initial-scale=1" >
+        <marchand-armure></marchand-armure>
       </div>
     </div>
   </div>
 
-  <div class="row ml-5 mr-5 mt-2" *ngIf="switchMarchand==4" >
+  <div class="row ml-5 mr-5 mt-2" *ngIf="mar==4" >
     <div class="col-md-1 col-sm-1">
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
@@ -131,12 +107,18 @@
       </div>
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
-
+        <div class="card-body">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid border double rounded-lg border-info  " style="width: 60rem;">
+      <div class="card-body float-left" content="width=device-width, initial-scale=1" >
+        <marchand-potion></marchand-potion>
       </div>
     </div>
   </div>
 
-  <div class="row ml-5 mr-5 mt-2" *ngIf="switchMarchand==5" >
+  <div class="row ml-5 mr-5 mt-2" *ngIf="mar==5" >
     <div class="col-md-1 col-sm-1">
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
@@ -152,7 +134,7 @@
     </div>
   </div>
 
-  <div class="row ml-5 mr-5 mt-2" *ngIf="switchMarchand==6" >
+  <div class="row ml-5 mr-5 mt-2" *ngIf="mar==6" >
     <div class="col-md-1 col-sm-1">
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
@@ -168,7 +150,7 @@
     </div>
   </div>
 
-  <div class="row ml-5 mr-5 mt-2" *ngIf="switchMarchand==7" >
+  <div class="row ml-5 mr-5 mt-2" *ngIf="mar==7" >
     <div class="col-md-1 col-sm-1">
       <br>
       <div class="container border double rounded-lg border-info  " style="width: 18rem;">
@@ -186,9 +168,22 @@
 
 
   <br>
+
+  <div class="btn-group btn-group-lg float-left">
+
+    <a href="http://localhost:4200/marchand/1" class="btn btn-warning active">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
+      </svg>
+    </a>
+  </div>
+
   <br>
   <br>
 
+  <br>
+  <br>
 <footer class="bg-dark text-light text-center">
-  <p>Copyright @Andrew Lin</p>
+  <p>coin-coin</p>
 </footer>

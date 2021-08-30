@@ -39,6 +39,10 @@ export class MarchandHttpService {
     return this.http.delete<void>(this.appConfigService.backEndUrl + "marchand/" + id);
   }
 
+  reload(){
+    return this.http.delete<void>("http://localhost:4200/marchand/");
+  }
+
   load() {
     this.http.get<Array<Marchand>>(this.appConfigService.backEndUrl + "marchand/").subscribe(response => {
       this.marchands = response;

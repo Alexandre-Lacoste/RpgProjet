@@ -11,6 +11,7 @@ import { MarchandComponent } from './marchand/marchand.component';
 import { MarchandPotionComponent } from './marchand-potion/marchand-potion.component';
 import { MarchandArmeComponent } from './marchand-arme/marchand-arme.component';
 import { MarchandArmureComponent } from './marchand-armure/marchand-armure.component';
+import {MarchandRoutingModule} from "./marchand-routing.module";
 
 @NgModule({
   declarations: [
@@ -25,12 +26,12 @@ import { MarchandArmureComponent } from './marchand-armure/marchand-armure.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    MarchandRoutingModule,
     FormsModule,
     HttpClientModule
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [MarchandComponent]
 })
-export class AppModule { }
+export class MarchandModule { }

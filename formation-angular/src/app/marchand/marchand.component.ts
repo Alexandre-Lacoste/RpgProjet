@@ -3,6 +3,9 @@ import {Marchand} from "../model/Marchand";
 import {MarchandHttpService} from "./marchand-http.service";
 import {ActivatedRoute} from "@angular/router";
 import {MarchandArme} from "../model/MarchandArme";
+import {MarchandPotionHttpService} from "../marchand-potion/marchand-potion-http.service";
+import {MarchandArmureHttpService} from "../marchand-armure/marchand-armure-http.service";
+import {MarchandArmeHttpService} from "../marchand-arme/marchand-arme-http.service";
 
 @Component({
   selector: 'marchand',
@@ -10,20 +13,21 @@ import {MarchandArme} from "../model/MarchandArme";
   styleUrls: ['./marchand.component.scss']
 })
 export class MarchandComponent implements OnInit {
-  @Input()
-  id: number;
 
-  switchMarchand: number = 0;
-  private parametreid: any;
+  @Input()
+  mar: number;
+
+  private paramMar: any;
 
   marchandForm: Marchand = null;
 
-  constructor(private route: ActivatedRoute, private marchandService: MarchandHttpService) {
+  constructor(private route: ActivatedRoute, private marchandService: MarchandHttpService, private marchandArmeService: MarchandArmeHttpService,
+              private marchandArmureService: MarchandArmureHttpService, private marchandPotionService: MarchandPotionHttpService) {
   }
 
   ngOnInit() {
-    this.parametreid = this.route.params.subscribe(params => {
-      this.id = +params['id'];
+    this.paramMar = this.route.params.subscribe(params => {
+      this.mar = +params['mar'];
     });
   }
 
@@ -51,7 +55,6 @@ export class MarchandComponent implements OnInit {
     this.marchandForm = null;
   }
 
-  // pour l'exemple => mais de préférence coder le subscribe dans le service
   marchandArme: MarchandArme;
 
   delete(id: number) {
@@ -64,34 +67,36 @@ export class MarchandComponent implements OnInit {
     this.marchandForm = null;
   }
 
-  listeAchatArme() {
-    this.switchMarchand == 2;
-    this.marchandService.load();
-  }
 
-  listeAchatArmure() {
-    this.switchMarchand == 3;
-    this.marchandService.load();
-  }
-
-  listeAchatPotion() {
-    this.switchMarchand == 4;
-    this.marchandService.load();
-  }
-
-  listeVenteArme() {
-    this.switchMarchand == 5;
-    this.marchandService.load();
-  }
-
-  listeVenteArmure() {
-    this.switchMarchand == 6;
-    this.marchandService.load();
-  }
-
-
-  listeVentePotion() {
-    this.switchMarchand == 7;
-    this.marchandService.load();
-  }
+  //
+  // listeAchatArme() {
+  //   this.mar == 2;
+  //
+  // }
+  //
+  // listeAchatArmure() {
+  //   this.mar == 3;
+  //   this.marchandService.reload();
+  // }
+  //
+  // listeAchatPotion() {
+  //   this.mar == 4;
+  //   this.marchandService.reload();
+  // }
+  //
+  // listeVenteArme() {
+  //   this.mar == 5;
+  //   this.marchandService.reload();
+  // }
+  //
+  // listeVenteArmure() {
+  //   this.mar == 6;
+  //   this.marchandService.reload();
+  // }
+  //
+  //
+  // listeVentePotion() {
+  //   this.mar == 7;
+  //   this.marchandService.reload();
+  // }
 }
