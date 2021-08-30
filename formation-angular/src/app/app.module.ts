@@ -7,6 +7,12 @@ import {FormsModule} from "@angular/forms";
 import {AgePipe} from "./age.pipe";
 import {HttpClientModule} from "@angular/common/http";
 import { HeroComponent } from './hero/hero.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { InventaireArmeComponent } from './inventaireArme/inventaire-arme.component';
+import { InventaireArmureComponent } from './inventaireArmure/inventaire-armure.component';
+import {UtilisateurService} from "./utilisateur/utilisateur.service";
+import {InventaireArmureService} from "./inventaireArmure/inventaireArmure.service";
+import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +28,7 @@ import { HeroComponent } from './hero/hero.component';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [UtilisateurService, InventaireArmureService, InventaireArmeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

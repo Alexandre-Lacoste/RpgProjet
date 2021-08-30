@@ -22,11 +22,11 @@ public class Inventaire {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(Views.ViewInventaire.class)
+	@JsonView({Views.ViewInventaire.class,Views.ViewCommon.class})
 	private Long id;
 	
 	@Version
-	@JsonView(Views.ViewInventaire.class)
+	@JsonView({Views.ViewInventaire.class,Views.ViewCommon.class})
 	private int version;
 	
 	@OneToOne
