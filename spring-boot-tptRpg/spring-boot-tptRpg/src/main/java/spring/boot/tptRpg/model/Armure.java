@@ -46,10 +46,12 @@ public class Armure {
 	private String description;
 	
 	@Column(name="defense")
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	@JsonView({Views.ViewArmure.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double defense;
 	
 	@Column(name="vitesse")
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	@JsonView({Views.ViewArmure.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double vitesse;
 	
@@ -57,6 +59,7 @@ public class Armure {
 	@JsonView({Views.ViewArmureDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixVente;
 	@Column(name="prixAchat")
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixAchat;
 	

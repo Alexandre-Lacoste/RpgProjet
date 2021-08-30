@@ -23,19 +23,19 @@ public class MarchandArmure {
 	@Version
 	@JsonView(Views.ViewCommon.class)
 	private int version;
-	@Column(name="quatite")
+	@Column(name="quantite")
 	@JsonView(Views.ViewCommon.class)
 	private double quantite;
 	
 	
 	@ManyToOne
 	@JoinColumn(name="armure_id")
-	@JsonView(Views.ViewMarchandArmure.class)
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewMarchandArmure.class})
 	private Armure armure;
 	
 	@ManyToOne
 	@JoinColumn(name="marchand_id")
-	@JsonView(Views.ViewMarchandArmure.class)
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewMarchandArmure.class})
 	private Marchand marchand;
 	
 	public MarchandArmure() {

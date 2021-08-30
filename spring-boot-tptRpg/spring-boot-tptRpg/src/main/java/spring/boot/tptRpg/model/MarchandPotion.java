@@ -22,7 +22,7 @@ public class MarchandPotion {
 	@Version
 	@JsonView(Views.ViewCommon.class)
 	private int version;
-	@Column(name="quatite")
+	@Column(name="quantite")
 	@JsonView(Views.ViewCommon.class)
 	private double quantite;
 	

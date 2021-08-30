@@ -29,12 +29,12 @@ public class MarchandArme {
 	//@Transient
 	@ManyToOne
 	@JoinColumn(name="arme_id")
-	@JsonView(Views.ViewArme.class)
+	@JsonView({Views.ViewArmeDetail.class,Views.ViewMarchandArme.class})
 	private Arme arme;
 	//@Transient
 	@ManyToOne
 	@JoinColumn(name="marchand_id")
-	@JsonView(Views.ViewArme.class)
+	@JsonView({Views.ViewArmeDetail.class,Views.ViewMarchandArme.class})
 	private Marchand marchand;
 	
 	public MarchandArme(Long id, int version, double quantite, Arme arme, Marchand marchand) {
