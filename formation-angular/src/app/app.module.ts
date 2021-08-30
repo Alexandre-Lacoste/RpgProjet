@@ -8,6 +8,8 @@ import {AgePipe} from "./age.pipe";
 import {HttpClientModule} from "@angular/common/http";
 import { HeroComponent } from './hero/hero.component';
 import { MarchandComponent } from './marchand/marchand.component';
+import { MarchandPotionComponent } from './marchand-potion/marchand-potion.component';
+import { MarchandArmeComponent } from './marchand-arme/marchand-arme.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { MarchandComponent } from './marchand/marchand.component';
     AccueilComponent,
     AgePipe,
     HeroComponent,
-    MarchandComponent
+    MarchandComponent,
+    MarchandPotionComponent,
+    MarchandArmeComponent
   ],
   imports: [
     BrowserModule,

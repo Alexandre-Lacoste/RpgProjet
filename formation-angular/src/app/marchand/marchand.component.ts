@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Marchand} from "../model/Marchand";
 import {MarchandHttpService} from "./marchand-http.service";
+import {ActivatedRoute} from "@angular/router";
+import {MarchandArme} from "../model/MarchandArme";
 
 @Component({
   selector: 'marchand',
@@ -8,12 +10,21 @@ import {MarchandHttpService} from "./marchand-http.service";
   styleUrls: ['./marchand.component.scss']
 })
 export class MarchandComponent implements OnInit {
+  @Input()
+  id: number;
+
+  switchMarchand: number = 0;
+  private parametreid: any;
+
   marchandForm: Marchand = null;
 
-  constructor(private marchandService: MarchandHttpService) {
+  constructor(private route: ActivatedRoute, private marchandService: MarchandHttpService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.parametreid = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+    });
   }
 
   list(): Array<Marchand> {
@@ -41,6 +52,8 @@ export class MarchandComponent implements OnInit {
   }
 
   // pour l'exemple => mais de préférence coder le subscribe dans le service
+  marchandArme: MarchandArme;
+
   delete(id: number) {
     this.marchandService.deleteById(id).subscribe(resp => {
       this.marchandService.load();
@@ -49,5 +62,36 @@ export class MarchandComponent implements OnInit {
 
   cancel() {
     this.marchandForm = null;
+  }
+
+  listeAchatArme() {
+    this.switchMarchand == 2;
+    this.marchandService.load();
+  }
+
+  listeAchatArmure() {
+    this.switchMarchand == 3;
+    this.marchandService.load();
+  }
+
+  listeAchatPotion() {
+    this.switchMarchand == 4;
+    this.marchandService.load();
+  }
+
+  listeVenteArme() {
+    this.switchMarchand == 5;
+    this.marchandService.load();
+  }
+
+  listeVenteArmure() {
+    this.switchMarchand == 6;
+    this.marchandService.load();
+  }
+
+
+  listeVentePotion() {
+    this.switchMarchand == 7;
+    this.marchandService.load();
   }
 }

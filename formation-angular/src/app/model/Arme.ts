@@ -12,7 +12,7 @@ export class Arme{
   prixVente:number;
 
 //marchandsArmes = Array<MarchandArme>
-  inventaireArme=Array<InventaireArme>;
+//   inventaireArme=Array<InventaireArme>;
 
   constructor(id?:number,version?:number,typearme?:string,nom?:string,
               description?:string,attaque?:number,agilite?:number,prixAchat?:number,prixVente?:number) {
@@ -26,5 +26,7 @@ export class Arme{
     this.prixAchat=prixAchat;
     this.prixVente=prixVente;
   }
+
+
 
 }
