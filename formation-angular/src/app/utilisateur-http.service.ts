@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import {Monstre} from "./model/Monstre";
+import {HttpClient} from "@angular/common/http";
+import {AppConfigService} from "./app-config.service";
+import {Observable} from "rxjs";
+import {Utilisateur} from "./model/utilisateur";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UtilisateurHttpService {
+  chemin : string;
+  utilisateurs:Array<Utilisateur> = new Array<Utilisateur>();
+
+  constructor(private http:HttpClient,private appConfigService:AppConfigService) {
+    this.load();
+    this.chemin=this.appConfigService.backEndUrl + "utilisateur/"
+  }
+
+  findAll():Array<Utilisateur>{
+    return this.utilisateurs;
+  }
+  findById(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(this.chemin + id);
+  }
+
+  create(utilisateur: Utilisateur) {
+    this.http.post<Utilisateur>(this.chemin, utilisateur).subscribe(response => {
+      this.load();
+    }, error => console.log(error));
+  }
+
+  modify(utilisateur: Utilisateur) {
+    this.http.put<Utilisateur>(this.chemin + utilisateur.id, utilisateur).subscribe(response => {
+      this.load();
+    }, error => console.log(error));
+  }
+
+
+  load() {
+    this.http.get<Array<Utilisateur>>(this.chemin).subscribe(response => {
+      this.utilisateurs = response;
+    }, error => console.log(error));
+  }
+}

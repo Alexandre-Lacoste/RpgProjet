@@ -11,6 +11,12 @@ import { MarchandComponent } from './marchand/marchand.component';
 import { MarchandPotionComponent } from './marchand-potion/marchand-potion.component';
 import { MarchandArmeComponent } from './marchand-arme/marchand-arme.component';
 import { MarchandArmureComponent } from './marchand-armure/marchand-armure.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { InventaireArmeComponent } from './inventaireArme/inventaire-arme.component';
+import { InventaireArmureComponent } from './inventaireArmure/inventaire-armure.component';
+import {UtilisateurService} from "./utilisateur/utilisateur.service";
+import {InventaireArmureService} from "./inventaireArmure/inventaireArmure.service";
+import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +36,7 @@ import { MarchandArmureComponent } from './marchand-armure/marchand-armure.compo
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [UtilisateurService, InventaireArmureService, InventaireArmeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

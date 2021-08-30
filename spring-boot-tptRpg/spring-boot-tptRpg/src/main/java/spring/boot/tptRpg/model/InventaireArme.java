@@ -28,11 +28,11 @@ public class InventaireArme {
 	private double quantite;
 	@ManyToOne
 	@JoinColumn(name="arme_id")
-	@JsonView(Views.ViewUtilisateur.class)
+	@JsonView({Views.ViewUtilisateur.class,Views.ViewInventaireArme.class})
 	private Arme arme;
 	@ManyToOne
 	@JoinColumn(name="inventaire_id")
-	@JsonIgnore
+	@JsonView(Views.ViewInventaireArme.class)
 	private Inventaire inventaire;
 	
 	public InventaireArme(Long id, int version, double quantite, Arme arme, Inventaire inventaire) {
