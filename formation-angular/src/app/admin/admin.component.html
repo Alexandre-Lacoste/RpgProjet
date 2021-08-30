@@ -1,1 +1,143 @@
-<p>admin works!</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<div>
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary" data-target="#listCompte" data-toggle="collapse" aria-expanded="false"
+          aria-controls="listCompte">Gestion des Comptes</button>
+  &nbsp;&nbsp;&nbsp;
+  <!--<a class="btn btn-secondary" href="#listArme" data-toggle="collapse" aria-expanded="false" aria-controls="listArme">Balise a</a>-->
+  <button type="button" class="btn btn-secondary" data-target="#listArme" data-toggle="collapse" aria-expanded="false"
+          aria-controls="listArme">Gestion des Armes</button>
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary" data-target="#listArmure" data-toggle="collapse" aria-expanded="false"
+          aria-controls="listArmure">Gestion des Armures</button>
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary" data-target="#listPotion" data-toggle="collapse" aria-expanded="false"
+          aria-controls="listPotion">Gestion des Potions</button>
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary" data-target="#listhero" data-toggle="collapse" aria-expanded="false"
+          aria-controls="listhero">Gestion des Héros</button>
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary" data-target="#listmonstre" data-toggle="collapse" aria-expanded="false"
+          aria-controls="listmonstre">Gestion des Monstres</button>
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-secondary" data-target="#listmarchand" data-toggle="collapse" aria-expanded="false"
+          aria-controls="listmarchand">Gestion des Marchands</button>
+  &nbsp;&nbsp;&nbsp;
+</div>
+<app-arme>
+</app-arme>
+<app-armure>
+</app-armure>
+
+<!--&lt;!&ndash;<section id="listArme" class="collapse">&ndash;&gt;-->
+<!--  <div class="card mt-3" *ngIf="listArme()">-->
+<!--    <div class="card-header bg-info text-white">-->
+<!--      <h3>Liste des Armes</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <table class="table table-striped">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>ID</th>-->
+<!--          <th>Version</th>-->
+<!--          <th>Nom</th>-->
+<!--          <th>Type</th>-->
+<!--          <th>Description</th>-->
+<!--          <th>Attaque</th>-->
+<!--          <th>Agilite</th>-->
+<!--          <th>Prix-Achat</th>-->
+<!--          <th>Prix-Vente</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let arme of listArme()">-->
+<!--          <td>{{arme.id}}</td>-->
+<!--          <td>{{arme.version}}</td>-->
+<!--          <td>{{arme.nom}}</td>-->
+<!--          <td>{{arme.typearme}}</td>-->
+<!--          <td>{{arme.description}}</td>-->
+<!--          <td>{{arme.attaque}}</td>-->
+<!--          <td>{{arme.agilite}}</td>-->
+<!--          <td>{{arme.prixAchat}}</td>-->
+<!--          <td>{{arme.prixVente}}</td>-->
+<!--          <td>-->
+<!--            <div class="btn-group btn-group-sm">-->
+<!--              <a class="btn btn-primary" (click)="editArme(arme.id)"><i class="fa fa-edit"></i></a>-->
+<!--&lt;!&ndash;              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
+
+<!--              &lt;!&ndash;              <a class="btn btn-primary" href="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme" (click)="editArme(arme.id)"><i class="fa fa-edit"></i></a>&ndash;&gt;-->
+<!--              <a class="btn btn-danger" (click)="deleteArme(arme.id)"><i class="fa fa-trash"></i></a>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="card-footer">-->
+<!--    <a class="btn btn-dark" type="button" data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme" (click)="addArme()">-->
+<!--      <i class="fa fa-plus"></i>-->
+<!--    </a>-->
+<!--  </div>-->
+<!--&lt;!&ndash;</section>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;<section id="editArme" class="collapse">&ndash;&gt;-->
+
+<!--  <div class="card mt-3" *ngIf="armeForm">-->
+<!--    <div class="card-header bg-info text-white">-->
+<!--      <h3>Edition de l'arme</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <div class="form-group">-->
+<!--        <label for="nom">Nom :</label>-->
+<!--        <input type="string" class="form-control" id="nom" [(ngModel)]="armeForm.nom">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="typearme">Type :</label>-->
+<!--        <select class="form-control" id="typearme" [(ngModel)]="armeForm.typearme">-->
+<!--          <option value="epee">epee</option>-->
+<!--          <option value="lance">lance</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="description">Description :</label>-->
+<!--        <input type="string" class="form-control" id="description" [(ngModel)]="armeForm.description">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="attaque">Attaque :</label>-->
+<!--        <input type="number" class="form-control" id="attaque" [(ngModel)]="armeForm.attaque">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="agilite">Agilite :</label>-->
+<!--        <input type="number" class="form-control" id="agilite" [(ngModel)]="armeForm.agilite">-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="prixAchat">Prix-Achat :</label>-->
+<!--        <input type="number" class="form-control" id="prixAchat" [(ngModel)]="armeForm.prixAchat">-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="prixVente">Prix-Vente :</label>-->
+<!--        <input type="number" class="form-control" id="prixVente" [(ngModel)]="armeForm.prixVente">-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="card-footer">-->
+<!--      <div class="btn-group btn-group-lg float-right">-->
+<!--        <a class="btn btn-success" (click)="saveArme()">-->
+<!--          <i class="fa fa-check"></i>-->
+<!--        </a>-->
+<!--        <a class="btn btn-warning" (click)="cancelArme()">-->
+<!--          <i class="fa fa-sync"></i>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--&lt;!&ndash;</section>&ndash;&gt;-->

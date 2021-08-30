@@ -14,6 +14,9 @@ import {UtilisateurService} from "./utilisateur/utilisateur.service";
 import {InventaireArmureService} from "./inventaireArmure/inventaireArmure.service";
 import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
 import { AdminComponent } from './admin/admin.component';
+import { ArmeComponent } from './arme/arme.component';
+import { ArmureComponent } from './armure/armure.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { AdminComponent } from './admin/admin.component';
     AccueilComponent,
     AgePipe,
     HeroComponent,
-    AdminComponent
+    AdminComponent,
+    ArmeComponent,
+    ArmureComponent
   ],
   imports: [
     BrowserModule,

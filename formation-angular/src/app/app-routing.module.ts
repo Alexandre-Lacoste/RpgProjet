@@ -8,6 +8,8 @@ import {InventaireArmeComponent} from "./inventaireArme/inventaire-arme.componen
 import {InventaireArmureComponent} from "./inventaireArmure/inventaire-armure.component";
 import {CombatComponent} from "./combat/combat.component";
 import {AdminComponent} from "./admin/admin.component";
+import {ArmeComponent} from "./arme/arme.component";
+import {ArmureComponent} from "./armure/armure.component";
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: "inventaireArmure", component: InventaireArmureComponent},
   {path:"combat",component:CombatComponent},
   {path: "admin", component: AdminComponent},
+  {path: "arme", component: ArmeComponent},
+  {path: "armure", component: ArmureComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 

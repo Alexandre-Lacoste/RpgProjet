@@ -8,7 +8,7 @@ export class InventaireArme{
   arme:Arme;
   inventaire: Inventaire;
 
-  constructor(id?:number,version?:number,quantite?:number,arme?:Arme,inventaire?:Inventaire) {
+  constructor(id?:number, version?:number, quantite?:number, arme?:Arme, inventaire?:Inventaire) {
     this.id=id;
     this.version=version;
     this.quantite=quantite;
