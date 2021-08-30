@@ -1,16 +1,23 @@
-import {Armure} from "./Armure";
 import {Arme} from "./Arme";
+import {Inventaire} from "./inventaire";
 
 export class InventaireArme{
-  id: number;
-  version: number;
-  qte: number;
-  arme: Arme;
+  id:number;
+  version:number;
+  quantite:number;
+  arme:Arme;
+  inventaire: Inventaire;
 
-  constructor(id?: number, version?: number, qte?: number, arme?: Arme) {
-    this.id = id;
-    this.version = version;
-    this.qte = qte;
-    this.arme = arme;
+  constructor(id?:number,version?:number,quantite?:number,arme?:Arme,inventaire?:Inventaire) {
+    this.id=id;
+    this.version=version;
+    this.quantite=quantite;
+    this.arme=arme;
+    this.inventaire=inventaire;
   }
+
+
+
+
+
 }

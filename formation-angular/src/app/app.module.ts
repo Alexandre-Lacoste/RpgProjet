@@ -20,9 +20,6 @@ import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
     AccueilComponent,
     AgePipe,
     HeroComponent,
-    UtilisateurComponent,
-    InventaireArmeComponent,
-    InventaireArmureComponent,
   ],
   imports: [
     BrowserModule,

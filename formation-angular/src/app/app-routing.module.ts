@@ -6,6 +6,7 @@ import {Utilisateur} from "./model/utilisateur";
 import {UtilisateurComponent} from "./utilisateur/utilisateur.component";
 import {InventaireArmeComponent} from "./inventaireArme/inventaire-arme.component";
 import {InventaireArmureComponent} from "./inventaireArmure/inventaire-armure.component";
+import {CombatComponent} from "./combat/combat.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "monProfil", component: UtilisateurComponent},
   {path: "inventaireArme", component: InventaireArmeComponent},
   {path: "inventaireArmure", component: InventaireArmureComponent},
+  {path:"combat",component:CombatComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 
