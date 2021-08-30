@@ -68,17 +68,22 @@ public class ArmeRestController {
 		}
 	}
 	
-	@PostMapping
+	@PostMapping("")
+	@JsonView(Views.ViewArme.class)
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Arme create(@RequestBody Arme arme) {
+
 		arme = armeRepo.save(arme);
 		return arme;
 	}
 	
+	
+	
 	@PutMapping("/{id}")
 	//@PreAuthorize("hasAnyRole('ADMIN')")
-	@JsonView(Views.ViewInventaireArme.class)
+//	@JsonView({Views.ViewInventaireArme.class, Views.ViewArme.class})
+	@JsonView(Views.ViewArme.class)
 	public  Arme update(@RequestBody Arme arme  , @PathVariable Long id) {
 		if (!armeRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
@@ -89,7 +94,7 @@ public class ArmeRestController {
 		return arme ;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {

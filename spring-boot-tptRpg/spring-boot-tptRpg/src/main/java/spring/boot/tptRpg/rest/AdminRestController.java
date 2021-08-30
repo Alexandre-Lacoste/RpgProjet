@@ -103,6 +103,8 @@ public class AdminRestController {
 		}
 	}
 	
+
+	
 	
 	
 	@PostMapping("/addadmin")
@@ -161,7 +163,19 @@ public class AdminRestController {
 		return armeRepo.findAll();
 	}
 	
-	@PostMapping("/addarme")
+	@GetMapping("/arme/{id}")
+	@JsonView(Views.ViewArme.class)
+	public Arme findArmeId(@PathVariable Long id) {
+		Optional<Arme> optArme = armeRepo.findByArmeId(id);
+		
+		if (optArme.isPresent()) {
+			return optArme.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+	}
+	
+	@PostMapping("/addarme/")
 //	@PreAuthorize("hasAnyRole('ADMIN')")
 	@JsonView(Views.ViewAdmin.class)
 	public Arme createArme(@RequestBody Arme arme) {

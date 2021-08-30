@@ -19,8 +19,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import spring.boot.tptRpg.model.Armure;
-import spring.boot.tptRpg.model.Hero;
-import spring.boot.tptRpg.model.InventaireArmure;
 import spring.boot.tptRpg.model.Views;
 import spring.boot.tptRpg.repository.IArmureRepository;
 
@@ -75,7 +73,8 @@ public class ArmureRestController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("")
+	@JsonView(Views.ViewArmure.class)
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Armure create(@RequestBody Armure armure) {
@@ -97,7 +96,7 @@ public class ArmureRestController {
 		return armure ;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {

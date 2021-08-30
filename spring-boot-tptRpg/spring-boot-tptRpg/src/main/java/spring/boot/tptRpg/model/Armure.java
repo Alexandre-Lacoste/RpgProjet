@@ -21,13 +21,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table(name="Armure")
 public class Armure {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private Long id;
+	
 	@Version
-	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private int version;
+	
 	@Column(name="nom")
 	@JsonView(Views.ViewCommon.class)
 	private String nom;
@@ -43,18 +46,18 @@ public class Armure {
 	private String description;
 	
 	@Column(name="defense")
-	@JsonView({Views.ViewArmure.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmure.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double defense;
 	
 	@Column(name="vitesse")
-	@JsonView({Views.ViewArmure.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmure.class,Views.ViewUtilisateurDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double vitesse;
 	
 	@Column(name="prixVente")
-	@JsonView({Views.ViewArmureDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixVente;
 	@Column(name="prixAchat")
-	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixAchat;
 	
 	@OneToMany(mappedBy = "armure")

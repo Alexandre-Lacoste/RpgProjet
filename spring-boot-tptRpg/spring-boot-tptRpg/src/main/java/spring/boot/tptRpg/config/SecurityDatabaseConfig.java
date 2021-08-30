@@ -11,8 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-//import spring.boot.tptRpg.service.CustomUserDetailService;
-//
+
+
+
 //@Configuration
 //@EnableWebSecurity
 //@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -28,8 +29,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 //
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
-//		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic(); // Enable secure
-////		http.csrf().disable().authorizeRequests().antMatchers("/*").permitAll(); // Disable Secure
+////		http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().httpBasic(); // Enable secure
+//		http.csrf().disable().authorizeRequests().anyRequest().permitAll(); // Disable Secure
 //		
 //	}
 //	
