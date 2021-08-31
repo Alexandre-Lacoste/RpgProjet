@@ -17,6 +17,8 @@ import { InventaireArmureComponent } from './inventaireArmure/inventaire-armure.
 import {UtilisateurService} from "./utilisateur/utilisateur.service";
 import {InventaireArmureService} from "./inventaireArmure/inventaireArmure.service";
 import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
+import {MarchandModule} from "./marchandmodule";
+import { ObjetComponent } from './objet/objet.component';
 
 @NgModule({
   declarations: [
@@ -24,16 +26,13 @@ import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
     AccueilComponent,
     AgePipe,
     HeroComponent,
-    MarchandComponent,
-    MarchandPotionComponent,
-    MarchandArmeComponent,
-    MarchandArmureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MarchandModule
 
   ],
   providers: [UtilisateurService, InventaireArmureService, InventaireArmeService],

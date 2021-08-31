@@ -9,7 +9,6 @@ import {MarchandArmeComponent} from "./marchand-arme/marchand-arme.component";
 
 const routes: Routes = [
   {path: "hero", component: HeroComponent},
-  {path: "marchand/:mar/listarme", component: MarchandArmeComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 
