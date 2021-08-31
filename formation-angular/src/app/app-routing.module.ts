@@ -12,6 +12,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {ArmeComponent} from "./arme/arme.component";
 import {ArmureComponent} from "./armure/armure.component";
 import {PotionComponent} from "./potion/potion.component";
+import {MonstreComponent} from "./monstre/monstre.component";
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: "armure", component: ArmureComponent},
   {path: "potion", component: PotionComponent},
   {path: "hero", component: HeroComponent},
+  {path: "monstre", component: MonstreComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 

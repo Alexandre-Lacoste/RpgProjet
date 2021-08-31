@@ -24,6 +24,7 @@ import { ArmeComponent } from './arme/arme.component';
 import { ArmureComponent } from './armure/armure.component';
 import { PotionComponent } from './potion/potion.component';
 import {MarchandRoutingModule} from "./marchand-routing.module";
+import { MonstreComponent } from './monstre/monstre.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MarchandRoutingModule} from "./marchand-routing.module";
     AdminComponent,
     ArmeComponent,
     ArmureComponent,
-    PotionComponent
+    PotionComponent,
+    MonstreComponent
   ],
   imports: [
     BrowserModule,
