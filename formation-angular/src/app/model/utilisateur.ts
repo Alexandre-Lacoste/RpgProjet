@@ -2,6 +2,9 @@ import {Compte} from "./compte";
 import {InventaireArme} from "./inventaireArme";
 import {InventaireArmure} from "./inventaireArmure";
 import {Hero} from "./Hero";
+import {Arme} from "./Arme";
+import {Armure} from "./Armure";
+import {Inventaire} from "./inventaire";
 
 export class Utilisateur extends Compte{
 
@@ -28,6 +31,9 @@ export class Utilisateur extends Compte{
   hero:Hero;
   inventaireArme: InventaireArme;
   inventaireArmure: InventaireArmure;
+  arme:Arme;
+  armure:Armure;
+  inventaire:Inventaire;
 
 
   constructor(id?: number, version?: number, pseudo?: string, mail?: string, mdp?: string, vie?: number, attaque?: number, defense?: number, agilite?: number, vitesse?: number, vieMax?: number, attaqueMax?: number, defenseMax?: number, agiliteMax?: number, vitesseMax?: number, cptEmpoisonnement?: number, cptEtourdissement?: number, cptSaignement?: number, cptBrulure?: number, cptCombat?: number, cptCombatGagne?: number, cptMonstreVaincu?: number, exp?: number) {

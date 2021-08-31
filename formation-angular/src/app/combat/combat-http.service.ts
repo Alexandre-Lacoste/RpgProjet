@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {Utilisateur} from "../model/utilisateur";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ export class CombatHttpService {
     this.chemin=this.appConfigService.backEndUrl+"utilisateur/"
   }
 
-  attaquer(idUtilisateur : number, idMonstre:number) {
-    this.http.get<void>(this.chemin+idUtilisateur+"/combat/attaquer/"+idMonstre);
-  }
+
+
 }
