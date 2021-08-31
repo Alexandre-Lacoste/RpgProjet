@@ -83,7 +83,7 @@ public class HeroRestController {
 		return hero ;
 	}
 	
-	@PostMapping
+	@PostMapping("")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Hero create(@RequestBody Hero hero) {
@@ -91,7 +91,7 @@ public class HeroRestController {
 		return hero;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {

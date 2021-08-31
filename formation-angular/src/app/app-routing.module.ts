@@ -26,6 +26,7 @@ const routes: Routes = [
   {path: "arme", component: ArmeComponent},
   {path: "armure", component: ArmureComponent},
   {path: "potion", component: PotionComponent},
+  {path: "hero", component: HeroComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 
