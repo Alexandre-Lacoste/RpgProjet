@@ -21,33 +21,44 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table(name="Arme")
 public class Arme{
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class})
 	private Long id;
+	
 	@Version
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private int version;
+	
 	@Column(name="nom")
 	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	
 	@Column(name="typeArme")
 	@Enumerated(EnumType.STRING)
 	@JsonView(Views.ViewCommon.class)
 	private TypeArme typearme;
+	
 	@Column(name="description")
 	@Lob
 	@JsonView(Views.ViewCommon.class)
 	private String description;
+	
 	@Column(name="attaque")
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
+//	Views.ViewArme.class
 	private double attaque;
+	
 	@Column(name="agilite")
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
+//	Views.ViewArme.class
 	private double agilite;
+	
 	@Column(name="prixAchat")
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixAchat;
+	
 	@Column(name="prixVente")
 	@JsonView({Views.ViewArmeDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixVente;
