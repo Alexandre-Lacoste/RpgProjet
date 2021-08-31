@@ -29,11 +29,11 @@ public class InventairePotion {
 	private double qte;
 	@ManyToOne
 	@JoinColumn(name = "inventaire_id")
-	@JsonIgnore
+	@JsonView(Views.ViewInventairePotion.class)
 	private Inventaire inventaire;
 	@ManyToOne
 	@JoinColumn(name = "potion_id")
-	@JsonView(Views.ViewUtilisateur.class)
+	@JsonView(Views.ViewInventairePotion.class)
 	private Potion potion;
 	
 	

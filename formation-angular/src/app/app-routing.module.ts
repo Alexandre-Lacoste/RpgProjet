@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AccueilComponent} from "./accueil/accueil.component";
 import {HeroComponent} from "./hero/hero.component";
+import {MarchandComponent} from "./marchand/marchand.component";
 import {Utilisateur} from "./model/utilisateur";
 import {UtilisateurComponent} from "./utilisateur/utilisateur.component";
 import {InventaireArmeComponent} from "./inventaireArme/inventaire-arme.component";
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "inventaireArme", component: InventaireArmeComponent},
   {path: "inventaireArmure", component: InventaireArmureComponent},
   {path:"combat",component:CombatComponent},
+  {path: "marchand/:mar", component: MarchandComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 

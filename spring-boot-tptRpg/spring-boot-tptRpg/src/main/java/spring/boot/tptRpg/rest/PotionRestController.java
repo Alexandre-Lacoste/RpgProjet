@@ -50,7 +50,7 @@ public class PotionRestController {
 	}
 	
 	@PostMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@JsonView(Views.ViewPotion.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Potion create(@RequestBody Potion Potion) {
 		Potion = potionRepo.save(Potion);

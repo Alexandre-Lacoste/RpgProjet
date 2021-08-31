@@ -76,7 +76,7 @@ public class ArmureRestController {
 	
 	
 	@PostMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@JsonView(Views.ViewArmure.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Armure create(@RequestBody Armure armure) {
 		armure = armureRepo.save(armure);
@@ -98,6 +98,7 @@ public class ArmureRestController {
 	}
 	
 	@DeleteMapping
+	@JsonView(Views.ViewArmure.class)
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {

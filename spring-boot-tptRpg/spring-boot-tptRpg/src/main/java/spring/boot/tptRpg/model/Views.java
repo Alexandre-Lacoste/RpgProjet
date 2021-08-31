@@ -19,7 +19,7 @@ public class Views {
 	public static class ViewMonstreDetail extends ViewMonstre{}
 	
 	
-	
+	public static class ViewObjet extends ViewCommon{}
 	public static class ViewArme extends ViewCommon{}
 	public static class ViewArmeDetail extends ViewArme{}
 	
