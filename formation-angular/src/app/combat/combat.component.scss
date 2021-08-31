@@ -1,0 +1,120 @@
+.centralBlock{
+  background-color: lightgray;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top:3%;
+  border-radius: 5%;
+  border-color: black;
+  border-style: double;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.battle-background {
+  position: relative;
+}
+
+#bg {
+  width: 100%;
+
+  background: #000;
+  border: 0.3rem #000 solid;
+  border-radius: 0.5rem;
+  user-select: none;
+}
+
+#player-info {
+  position: absolute;
+  bottom: 15%;
+  right: 15%;
+}
+
+#enemy-info {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+}
+
+#player-info,
+#enemy-info {
+  background: #fff;
+  width: 20rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+
+  border: 1px #000 solid;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  .hp-bar {
+    height: 1rem;
+    width: 100%;
+    margin: 0.5rem 0 0.25rem;
+    border: 1px #000 solid;
+    border-radius: 5px;
+    background-color: #eeeeee;
+
+    div {
+      height: 100%;
+      border-radius: 5px;
+      border-right: 1px solid rgb(146, 146, 146);
+      border-left: 1px solid rgb(146, 146, 146);
+    }
+  }
+
+  small {
+    text-align: end;
+  }
+}
+
+#player-sprite {
+  position: absolute;
+  left: 23%;
+  bottom: 16%;
+  width: 13rem;
+  height: 13rem;
+}
+
+// enemy pokemon on screen
+#enemy-sprite {
+  position: absolute;
+  right: 23%;
+  top: 24%;
+  width: 13rem;
+  height: 13rem;
+}
+
+.menu{
+  height: 8rem;
+  border: 0.5rem #000 double;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.info{
+  padding-left: 6%;
+  float:left;
+  width:49%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.option{
+  float:right;
+  width:49%;
+  height: 100%;
+}
+
+
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}

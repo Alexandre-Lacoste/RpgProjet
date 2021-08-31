@@ -16,15 +16,14 @@ import {ObjetComponent} from "./objet/objet.component";
 
 @NgModule({
   declarations: [
-    ObjetComponent,
     MarchandComponent,
+    ObjetComponent,
     MarchandPotionComponent,
     MarchandArmeComponent,
     MarchandArmureComponent,
     InventaireArmureComponent,
     InventaireArmeComponent,
     InventairePotionComponent
-
   ],
   imports: [
     // BrowserModule,
