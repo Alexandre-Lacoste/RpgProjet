@@ -39,9 +39,7 @@ export class MarchandPotionHttpService {
     return this.http.delete<void>(this.appConfigService.backEndUrl + "marchandPotion/" + id);
   }
 
-  reload(){
-    return this.http.delete<void>("http://localhost:4200/marchandPotion/");
-  }
+
 
   load() {
     this.http.get<Array<MarchandPotion>>(this.appConfigService.backEndUrl + "marchandPotion/").subscribe(response => {

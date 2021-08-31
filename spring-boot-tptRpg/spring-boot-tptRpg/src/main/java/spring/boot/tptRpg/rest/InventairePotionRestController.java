@@ -49,7 +49,7 @@ public class InventairePotionRestController {
 	}
 	
 	@PostMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@JsonView(Views.ViewInventairePotion.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public InventairePotion create(@RequestBody InventairePotion invPotion) {
 		invPotion = invPotionRepo.save(invPotion);

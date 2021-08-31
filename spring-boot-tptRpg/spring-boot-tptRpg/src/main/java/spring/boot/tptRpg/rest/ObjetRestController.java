@@ -18,66 +18,76 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import spring.boot.tptRpg.model.Potion;
+import spring.boot.tptRpg.model.Armure;
+import spring.boot.tptRpg.model.Objet;
 import spring.boot.tptRpg.model.Views;
-import spring.boot.tptRpg.repository.IPotionRepository;
+import spring.boot.tptRpg.repository.IObjetRepository;
 
 @RestController
-@RequestMapping("/potion")
+@RequestMapping("/objet")
 @CrossOrigin("*")
-public class PotionRestController {
+public class ObjetRestController {
 	
 	@Autowired
-	private IPotionRepository potionRepo;
+	private IObjetRepository objetRepo;
 	
 	@GetMapping("")
-	@JsonView(Views.ViewPotion.class)
-	public List<Potion> findAll(){
-		return potionRepo.findAll();
+	@JsonView(Views.ViewCommon.class)
+	public List<Objet> findAll(){
+		return objetRepo.findAll();
+	}
+	
+	@GetMapping("/detail")
+	@JsonView(Views.ViewCommon.class)
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public List<Objet> findDetailAll(){
+		return objetRepo.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewPotion.class)
+	@JsonView(Views.ViewCommon.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public Potion findPotionId(@PathVariable Long id) {
-		Optional<Potion> optPotion = potionRepo.findById(id);
+	public Objet findByObjetId(@PathVariable Long id) {
+		Optional<Objet> optObjet = objetRepo.findById(id);
 		
-		if (optPotion.isPresent()) {
-			return optPotion.get();
+		if (optObjet.isPresent()) {
+			return optObjet.get();
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
 	
+
 	@PostMapping
-	@JsonView(Views.ViewPotion.class)
+	@JsonView(Views.ViewCommon.class)
+//	@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
-	public Potion create(@RequestBody Potion Potion) {
-		Potion = potionRepo.save(Potion);
-		return Potion;
+	public Objet create(@RequestBody Objet objet) {
+		objet = objetRepo.save(objet);
+		return objet;
 	}
 	
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewPotion.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
-	public Potion update(@RequestBody Potion potion, @PathVariable Long id) {
-		if (!potionRepo.existsById(id)) {
+	@JsonView(Views.ViewCommon.class)
+	public  Objet update(@RequestBody Objet objet  , @PathVariable Long id) {
+		if (!objetRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 
-		potion = potionRepo.save(potion);
+		objet = objetRepo.save(objet);
 
-		return potion;
+		return objet ;
 	}
 	
 	@DeleteMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@JsonView(Views.ViewCommon.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
-		if(!potionRepo.existsById(id)) {
+		if(!objetRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
-		potionRepo.deleteById(id);
+		objetRepo.deleteById(id);
 	}
 
 }
