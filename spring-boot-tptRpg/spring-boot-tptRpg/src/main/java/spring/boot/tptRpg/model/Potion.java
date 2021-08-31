@@ -45,10 +45,10 @@ public class Potion {
 	@JsonView(Views.ViewCommon.class)
 	private double prixVente;
 	@OneToMany(mappedBy = "potion")
-	@JsonIgnore
+	@JsonView(Views.ViewPotion.class)
 	private List<InventairePotion> inventairePotions = new ArrayList<InventairePotion>();
 	@OneToMany(mappedBy = "potion")
-	@JsonIgnore
+	@JsonView(Views.ViewPotion.class)
 	private List<MarchandPotion> marchandPotions = new ArrayList<MarchandPotion>();
 	
 	public Potion() {

@@ -9,25 +9,31 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "Objet")
 public class Objet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
-
-
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private String description;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private double qte;
 	@OneToOne(mappedBy = "objet")
+	@JsonView(Views.ViewCommon.class)
 	private Inventaire inventaire;
 	
 	

@@ -17,6 +17,8 @@ import { InventaireArmureComponent } from './inventaireArmure/inventaire-armure.
 import {UtilisateurService} from "./utilisateur/utilisateur.service";
 import {InventaireArmureService} from "./inventaireArmure/inventaireArmure.service";
 import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
+import {MarchandModule} from "./marchandmodule";
+import { ObjetComponent } from './objet/objet.component';
 import { AdminComponent } from './admin/admin.component';
 import { ArmeComponent } from './arme/arme.component';
 import { ArmureComponent } from './armure/armure.component';
@@ -42,7 +44,8 @@ import { PotionComponent } from './potion/potion.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MarchandModule
 
   ],
   providers: [UtilisateurService, InventaireArmureService, InventaireArmeService],

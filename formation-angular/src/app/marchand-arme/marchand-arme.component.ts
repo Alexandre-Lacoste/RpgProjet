@@ -64,5 +64,5 @@ export class MarchandArmeComponent implements OnInit {
     this.marchandArmeForm = null;
   }
 
-  //
+
 }
