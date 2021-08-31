@@ -30,8 +30,7 @@ public class Compte {
 	private Long id;
 	
 	@Version
-	@JsonView({Views.Compte.class, Views.ViewCommon.class})
-	@JsonView({Views.Compte.class,Views.ViewUtilisateurDetail.class})
+	@JsonView({Views.Compte.class, Views.ViewCommon.class,Views.ViewUtilisateurDetail.class})
 	private int version;
 	
 	@Column()
