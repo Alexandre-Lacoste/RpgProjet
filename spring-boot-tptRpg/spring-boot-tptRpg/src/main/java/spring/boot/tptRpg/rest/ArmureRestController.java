@@ -19,8 +19,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import spring.boot.tptRpg.model.Armure;
-import spring.boot.tptRpg.model.Hero;
-import spring.boot.tptRpg.model.InventaireArmure;
 import spring.boot.tptRpg.model.Views;
 import spring.boot.tptRpg.repository.IArmureRepository;
 
@@ -39,20 +37,16 @@ public class ArmureRestController {
 	}
 	
 	@GetMapping("/detail")
-	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@JsonView(Views.ViewArmureDetail.class)
-	public List<Armure> findAllDetail(){
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public List<Armure> findDetailAll(){
 		return armureRepo.findAll();
 	}
 	
-
-	
-	
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewArmure.class)
-	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public Armure findArmureId(@PathVariable Long id) {
-		Optional<Armure> optArmure = armureRepo.findById(id);
+		Optional<Armure> optArmure = armureRepo.findByArmureId(id);
 		
 		if (optArmure.isPresent()) {
 			return optArmure.get();
@@ -65,7 +59,7 @@ public class ArmureRestController {
 	@JsonView(Views.ViewArmureDetail.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public Armure findArmureDetailId(@PathVariable Long id) {
-		Optional<Armure> optArmure = armureRepo.findById(id);
+		Optional<Armure> optArmure = armureRepo.findByArmureId(id);
 		
 		if (optArmure.isPresent()) {
 			return optArmure.get();
@@ -74,19 +68,18 @@ public class ArmureRestController {
 		}
 	}
 	
-	
 	@PostMapping
-	@JsonView(Views.ViewArmure.class)
+	@JsonView(Views.ViewCommon.class)
+//	@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Armure create(@RequestBody Armure armure) {
 		armure = armureRepo.save(armure);
 		return armure;
 	}
 	
-	
 	@PutMapping("/{id}")
 	//@PreAuthorize("hasAnyRole('ADMIN')")
-	@JsonView(Views.ViewArmure.class)
+	@JsonView(Views.ViewCommon.class)
 	public  Armure update(@RequestBody Armure armure  , @PathVariable Long id) {
 		if (!armureRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
@@ -98,8 +91,7 @@ public class ArmureRestController {
 	}
 	
 	@DeleteMapping
-	@JsonView(Views.ViewArmure.class)
-	//@JsonView(Views.ViewAdmin.class)
+	@JsonView(Views.ViewCommon.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
 		if(!armureRepo.existsById(id)) {

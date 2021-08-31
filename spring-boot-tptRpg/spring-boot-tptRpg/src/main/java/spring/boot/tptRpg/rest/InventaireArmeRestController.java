@@ -18,9 +18,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import spring.boot.tptRpg.model.Arme;
 import spring.boot.tptRpg.model.InventaireArme;
-import spring.boot.tptRpg.model.InventaireArmure;
+import spring.boot.tptRpg.model.InventaireArme;
 import spring.boot.tptRpg.model.Views;
+import spring.boot.tptRpg.repository.IArmeRepository;
 import spring.boot.tptRpg.repository.IInventaireArmeRepository;
 
 @RestController
@@ -29,6 +31,9 @@ import spring.boot.tptRpg.repository.IInventaireArmeRepository;
 public class InventaireArmeRestController {
 	@Autowired
 	private IInventaireArmeRepository invArmeRepo;
+
+	@Autowired
+	private IArmeRepository armeRepo;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewInventaireArme.class)
@@ -49,8 +54,23 @@ public class InventaireArmeRestController {
 		}
 	}
 	
-	@PostMapping
-	//@JsonView(Views.ViewAdmin.class)
+	
+	@GetMapping("/idArme/{id}")
+	@JsonView(Views.ViewInventaireArme.class)
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public InventaireArme findInventaireArmeByIdArme(@PathVariable Long id) {
+		Optional<InventaireArme> optInvArme = invArmeRepo.findInventaireArmeByIdArme(id);
+		
+		if (optInvArme.isPresent()) {
+			return optInvArme.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+	}
+	
+	
+	@PostMapping("")
+	@JsonView(Views.ViewInventaireArme.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public InventaireArme create(@RequestBody InventaireArme invArme) {
 		invArme = invArmeRepo.save(invArme);
@@ -71,8 +91,8 @@ public class InventaireArmeRestController {
 		return invArme ;
 	}
 	
-	@DeleteMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewInventaireArme.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
 		if(!invArmeRepo.existsById(id)) {

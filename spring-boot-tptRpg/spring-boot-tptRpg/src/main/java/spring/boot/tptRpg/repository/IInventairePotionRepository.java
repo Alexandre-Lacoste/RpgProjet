@@ -1,11 +1,13 @@
 package spring.boot.tptRpg.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import spring.boot.tptRpg.model.InventairePotion;
 import spring.boot.tptRpg.model.InventairePotion;
 import spring.boot.tptRpg.model.Potion;
 import spring.boot.tptRpg.model.TypePotion;
@@ -26,5 +28,6 @@ public interface IInventairePotionRepository  extends JpaRepository<InventairePo
 	@Query("select ip from InventairePotion ip where ip.potion.id = :idP and ip.inventaire.id = :idInv")
 	InventairePotion findInventairePotionByIdPotionAndIdInv(@Param("idP") Long idP, @Param("idInv") Long idInv);
 
-
+	@Query("select ip from InventairePotion ip where ip.potion.id = :id")
+	Optional<InventairePotion> findInventairePotionByIdPotion(@Param("id") Long id);
 }

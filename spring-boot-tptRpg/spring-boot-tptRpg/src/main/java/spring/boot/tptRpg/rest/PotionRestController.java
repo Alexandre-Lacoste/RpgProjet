@@ -36,11 +36,30 @@ public class PotionRestController {
 		return potionRepo.findAll();
 	}
 	
+	@GetMapping("/detail")
+	@JsonView(Views.ViewPotionDetail.class)
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public List<Potion> findDetailAll(){
+		return potionRepo.findAll();
+	}
+	
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewPotion.class)
-	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public Potion findPotionId(@PathVariable Long id) {
-		Optional<Potion> optPotion = potionRepo.findById(id);
+		Optional<Potion> optPotion = potionRepo.findByPotionId(id);
+		
+		if (optPotion.isPresent()) {
+			return optPotion.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+	}
+	
+	@GetMapping("/{id}/detail")
+	@JsonView(Views.ViewPotionDetail.class)
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public Potion findPotionDetailId(@PathVariable Long id) {
+		Optional<Potion> optPotion = potionRepo.findByPotionId(id);
 		
 		if (optPotion.isPresent()) {
 			return optPotion.get();
@@ -50,28 +69,29 @@ public class PotionRestController {
 	}
 	
 	@PostMapping
-	@JsonView(Views.ViewPotion.class)
+	@JsonView(Views.ViewCommon.class)
+//	@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
-	public Potion create(@RequestBody Potion Potion) {
-		Potion = potionRepo.save(Potion);
-		return Potion;
+	public Potion create(@RequestBody Potion potion) {
+		potion = potionRepo.save(potion);
+		return potion;
 	}
 	
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewPotion.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
-	public Potion update(@RequestBody Potion potion, @PathVariable Long id) {
+	@JsonView(Views.ViewCommon.class)
+	public  Potion update(@RequestBody Potion potion  , @PathVariable Long id) {
 		if (!potionRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 
 		potion = potionRepo.save(potion);
 
-		return potion;
+		return potion ;
 	}
 	
 	@DeleteMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@JsonView(Views.ViewCommon.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
 		if(!potionRepo.existsById(id)) {

@@ -1,6 +1,7 @@
 package spring.boot.tptRpg.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,4 +26,7 @@ public interface IInventaireArmeRepository  extends JpaRepository<InventaireArme
 	
 	@Query("select ip from InventaireArme ip where ip.arme.id = :idA and ip.inventaire.id = :idInv")
 	InventaireArme findInventaireArmeByIdArmeAndIdInv(@Param("idA") Long idA, @Param("idInv") Long idInv);
+	
+	@Query("select ip from InventaireArme ip where ip.arme.id = :id")
+	Optional<InventaireArme> findInventaireArmeByIdArme(@Param("id") Long id);
 }

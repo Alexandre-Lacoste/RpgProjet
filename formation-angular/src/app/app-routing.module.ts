@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: "inventaireArme", component: InventaireArmeComponent},
   {path: "inventaireArmure", component: InventaireArmureComponent},
   {path:"combat",component:CombatComponent},
-  {path: "marchand/:mar", component: MarchandComponent},
+
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 
