@@ -7,6 +7,7 @@ import {PotionHttpService} from "../potion/potion-http.service";
 import {HeroHttpService} from "../hero/hero-http.service";
 import {MonstreHttpService} from "../monstre-Http.service";
 import {MarchandHttpService} from "../marchand/marchand-http.service";
+import {UtilisateurHttpService} from "../utilisateur-http.service";
 
 @Component({
   selector: 'app-admin',
@@ -19,7 +20,7 @@ export class AdminComponent implements OnInit {
   adminForm: Admin = null;
 
   constructor(private adminService: AdminHttpService, private armeService: ArmeHttpService, private armureService: ArmureHttpService, private potionService: PotionHttpService,
-              private heroService: HeroHttpService, private monstreService: MonstreHttpService, private marchandService: MarchandHttpService) {
+              private heroService: HeroHttpService, private monstreService: MonstreHttpService, private marchandService: MarchandHttpService, private utilisateurService: UtilisateurHttpService) {
   }
 
   ngOnInit(): void {
@@ -65,27 +66,29 @@ export class AdminComponent implements OnInit {
   loadingArme() {
     this.armeService.load();
   }
-
   loadingArmure() {
     this.armureService.load();
   }
-
-
-
   loadingPotion() {
     this.potionService.load();
   }
-
   loadingHero() {
     this.heroService.load();
   }
-
   loadingMonstre() {
     this.monstreService.load();
   }
-
   loadingMarchand() {
     this.marchandService.load();
   }
+  loadingAdmin() {
+    this.adminService.load();
+  }
+  loadingUser() {
+    this.utilisateurService.load();
+  }
+
+
+
 
 }

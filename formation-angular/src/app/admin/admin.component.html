@@ -1,11 +1,7 @@
 <!--<!doctype html>-->
 <!--<html lang="fr">-->
 <head>
-  <!--  <meta charset="utf-8">-->
-  <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-  <!--  <meta name="description" content="">-->
-  <!--  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">-->
-  <!--  <meta name="generator" content="Hugo 0.80.0">-->
+
   <title>Game</title>
 
 <!--  <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">-->
@@ -45,7 +41,6 @@
 <!--  </style>-->
 
 
-  <!-- Custom styles for this template -->
   <link href="admin.component.scss" rel="stylesheet">
 </head>
 <body>
@@ -78,18 +73,19 @@
             </a>
           </h6>
           <li class="nav-item">
-            <a class="nav-link" href="#listCompte" data-toggle="collapse" (click)="loading()">
-              <span data-feather="listCompte"></span>
-              Gestion des Comptes
+            <a class="nav-link" href="#listAdmin" data-toggle="collapse" data-target="#listAdmin" (click)="loadingAdmin()">
+              <span data-feather="listAdmin"></span>
+              Gestion des Admins
 <!--              <span class="sr-only">(current)</span>-->
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#listUser" data-toggle="collapse" (click)="loadingUser()">
+              <span data-feather="listUser"></span>
+              Gestion des Utilisateurs
+            </a>
+          </li>
 
-<!--          <button type="button" class="btn btn-secondary" data-target="#listArme" data-toggle="collapse" aria-expanded="false"-->
-<!--                  aria-controls="listArme">Gestion des Armes-->
-<!--          </button>-->
-
-          <!--<a class="btn btn-secondary" href="#listArme" data-toggle="collapse" aria-expanded="false" aria-controls="listArme">Balise a</a>-->
 
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -100,13 +96,13 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#listArme" data-toggle="collapse" (click)="loadingArme()">
+            <a class="nav-link" href="#listArme" data-toggle="collapse" data-target="#listArme" (click)="loadingArme()">
               <span data-feather="file-text"></span>
               Gestion des Armes
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#listArmure" data-toggle="collapse" (click)="loadingArmure()">
+            <a class="nav-link" href="#listArmure" data-toggle="collapse" data-target="#listArmure" (click)="loadingArmure()">
               <span data-feather="file-text"></span>
               Gestion des Armures
             </a>
@@ -129,41 +125,22 @@
               Gestion des Monstres
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#listMarchand" data-toggle="collapse" (click)="loadingMarchand()">
-              <span data-feather="file-text"></span>
-              Gestion des Marchands
-            </a>
-          </li>
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="#listMarchand" data-toggle="collapse" (click)="loadingMarchand()">-->
+<!--              <span data-feather="file-text"></span>-->
+<!--              Gestion des Marchands-->
+<!--            </a>-->
+<!--          </li>-->
         </ul>
       </div>
     </nav>
 
 
-
-
-
-
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-<!--      <div-->
-<!--        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">-->
-<!--        <h1 class="h2">Dashboard</h1>-->
-<!--        <div class="btn-toolbar mb-2 mb-md-0">-->
-<!--          <div class="btn-group mr-2">-->
-<!--            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>-->
-<!--            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>-->
-<!--          </div>-->
-<!--          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
-<!--            <span data-feather="calendar"></span>-->
-<!--            This week-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
 
       <canvas class="my-4 w-100" id="myChart" width="0" height="0"></canvas>
 
-
-      <section id="listCompte" class="collapse">
+      <section id="listAdmin" class="collapse">
         <h2>Liste des Admins</h2>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
@@ -192,20 +169,16 @@
                   <a class="btn btn-primary" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"
                      aria-controls="editAdmin" (click)="edit(admin.id)"><i class="fa fa-edit"></i></a>
                   <!--              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"-->
-
-                  <!--                            <a class="btn btn-primary" href="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme" (click)="edit(arme.id)"><i class="fa fa-edit"></i></a>-->
                   <a class="btn btn-danger" (click)="delete(admin.id)"><i class="fa fa-trash"></i></a>
                 </div>
               </td>
             </tr>
-              <!--  </div>-->
             </tbody>
           </table>
         </div>
           <div class="card-footer">
             <button class="btn btn-dark" type="button" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"
                     aria-controls="editAdmin" (click)="add()">
-              <!--      data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"-->
               <i class="fa fa-plus"></i>
             </button>
           </div>
@@ -257,21 +230,9 @@
         </div>
       </section>
 
-
     </main>
   </div>
 </div>
-
-
-<!--  <div class="card-footer">-->
-<!--    <button class="btn btn-dark" type="button" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"-->
-<!--            aria-controls="editAdmin" (click)="add()">-->
-<!--      &lt;!&ndash;      data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
-<!--      <i class="fa fa-plus"></i>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</section>-->
-
 
 
 
@@ -289,6 +250,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="dashboard.js"></script>
 
+
+
 <app-arme>
 </app-arme>
 <app-armure></app-armure>
@@ -299,8 +262,14 @@
 <app-monstre>
 </app-monstre>
 
+
+
 </body>
 <!--</html>-->
+
+
+
+
 
 
 <!--<br/>-->

@@ -19,6 +19,7 @@ import {MarchandRoutingModule} from "./marchand-routing.module";
 import { MonstreComponent } from './monstre/monstre.component';
 import {CombatComponent} from "./combat/combat.component";
 import {ArmureComponent} from "./armure/armure.component";
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {ArmureComponent} from "./armure/armure.component";
     ArmureComponent,
     ArmeComponent,
     AdminComponent,
-    UtilisateurComponent
+    UtilisateurComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
