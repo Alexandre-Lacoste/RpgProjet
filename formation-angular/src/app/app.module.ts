@@ -23,7 +23,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ArmeComponent } from './arme/arme.component';
 import { ArmureComponent } from './armure/armure.component';
 import { PotionComponent } from './potion/potion.component';
-
+import {MarchandRoutingModule} from "./marchand-routing.module";
 
 @NgModule({
   declarations: [
@@ -31,10 +31,10 @@ import { PotionComponent } from './potion/potion.component';
     AccueilComponent,
     AgePipe,
     HeroComponent,
-    MarchandComponent,
-    MarchandPotionComponent,
-    MarchandArmeComponent,
-    MarchandArmureComponent,
+    // MarchandComponent,
+    // MarchandPotionComponent,
+    // MarchandArmeComponent,
+    // MarchandArmureComponent,
     AdminComponent,
     ArmeComponent,
     ArmureComponent,
@@ -45,7 +45,10 @@ import { PotionComponent } from './potion/potion.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MarchandModule
+    MarchandModule,
+
+    MarchandRoutingModule
+
 
   ],
   providers: [UtilisateurService, InventaireArmureService, InventaireArmeService],

@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: "admin", component: AdminComponent},
   {path: "arme", component: ArmeComponent},
   {path: "armure", component: ArmureComponent},
-  {path: "armure", component: PotionComponent},
+  {path: "potion", component: PotionComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 
