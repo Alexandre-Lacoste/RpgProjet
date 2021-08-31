@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Admin} from "../model/Admin";
 import {AdminHttpService} from "./admin-http.service";
+import {ArmeHttpService} from "../arme/arme-http.service";
+import {ArmureHttpService} from "../armure/armure-http.service";
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +14,7 @@ export class AdminComponent implements OnInit {
 
   adminForm: Admin = null;
 
-  constructor(private adminService: AdminHttpService) {
+  constructor(private adminService: AdminHttpService, private armeService: ArmeHttpService, private armureService: ArmureHttpService) {
   }
 
   ngOnInit(): void {
@@ -51,6 +53,17 @@ export class AdminComponent implements OnInit {
     this.adminForm = null;
   }
 
+  loading(){
+    this.adminService.load();
+  }
+
+loadingArme() {
+    this.armeService.load();
+  }
+
+  loadingArmure() {
+    this.armureService.load();
+  }
 
 
 }

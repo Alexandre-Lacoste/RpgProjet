@@ -49,6 +49,8 @@ export class HeroComponent implements OnInit {
     this.heroForm = null;
   }
 
-
+  loading(){
+    this.heroService.load();
+  }
 
 }

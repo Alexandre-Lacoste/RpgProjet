@@ -51,8 +51,10 @@ export class ArmureComponent implements OnInit {
     this.armureForm = null;
   }
 
+  loading(){
+    this.armureService.load();
+  }
 
-  
 
 }
 

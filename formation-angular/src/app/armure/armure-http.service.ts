@@ -12,7 +12,7 @@ export class ArmureHttpService {
   armures: Array<Armure> = new Array<Armure>();
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.load();
+    // this.load();
   }
 
   findAll(): Array<Armure> {

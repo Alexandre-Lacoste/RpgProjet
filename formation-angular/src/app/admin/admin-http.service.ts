@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {Admin} from "../model/Admin";
 import {Observable} from "rxjs";
+import {Monstre} from "../model/Monstre";
+import {MonstreHttpService} from "../monstre-Http.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,9 @@ export class AdminHttpService {
 
   admins: Array<Admin> = new Array<Admin>();
 
-  constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.load();
+  constructor(private http: HttpClient, private appConfigService: AppConfigService, private httpMonstre: MonstreHttpService) {
+    // this.load();
+    this.httpMonstre.load();
   }
 
   findAll(): Array<Admin> {

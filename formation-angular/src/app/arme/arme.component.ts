@@ -51,7 +51,9 @@ export class ArmeComponent implements OnInit {
     this.armeForm = null;
   }
 
-
+  loading(){
+    this.armeService.load();
+  }
 
 
 }

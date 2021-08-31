@@ -12,7 +12,7 @@ export class ArmeHttpService {
   armes: Array<Arme> = new Array<Arme>();
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.load();
+    // this.load();
   }
 
   findAll(): Array<Arme> {

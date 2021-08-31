@@ -50,6 +50,9 @@ export class MonstreComponent implements OnInit {
     this.monstreForm = null;
   }
 
+  loading(){
+    this.monstreService.load();
+  }
 
 
 }
