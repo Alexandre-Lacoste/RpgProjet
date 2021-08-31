@@ -14,31 +14,35 @@ export class MonstreHttpService {
 
   constructor(private http:HttpClient,private appConfigService:AppConfigService) {
     this.load();
-    this.chemin=this.appConfigService.backEndUrl + "monstre/"
   }
 
   findAll():Array<Monstre>{
     return this.monstres;
   }
+
+  findAllMonstre(): Observable <Array<Monstre>>{
+    return this.http.get<Array<Monstre>>(this.appConfigService.backEndUrl + "monstre/");
+  }
   findById(id: number): Observable<Monstre> {
-    return this.http.get<Monstre>(this.chemin + id+"/detail");
+    return this.http.get<Monstre>(this.appConfigService.backEndUrl + "monstre/" + id+"/detail");
   }
 
   create(monstre: Monstre) {
-    this.http.post<Monstre>(this.chemin, monstre).subscribe(response => {
+    this.http.post<Monstre>(this.appConfigService.backEndUrl + "monstre/", monstre).subscribe(response => {
       this.load();
     }, error => console.log(error));
   }
 
   modify(monstre: Monstre) {
-    this.http.put<Monstre>(this.chemin + monstre.id, monstre).subscribe(response => {
+    this.http.put<Monstre>(this.appConfigService.backEndUrl + "monstre/"+ monstre.id, monstre).subscribe(response => {
       this.load();
     }, error => console.log(error));
   }
 
 
+
   load() {
-    this.http.get<Array<Monstre>>(this.chemin).subscribe(response => {
+    this.http.get<Array<Monstre>>(this.appConfigService.backEndUrl + "monstre/").subscribe(response => {
       this.monstres = response;
     }, error => console.log(error));
   }

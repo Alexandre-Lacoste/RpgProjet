@@ -13,6 +13,7 @@ import { InventaireArmureComponent } from './inventaireArmure/inventaire-armure.
 import {UtilisateurService} from "./utilisateur/utilisateur.service";
 import {InventaireArmureService} from "./inventaireArmure/inventaireArmure.service";
 import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
+import {CombatComponent} from "./combat/combat.component";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {InventaireArmeService} from "./inventaireArme/inventaireArme.service";
     AccueilComponent,
     AgePipe,
     HeroComponent,
+    CombatComponent
   ],
   imports: [
     BrowserModule,

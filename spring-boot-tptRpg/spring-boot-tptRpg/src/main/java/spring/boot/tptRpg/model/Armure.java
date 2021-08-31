@@ -23,10 +23,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Armure {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewMonstreDetail.class})
 	private Long id;
 	@Version
-	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class})
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewMonstreDetail.class})
 	private int version;
 	@Column(name="nom")
 	@JsonView(Views.ViewCommon.class)

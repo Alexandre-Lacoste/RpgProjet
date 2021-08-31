@@ -22,14 +22,15 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
 	@Override
 	public void fuir(Utilisateur utilisateur) {
-		utilisateur.fuir();
-		Objet orInInventaire = inventaireRepo.findQteObjetForUserPseudo(utilisateur.getPseudo(), "or");
-		double qteOr = 1000;
-		double qte = orInInventaire.getQte()-qteOr;
-		orInInventaire.setQte(qte);
-		if(orInInventaire.getQte()<0) {
-			orInInventaire.setQte(0);
-		}
+		//utilisateur.fuir();
+		//Objet orInInventaire = inventaireRepo.findQteObjetForUserPseudo(utilisateur.getPseudo(), "or");
+//		double qteOr = 1000;
+//		double qte = orInInventaire.getQte()-qteOr;
+//		orInInventaire.setQte(qte);
+//		if(orInInventaire.getQte()<0) {
+//			orInInventaire.setQte(0);
+//		}
+		utilisateur.setPseudo("user nouveau speudo");
 		
 	}
 

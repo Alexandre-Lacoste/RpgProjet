@@ -1,2 +1,119 @@
-<p>combat works!</p>
-<p>{{monstre.vie}}</p>
+<div *ngIf="phase==0" class="card mt-3">
+
+  <div class="card-header bg-info text-white">
+    <h2>Liste des monstres disponibles pour un combat</h2>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Identifiant</th>
+        <th>Nom</th>
+        <th>Type de monstre</th>
+        <th>Vie</th>
+        <th>Attaque</th>
+        <th>Defense</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let mons of monstres">
+        <td>{{mons.id}}</td>
+        <td>{{mons.nom}}</td>
+        <td>{{mons.typeMonstre}}</td>
+        <td>{{mons.vie}}</td>
+        <td>{{mons.attaque}}</td>
+        <td>{{mons.defense}}</td>
+        <td>
+            <a class="btn btn-danger" (click)="initCombat(mons.id)">Combat</a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+
+
+<div *ngIf="phase==1" class="centralBlock">
+<div class="battle-background">
+  <img  id="bg" src="assets/BattleImage/floor/winter.jpg">
+  <img src="assets/BattleImage/enemy/orc.png" id="enemy-sprite">
+  <div id="enemy-info">
+
+    <strong><p>Nom :  {{monstre.nom}}</p></strong>
+    <div>
+      <div class="hp-bar">
+        <div
+          [style.width]="monstre.vie +'%'"
+          style="background-color: white"
+        ></div>
+      </div>
+    </div>
+    <small>
+      {{monstre.vie}} /
+      {{vieMaxMonstre }}
+    </small>
+
+  </div>
+  <br>
+  <img src="assets/BattleImage/player/elf.png" id="player-sprite">
+  <div id="player-info">
+
+    <strong><p>Nom :  {{utilisateur.pseudo}}</p></strong>
+    <div>
+      <div class="hp-bar">
+        <div
+          [style.width]="utilisateur.vie +'%'"
+          style="background-color: white"
+        ></div>
+      </div>
+    </div>
+    <small>
+      {{utilisateur.vie}} /
+      {{utilisateur.vieMax}}
+    </small>
+  </div>
+</div>
+
+<div  class="menu" style="margin-top: 5px">
+ <div class="info" style="text-align: center;padding-top: 35px;">
+   <p>Que voulez vous faire ?</p>
+</div>
+
+  <div class="option">
+    <button style="margin-top: 35px;margin-left:20px;margin-right: 15px;" (click)="attaquer()" type="button " class="btn btn-outline-dark btn-lg">Attaquer</button>
+    <button  style="margin-top: 35px;margin-right: 15px;"(click)="fuir()"  type="button" class="btn btn-outline-dark btn-lg">Fuir</button>
+    <button style="margin-top: 35px;margin-right: 15px;"(click)="potion()" type="button" class="btn btn-outline-dark btn-lg">Utiliser Potion</button>
+  </div>
+</div>
+</div>
+
+<div *ngIf="phase==2" class="centralBlock">
+  <p>Vous avez fuit le combat comme un lache.</p>
+  <p>Voici vous infos suite à cette fuite : </p>
+
+  <br>
+  <p>Nom : {{utilisateur.pseudo}}</p>
+  <p>Vie : {{utilisateur.vie}}</p>
+  <p> Arme : {{utilisateur.arme}}</p>
+  <p>Armure : {{utilisateur.armure}}</p>
+  <br>
+
+</div>
+
+<div *ngIf="phase==3">
+
+</div>
+
+
+
+
+
+
+
