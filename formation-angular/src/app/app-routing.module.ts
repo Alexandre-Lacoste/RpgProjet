@@ -12,7 +12,7 @@ import {CombatComponent} from "./combat/combat.component";
 const routes: Routes = [
   {path: "accueil", component: AccueilComponent},
   {path: "hero", component: HeroComponent},
-  {path: "monProfil", component: UtilisateurComponent},
+  {path: "utilisateur", component: UtilisateurComponent},
   {path: "inventaireArme", component: InventaireArmeComponent},
   {path: "inventaireArmure", component: InventaireArmureComponent},
   {path:"combat",component:CombatComponent},

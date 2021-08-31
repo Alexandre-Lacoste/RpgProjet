@@ -9,6 +9,8 @@ import {Hero} from "../model/Hero";
 import {HeroHttpService} from "../hero/hero-http.service";
 import {InventaireArmeService} from "../inventaireArme/inventaireArme.service";
 import {InventaireArmureService} from "../inventaireArmure/inventaireArmure.service";
+import {Inventaire} from "../model/inventaire";
+import {InventairePotion} from "../model/inventairePotion";
 
 @Component({
   selector: 'app-utilisateur',
@@ -19,6 +21,7 @@ export class UtilisateurComponent implements OnInit {
 
   utilisateur: Utilisateur= new Utilisateur();
   utilisateurForm: Utilisateur = null;
+  inventaire: Inventaire=new Inventaire();
 
   constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmeService: InventaireArmeService, private inventaireArmureService: InventaireArmureService) {
 
@@ -27,6 +30,20 @@ export class UtilisateurComponent implements OnInit {
   ngOnInit(): void {
     this.find(1);
   }
+  list(): Array<Utilisateur> {
+    return this.utilisateurService.findAll();
+  }
+  ListInventaireArme(): Array<InventaireArme>{
+    return this.inventaireArmeService.findAll();
+  }
+  ListInventaireArmure(): Array<InventaireArmure>{
+    return this.inventaireArmureService.findAll();
+
+  }
+  //ListInventairePotion(): Array<InventairePotion>{
+  //  return this.inventairePotionService.findAll();
+  //
+  //}
 
   find(id : number){
     this.utilisateurService.findById(id).subscribe(response=>

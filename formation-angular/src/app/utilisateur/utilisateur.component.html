@@ -1,11 +1,72 @@
-<div class="utilisateur-info">
+
+<div class="utilisateur">
+<div class="container-fluid utilisateur-info">
+<br>
+<br>
+
 
   <div class="row">
-    <div class="col-4" >
+    <div class="informations">
       <h4>Informations générales :</h4>
-      Nom : {{utilisateur.pseudo}} <br>
+      Pseudo : {{utilisateur.pseudo}} <br>
       Mail : {{utilisateur.mail}} <br>
-      
+
     </div>
-    </div>
+  </div>
+  <br>
+
+    <div class="row">
+      <div class="caracteristiques">
+        <h4>Caractéristiques de votre Héro : </h4>
+        Type : {{utilisateur.hero?.typePersonnage}} <br>
+        Arme : {{utilisateur.arme?.nom}} <br>
+        Armure : {{utilisateur.armure?.nom}} <br>
+        Votre inventaires : <br>
+        <option *ngFor="let armes of ListInventaireArme()" [value]="utilisateur.id">
+          - Arme : {{armes.id}}-{{armes.quantite}} <br></option>
+        <option *ngFor="let armures of ListInventaireArmure()" [value]="utilisateur.id">
+          - Armure :  {{armures.id}}-{{armures.qte}} <br> </option>
+        - Potion :  {{utilisateur.inventairePotion?.inventaire}} <br>
+        Xp : {{utilisateur.exp}} <br>
+      </div>
+
+      <br>
+
+      <div class="detail">
+       <!-- les boutons d'actions -->
+        <a class="btn btn-primary" href="#MonCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Détails de votre Héro </a>
+        <br>
+
+        <section id="MonCollapse" class="collapse">
+        <div class="well">
+        <br>
+          <div class="firstDetails">
+          Vie : {{utilisateur.vie}}   <br>
+        Attaque : {{utilisateur.attaque}} <br>
+        Defense : {{utilisateur.defense}} <br>
+        Agilité : {{utilisateur.agilite}} <br>
+        Vitesse : {{utilisateur.vitesse}} <br>
+        Vie Max : {{utilisateur.vieMax}} <br>
+        Attaque Max : {{utilisateur.attaqueMax}} <br>
+        Défense Max : {{utilisateur.defenseMax}} <br>
+        Agilité Max : {{utilisateur.agiliteMax}} <br>
+        Vitesse Max : {{utilisateur.vitesseMax}}
+          </div>
+         <div class="secondDetails">
+        Compteur Empoisonnement : {{utilisateur.cptEmpoisonnement}} <br>
+        Compteur Etourdissement : {{utilisateur.cptEtourdissement}} <br>
+        Compteur Saignement : {{utilisateur.cptSaignement}} <br>
+        Compteur Brulure : {{utilisateur.cptBrulure}} <br>
+          Compteur Saignement : {{utilisateur.cptSaignement}} <br>
+        Compteur Combat : {{utilisateur.cptCombat}} <br>
+        Compteur Combat gagné :  {{utilisateur.cptCombatGagne}} <br>
+        Compteur Monstre(s) vaincu(s) : {{utilisateur.cptMonstreVaincu}} <br>
+         </div>
+        </div>
+    </section>
+        
+  </div>
+  </div>
 </div>
+</div>
+
