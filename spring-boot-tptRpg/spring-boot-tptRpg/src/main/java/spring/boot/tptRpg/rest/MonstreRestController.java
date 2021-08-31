@@ -69,7 +69,7 @@ public class MonstreRestController {
 		}
 	}
 	
-	@PostMapping
+	@PostMapping("")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Monstre create(@RequestBody Monstre monstre) {
@@ -90,7 +90,7 @@ public class MonstreRestController {
 		return monstre;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {

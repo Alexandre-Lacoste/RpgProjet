@@ -3,6 +3,7 @@ import {Monstre} from "./model/Monstre";
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "./app-config.service";
 import {Observable} from "rxjs";
+import {Hero} from "./model/Hero";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,9 @@ export class MonstreHttpService {
   findById(id: number): Observable<Monstre> {
     return this.http.get<Monstre>(this.chemin + id+"/detail");
   }
+  findByIdAdmin(id: number):  Observable<Monstre> {
+    return this.http.get<Monstre>(this.appConfigService.backEndUrl + "monstre/" + id);
+  }
 
   create(monstre: Monstre) {
     this.http.post<Monstre>(this.chemin, monstre).subscribe(response => {
@@ -34,6 +38,10 @@ export class MonstreHttpService {
     this.http.put<Monstre>(this.chemin + monstre.id, monstre).subscribe(response => {
       this.load();
     }, error => console.log(error));
+  }
+
+  deleteByIdAdmin(id: number): Observable<void> {
+    return this.http.delete<void>(this.chemin + id);
   }
 
 

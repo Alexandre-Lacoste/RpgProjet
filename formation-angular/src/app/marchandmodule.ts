@@ -28,10 +28,10 @@ import {ObjetComponent} from "./objet/objet.component";
 
   ],
   imports: [
-    BrowserModule,
-    MarchandRoutingModule,
-    FormsModule,
-    HttpClientModule,
+    // BrowserModule,
+    // MarchandRoutingModule,
+    // FormsModule,
+    // HttpClientModule
 
 
   ],
