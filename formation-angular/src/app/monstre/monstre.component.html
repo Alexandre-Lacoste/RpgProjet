@@ -1,0 +1,265 @@
+<!--<section id="listMonstre" class="collapse">-->
+<!--  <div class="card mt-3">-->
+<!--    <div class="card-header bg-info text-white">-->
+<!--      <h3>Liste des Monstres</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <table class="table table-striped">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>ID</th>-->
+<!--          <th>Version</th>-->
+<!--          <th>Nom</th>-->
+<!--          <th>Type</th>-->
+<!--          <th>Attaque</th>-->
+<!--          <th>Defense</th>-->
+<!--          <th>Vie</th>-->
+<!--          <th>Agilite</th>-->
+<!--          <th>Vitesse</th>-->
+<!--          <th>Gold</th>-->
+<!--          <th>Exp</th>-->
+<!--&lt;!&ndash;          <th>Arme</th>&ndash;&gt;-->
+<!--&lt;!&ndash;          <th>Armure</th>&ndash;&gt;-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let monstre of list()">-->
+<!--          <td>{{monstre.id}}</td>-->
+<!--          <td>{{monstre.version}}</td>-->
+<!--          <td>{{monstre.nom}}</td>-->
+<!--          <td>{{monstre.typeMonstre}}</td>-->
+<!--          <td>{{monstre.attaque}}</td>-->
+<!--          <td>{{monstre.defense}}</td>-->
+<!--          <td>{{monstre.vie}}</td>-->
+<!--          <td>{{monstre.agilite}}</td>-->
+<!--          <td>{{monstre.vitesse}}</td>-->
+<!--          <td>{{monstre.gold}}</td>-->
+<!--          <td>{{monstre.exp}}</td>-->
+<!--&lt;!&ndash;          <td>{{hero.}}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;          <td>{{hero.}}</td>&ndash;&gt;-->
+<!--          <td>-->
+<!--            <div class="btn-group btn-group-sm">-->
+<!--              <a class="btn btn-primary" data-target="#editMonstre" data-toggle="collapse" aria-expanded="false"-->
+<!--                 aria-controls="editMonstre" (click)="edit(monstre.id)"><i class="fa fa-edit"></i></a>-->
+<!--              &lt;!&ndash;              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
+
+<!--              &lt;!&ndash;                            <a class="btn btn-primary" href="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme" (click)="edit(arme.id)"><i class="fa fa-edit"></i></a>&ndash;&gt;-->
+<!--              <a class="btn btn-danger" (click)="delete(monstre.id)"><i class="fa fa-trash"></i></a>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="card-footer">-->
+<!--    <button class="btn btn-dark" type="button" data-target="#editMonstre" data-toggle="collapse" aria-expanded="false"-->
+<!--            aria-controls="editMonstre" (click)="add()">-->
+<!--      &lt;!&ndash;      data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
+<!--      <i class="fa fa-plus"></i>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+<!--<section id="editMonstre" class="collapse">-->
+<!--  <div class="card mt-3" *ngIf="monstreForm">-->
+<!--    <div class="card-header bg-info text-white">-->
+<!--      <h3>Edition du Monstre</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <div class="form-group">-->
+<!--        <label for="nom">Nom :</label>-->
+<!--        <input type="string" class="form-control" id="nom" [(ngModel)]="monstreForm.nom">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="typeMonstre">Type :</label>-->
+<!--        <select class="form-control" id="typeMonstre" [(ngModel)]="monstreForm.typeMonstre">-->
+<!--          <option value="Orc">Orc</option>-->
+<!--          <option value="Dragon">Dragon</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="attaque">Attaque :</label>-->
+<!--        <input type="number" class="form-control" id="attaque" [(ngModel)]="monstreForm.attaque">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="defense">Defense :</label>-->
+<!--        <input type="number" class="form-control" id="defense" [(ngModel)]="monstreForm.defense">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="vie">Vie :</label>-->
+<!--        <input type="number" class="form-control" id="vie" [(ngModel)]="monstreForm.vie">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="agilite">Agilite :</label>-->
+<!--        <input type="number" class="form-control" id="agilite" [(ngModel)]="monstreForm.agilite">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="vitesse">Vitesse :</label>-->
+<!--        <input type="number" class="form-control" id="vitesse" [(ngModel)]="monstreForm.vitesse">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="gold">Gold :</label>-->
+<!--        <input type="number" class="form-control" id="gold" [(ngModel)]="monstreForm.gold">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="exp">Exp :</label>-->
+<!--        <input type="number" class="form-control" id="exp" [(ngModel)]="monstreForm.exp">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card-footer">-->
+<!--      <div class="btn-group btn-group-lg float-right">-->
+<!--        <a class="btn btn-success" (click)="save()">-->
+<!--          <i class="fa fa-check"></i>-->
+<!--        </a>-->
+<!--        <a class="btn btn-warning" (click)="cancel()">-->
+<!--          <i class="fa fa-sync"></i>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+
+
+
+
+
+
+
+
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+  <!--<canvas class="my-4 w-100" id="myChart" width="0" height="0"></canvas>-->
+
+  <section id="listMonstre" class="collapse">
+    <h2>Liste des Monstres</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Version</th>
+          <th>Nom</th>
+          <th>Type</th>
+          <th>Attaque</th>
+          <th>Defense</th>
+          <th>Vie</th>
+          <th>Agilite</th>
+          <th>Vitesse</th>
+          <th>Gold</th>
+          <th>Exp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let monstre of list()">
+          <td>{{monstre.id}}</td>
+          <td>{{monstre.version}}</td>
+          <td>{{monstre.nom}}</td>
+          <td>{{monstre.typeMonstre}}</td>
+          <td>{{monstre.attaque}}</td>
+          <td>{{monstre.defense}}</td>
+          <td>{{monstre.vie}}</td>
+          <td>{{monstre.agilite}}</td>
+          <td>{{monstre.vitesse}}</td>
+          <td>{{monstre.gold}}</td>
+          <td>{{monstre.exp}}</td>
+          <!--          <td>{{hero.}}</td>-->
+          <!--          <td>{{hero.}}</td>-->
+          <td>
+            <div class="btn-group btn-group-sm">
+              <a class="btn btn-primary" data-target="#editMonstre" data-toggle="collapse" aria-expanded="false"
+                 aria-controls="editMonstre" (click)="edit(monstre.id)"><i class="fa fa-edit"></i></a>
+              <a class="btn btn-danger" (click)="delete(monstre.id)"><i class="fa fa-trash"></i></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-dark" type="button" data-target="#editMonstre" data-toggle="collapse" aria-expanded="false"
+              aria-controls="editMonstre" (click)="add()">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+  </section>
+
+
+  <section id="editMonstre" class="collapse">
+    <div class="card mt-3" *ngIf="monstreForm">
+      <div class="card text-dark bg-light mb-3">
+        <h3>Edition Monstre</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="nom">Nom :</label>
+          <input type="string" class="form-control" id="nom" [(ngModel)]="monstreForm.nom">
+        </div>
+        <div class="form-group">
+          <label for="typeMonstre">Type :</label>
+          <select class="form-control" id="typeMonstre" [(ngModel)]="monstreForm.typeMonstre">
+            <option value="Orc">Orc</option>
+            <option value="Dragon">Dragon</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="attaque">Attaque :</label>
+          <input type="number" class="form-control" id="attaque" [(ngModel)]="monstreForm.attaque">
+        </div>
+        <div class="form-group">
+          <label for="defense">Defense :</label>
+          <input type="number" class="form-control" id="defense" [(ngModel)]="monstreForm.defense">
+        </div>
+        <div class="form-group">
+          <label for="vie">Vie :</label>
+          <input type="number" class="form-control" id="vie" [(ngModel)]="monstreForm.vie">
+        </div>
+        <div class="form-group">
+          <label for="agilite">Agilite :</label>
+          <input type="number" class="form-control" id="agilite" [(ngModel)]="monstreForm.agilite">
+        </div>
+        <div class="form-group">
+          <label for="vitesse">Vitesse :</label>
+          <input type="number" class="form-control" id="vitesse" [(ngModel)]="monstreForm.vitesse">
+        </div>
+        <div class="form-group">
+          <label for="gold">Gold :</label>
+          <input type="number" class="form-control" id="gold" [(ngModel)]="monstreForm.gold">
+        </div>
+        <div class="form-group">
+          <label for="exp">Exp :</label>
+          <input type="number" class="form-control" id="exp" [(ngModel)]="monstreForm.exp">
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+          <a class="btn btn-success" (click)="save()">
+            <i class="fa fa-check"></i>
+          </a>
+          <a class="btn btn-warning" (click)="cancel()">
+            <i class="fa fa-sync"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="dashboard.js"></script>

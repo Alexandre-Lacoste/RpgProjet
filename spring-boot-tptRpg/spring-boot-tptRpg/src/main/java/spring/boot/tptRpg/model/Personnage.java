@@ -29,6 +29,7 @@ public abstract class Personnage  {
 	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@JsonView(Views.ViewCommon.class)
 	@Column(name = "nom", length = 20)

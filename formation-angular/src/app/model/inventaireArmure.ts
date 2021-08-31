@@ -13,4 +13,5 @@ export class InventaireArmure {
     this.armure = armure;
     this.inventaire = inventaire;
   }
+
 }

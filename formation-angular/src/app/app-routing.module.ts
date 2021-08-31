@@ -8,6 +8,11 @@ import {UtilisateurComponent} from "./utilisateur/utilisateur.component";
 import {InventaireArmeComponent} from "./inventaireArme/inventaire-arme.component";
 import {InventaireArmureComponent} from "./inventaireArmure/inventaire-armure.component";
 import {CombatComponent} from "./combat/combat.component";
+import {AdminComponent} from "./admin/admin.component";
+import {ArmeComponent} from "./arme/arme.component";
+import {ArmureComponent} from "./armure/armure.component";
+import {PotionComponent} from "./potion/potion.component";
+import {MonstreComponent} from "./monstre/monstre.component";
 
 
 const routes: Routes = [
@@ -17,7 +22,13 @@ const routes: Routes = [
   {path: "inventaireArme", component: InventaireArmeComponent},
   {path: "inventaireArmure", component: InventaireArmureComponent},
   {path:"combat",component:CombatComponent},
-  //{path: "marchand/:mar", component: MarchandComponent},
+  {path: "marchand/:mar", component: MarchandComponent},
+  {path: "admin", component: AdminComponent},
+  {path: "arme", component: ArmeComponent},
+  {path: "armure", component: ArmureComponent},
+  {path: "potion", component: PotionComponent},
+  {path: "hero", component: HeroComponent},
+  {path: "monstre", component: MonstreComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 

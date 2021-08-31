@@ -21,19 +21,19 @@ public class Hero extends Personnage{
 	@JsonView(Views.ViewCommon.class)
 	private TypePersonnage typePersonnage;
 	@Column()
-	@JsonView({Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
+	@JsonView({Views.ViewHero.class,Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
 	private double coefAttaque;
 	@Column()
-	@JsonView({Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
+	@JsonView({Views.ViewHero.class,Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
 	private double coefDefense;
 	@Column()
-	@JsonView({Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
+	@JsonView({Views.ViewHero.class,Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
 	private double coefVie;
 	@Column()
-	@JsonView({Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
+	@JsonView({Views.ViewHero.class,Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
 	private double coefPrecision;
 	@Column()
-	@JsonView({Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
+	@JsonView({Views.ViewHero.class,Views.ViewHeroDetail.class,Views.ViewUtilisateurDetail.class})
 	private double coefVitesse;
 	@Column()
 	@JsonView({Views.ViewHero.class,Views.ViewUtilisateurDetail.class})

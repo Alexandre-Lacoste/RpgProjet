@@ -11,7 +11,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Monstre extends Personnage {
 	@Enumerated(EnumType.STRING)
 	@Column(name="TypeMonstre")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class, Views.ViewMonstre.class})
 	private TypeMonstre typeMonstre;
 	@Column()
 	@JsonView(Views.ViewMonstre.class)
@@ -37,10 +36,10 @@ public class Monstre extends Personnage {
 	@JsonView(Views.ViewMonstre.class)
 	private double vitesse;
 	@Column()
-	@JsonView(Views.ViewMonstreDetail.class)
+	@JsonView({Views.ViewMonstre.class, Views.ViewMonstreDetail.class})
 	private int gold;
 	@Column()
-	@JsonView(Views.ViewMonstreDetail.class)
+	@JsonView({Views.ViewMonstre.class, Views.ViewMonstreDetail.class})
 	private int exp;
 	@ManyToOne
 	@JoinColumn(name="arme_id")
