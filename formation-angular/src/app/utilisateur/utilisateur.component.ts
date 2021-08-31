@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {Compte} from "../model/compte";
 import {Utilisateur} from "../model/utilisateur";
 import {Observable} from "rxjs";
@@ -11,6 +11,9 @@ import {InventaireArmeService} from "../inventaireArme/inventaireArme.service";
 import {InventaireArmureService} from "../inventaireArmure/inventaireArmure.service";
 import {Inventaire} from "../model/inventaire";
 import {InventairePotion} from "../model/inventairePotion";
+import {InventairePotionService} from "../inventairePotion/inventairePotion.service";
+import {MarchandArme} from "../model/MarchandArme";
+
 
 @Component({
   selector: 'app-utilisateur',
@@ -23,27 +26,27 @@ export class UtilisateurComponent implements OnInit {
   utilisateurForm: Utilisateur = null;
   inventaire: Inventaire=new Inventaire();
 
-  constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmeService: InventaireArmeService, private inventaireArmureService: InventaireArmureService) {
+  constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmeService: InventaireArmeService, private inventaireArmureService: InventaireArmureService, private inventairePotionService: InventairePotionService) {
 
   }
 
   ngOnInit(): void {
-    this.find(1);
+
   }
   list(): Array<Utilisateur> {
     return this.utilisateurService.findAll();
   }
+
   ListInventaireArme(): Array<InventaireArme>{
     return this.inventaireArmeService.findAll();
   }
   ListInventaireArmure(): Array<InventaireArmure>{
     return this.inventaireArmureService.findAll();
+  }
+  ListInventairePotion(): Array<InventairePotion>{
+    return this.inventairePotionService.findAll();
 
   }
-  //ListInventairePotion(): Array<InventairePotion>{
-  //  return this.inventairePotionService.findAll();
-  //
-  //}
 
   find(id : number){
     this.utilisateurService.findById(id).subscribe(response=>
@@ -75,4 +78,15 @@ export class UtilisateurComponent implements OnInit {
     this.utilisateurForm = null;
   }
 
+  changeEcran(race:string): number{
+    if(race=="elfe"){
+      return 1;
+    }
+    if(race=="guerrier"){
+      return 2;
+    }
+    else{
+      return 0;
+    }
+  }
 }

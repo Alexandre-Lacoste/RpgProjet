@@ -27,8 +27,7 @@ import { ObjetComponent } from './objet/objet.component';
     AgePipe,
     HeroComponent,
     UtilisateurComponent,
-    InventaireArmeComponent,
-    InventaireArmureComponent,
+
 
   ],
   imports: [
@@ -37,6 +36,7 @@ import { ObjetComponent } from './objet/objet.component';
     FormsModule,
     HttpClientModule,
     MarchandModule
+
 
   ],
   providers: [UtilisateurService, InventaireArmureService, InventaireArmeService],

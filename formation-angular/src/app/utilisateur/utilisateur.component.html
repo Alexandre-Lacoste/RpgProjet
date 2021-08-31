@@ -1,15 +1,19 @@
+<router-outlet></router-outlet>
+<div class="utilisateur" >
 
-<div class="utilisateur">
 <div class="container-fluid utilisateur-info">
 <br>
 <br>
-
+  
 
   <div class="row">
     <div class="informations">
-      <h4>Informations générales :</h4>
+
+      <h4 >Informations générales :</h4>
+
       Pseudo : {{utilisateur.pseudo}} <br>
       Mail : {{utilisateur.mail}} <br>
+
 
     </div>
   </div>
@@ -18,16 +22,22 @@
     <div class="row">
       <div class="caracteristiques">
         <h4>Caractéristiques de votre Héro : </h4>
-        Type : {{utilisateur.hero?.typePersonnage}} <br>
-        Arme : {{utilisateur.arme?.nom}} <br>
-        Armure : {{utilisateur.armure?.nom}} <br>
-        Votre inventaires : <br>
+
+        <strong>Xp :</strong> {{utilisateur.exp}} <br>
+       <strong>Arme : </strong> {{utilisateur.arme?.nom}} <br>
+        <strong>Armure :</strong> {{utilisateur.armure?.nom}} <br> <br>
+
+        <strong>Votre inventaires :</strong> <br> <br>
+
         <option *ngFor="let armes of ListInventaireArme()" [value]="utilisateur.id">
-          - Arme : {{armes.id}}-{{armes.quantite}} <br></option>
+           - Arme : {{armes.arme?.nom}} - quantité: {{armes.quantite}} - attaque: {{armes.arme?.attaque}} - agilité: {{armes.arme?.agilite}} - description: {{armes.arme?.description}}  <br></option><br>
+
         <option *ngFor="let armures of ListInventaireArmure()" [value]="utilisateur.id">
-          - Armure :  {{armures.id}}-{{armures.qte}} <br> </option>
-        - Potion :  {{utilisateur.inventairePotion?.inventaire}} <br>
-        Xp : {{utilisateur.exp}} <br>
+          - Armure : {{armures.armure?.nom}} - quantité {{armures.qte}} - défense: {{armures.armure.defense}} - description: {{armures.armure?.description}} <br> </option> <br>
+
+        <option *ngFor="let potions of ListInventairePotion()" [value]="utilisateur.id">
+          - Potion : {{potions.potion?.nom}} - quantité: {{potions.qte}} - valeur: {{potions.potion.valeur}}  <br> </option> <br>
+
       </div>
 
       <br>
@@ -40,6 +50,7 @@
         <section id="MonCollapse" class="collapse">
         <div class="well">
         <br>
+
           <div class="firstDetails">
           Vie : {{utilisateur.vie}}   <br>
         Attaque : {{utilisateur.attaque}} <br>
@@ -64,9 +75,50 @@
          </div>
         </div>
     </section>
-        
+
   </div>
   </div>
 </div>
+
+
+  <div class="card mt-3" *ngIf="utilisateurForm">
+    <div class="card-header bg-info text-white">
+      <h3> Votre Profil de Joueur</h3>
+    </div>
+
+      <div class="informations">
+        <h4 >Informations générales :</h4>
+
+        Pseudo : <input type="text" id="pseudo" [(ngModel)]="utilisateurForm.pseudo"> <br>
+        Mail : <input type="text" id="mail" [(ngModel)]="utilisateurForm.mail"> <br><br>
+
+        <div class="row">
+          <div class="caracteristiques">
+            <h4>Caractéristiques de votre Héro : </h4>
+
+            <strong>Xp :</strong> <input type="text" id="xp" [(ngModel)]="utilisateurForm.exp"> <br>
+            <strong>Arme : </strong> <input type="text" id="arme" [(ngModel)]="utilisateurForm.arme.nom"><br>
+            <strong>Armure :</strong> <input type="text" id="armure" [(ngModel)]="utilisateurForm.armure.nom"><br> <br>
+
+            <strong>Votre inventaires :</strong> <br> <br>
+
+            <option *ngFor="let armes of ListInventaireArme()" [value]="utilisateurForm.id">
+              - Arme : {{armes.arme?.nom}} - quantité: {{armes.quantite}} - attaque: {{armes.arme?.attaque}} - agilité: {{armes.arme?.agilite}} - description: {{armes.arme?.description}}  <br></option><br>
+
+            <option *ngFor="let armures of ListInventaireArmure()" [value]="utilisateurForm.id">
+              - Armure : {{armures.armure?.nom}} - quantité {{armures.qte}} - défense: {{armures.armure?.defense}} - description: {{armures.armure?.description}} <br> </option> <br>
+
+            <option *ngFor="let potions of ListInventairePotion()" [value]="utilisateurForm.id">
+              - Potion : {{potions.potion?.nom}} - quantité: {{potions.qte}} - valeur: {{potions.potion?.valeur}}  <br> </option> <br>
+
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+
 </div>
+
+
 

@@ -25,18 +25,21 @@ import {ObjetComponent} from "./objet/objet.component";
     InventaireArmeComponent,
     InventairePotionComponent
 
+
   ],
   imports: [
     BrowserModule,
     MarchandRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
 
   ],
   providers: [],
   exports: [
     InventaireArmeComponent,
-    InventaireArmureComponent
+    InventaireArmureComponent,
+    InventairePotionComponent
   ],
   bootstrap: [MarchandComponent]
 })

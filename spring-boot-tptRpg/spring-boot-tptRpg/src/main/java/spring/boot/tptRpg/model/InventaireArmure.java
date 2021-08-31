@@ -31,7 +31,7 @@ public class InventaireArmure {
 	
 	@ManyToOne
 	@JoinColumn(name="armure_id")
-	@JsonView(Views.ViewUtilisateur.class)
+	@JsonView({Views.ViewUtilisateur.class, Views.ViewInventaireArmure.class})
 	private Armure armure;
 	
 	@ManyToOne

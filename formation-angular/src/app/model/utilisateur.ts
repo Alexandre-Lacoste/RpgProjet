@@ -9,8 +9,7 @@ import {InventairePotion} from "./inventairePotion";
 
 export class Utilisateur extends Compte{
 
-  id: number;
-  version: number;
+
   vie: number;
   attaque: number;
   defense: number;
