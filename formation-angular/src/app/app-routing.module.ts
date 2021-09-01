@@ -13,8 +13,8 @@ import {ArmeComponent} from "./arme/arme.component";
 import {ArmureComponent} from "./armure/armure.component";
 import {PotionComponent} from "./potion/potion.component";
 import {MonstreComponent} from "./monstre/monstre.component";
-//import {ConnexionComponent} from "./connexion/connexion.component";
 import {InscriptionComponent} from "./inscription/inscription.component";
+import {ConnexionComponent} from "./connexion/connexion.component";
 
 
 const routes: Routes = [
@@ -33,6 +33,7 @@ const routes: Routes = [
   {path: "hero", component: HeroComponent},
   {path: "monstre", component: MonstreComponent},
   {path:"inscription", component: InscriptionComponent},
+  {path:"connexion", component: ConnexionComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
 ];
 

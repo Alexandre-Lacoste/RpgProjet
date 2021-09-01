@@ -19,7 +19,7 @@ import {MarchandRoutingModule} from "./marchand-routing.module";
 import { MonstreComponent } from './monstre/monstre.component';
 import {CombatComponent} from "./combat/combat.component";
 import {ArmureComponent} from "./armure/armure.component";
-//import { ConnexionComponent } from './connexion/connexion.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import {InventairePotionComponent} from "./inventairePotion/inventaire-potion.component";
 
@@ -46,7 +46,8 @@ import {InventairePotionComponent} from "./inventairePotion/inventaire-potion.co
     ArmureComponent,
     ArmeComponent,
     AdminComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
