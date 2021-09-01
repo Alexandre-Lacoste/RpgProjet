@@ -17,38 +17,47 @@
   </div>
 
   <form class="form-info">
-  <div class="">
     <div class="">
-      <h4 class="mb-3">Informations de compte</h4>
-      <form class="needs-validation" novalidate>
 
-        <div class="mb-3">
-          <label for="pseudo">Pseudo</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">#</span>
-            </div>
-            <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" required [(ngModel)]="inscForm.pseudo" >
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="mail">Adresse email</label>
-          <input type="text" class="form-control" id="mail" placeholder="adresse@email.com" [(ngModel)]="inscForm.mail" >
-        </div>
-
-        <div class="mb-3">
-          <label for="mdp">Mot de passe</label>
-          <input type="text" class="form-control" id="mdp" placeholder="·····················" required [(ngModel)]="inscForm.mdp" >
-        </div>
-
-
+      <div *ngIf="!inscForm">
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="save()">S'inscrire</button>
-      </form>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="add()">Voulez-vous vous inscrire ?</button>
+      </div>
+
+      <div class="" *ngIf="inscForm">
+        <h4 class="mb-3">Informations de compte</h4>
+        <form class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="pseudo">Pseudo</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">#</span>
+              </div>
+              <input type="string" class="form-control" id="pseudo" placeholder="Pseudo" required
+                     [(ngModel)]="inscForm.pseudo" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mail">Adresse email</label>
+            <input type="string" class="form-control" id="mail" placeholder="adresse@email.com"
+                   [(ngModel)]="inscForm.mail" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb-3">
+            <label for="mdp">Mot de passe</label>
+            <input type="string" class="form-control" id="mdp" placeholder="·····················" required
+                   [(ngModel)]="inscForm.mdp" [ngModelOptions]="{standalone: true}">
+          </div>
+
+        </form>
+        <div>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="save()" routerLink="/accueil">S'inscrire</button>
+        </div>
+      </div>
     </div>
-  </div>
+
   </form>
+
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1">&copy; 2021 FAXs Games</p>
@@ -59,7 +68,6 @@
     </ul>
   </footer>
 </div>
-
 
 
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"-->

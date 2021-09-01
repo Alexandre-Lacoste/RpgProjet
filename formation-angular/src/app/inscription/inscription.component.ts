@@ -19,13 +19,23 @@ export class InscriptionComponent implements OnInit {
 
   add() {
     this.inscForm = new Utilisateur();
+    console.log();
   }
 
   save() {
+    console.log();
 
-    this.utilisateurService.create(this.inscForm);
+    this.inscForm.role = "USER" ;
+    this.inscForm.agilite = 2 ;
+    this.inscForm.attaque = 2 ;
+    this.inscForm.defense = 2 ;
+    this.inscForm.vie = 2 ;
+    this.inscForm.vitesse = 2 ;
 
+
+    this.utilisateurService.createbyInsc(this.inscForm);
     this.inscForm = null;
+    console.log();
   }
 
 }
