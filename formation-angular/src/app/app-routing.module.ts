@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: "accueil", component: AccueilComponent},
   {path: "hero", component: HeroComponent},
   {path: "utilisateur", component: UtilisateurComponent},
-  {path: "utilisateur/:id", component: UtilisateurComponent},
+ // {path: "utilisateur/:id", component: UtilisateurComponent},
   {path: "inventaireArme", component: InventaireArmeComponent},
   {path: "inventaireArmure", component: InventaireArmureComponent},
   {path:"combat",component:CombatComponent},

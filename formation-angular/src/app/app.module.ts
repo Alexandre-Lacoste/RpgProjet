@@ -25,6 +25,7 @@ import { ArmureComponent } from './armure/armure.component';
 import { PotionComponent } from './potion/potion.component';
 import {MarchandRoutingModule} from "./marchand-routing.module";
 import { MonstreComponent } from './monstre/monstre.component';
+import {InventairePotionComponent} from "./inventairePotion/inventaire-potion.component";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,10 @@ import { MonstreComponent } from './monstre/monstre.component';
     AccueilComponent,
     AgePipe,
     HeroComponent,
+    UtilisateurComponent,
+    //InventaireArmureComponent,
+    //InventaireArmeComponent,
+    //InventairePotionComponent,
     // MarchandComponent,
     // MarchandPotionComponent,
     // MarchandArmeComponent,

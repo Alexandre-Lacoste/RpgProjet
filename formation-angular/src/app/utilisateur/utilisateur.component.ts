@@ -13,6 +13,7 @@ import {Inventaire} from "../model/inventaire";
 import {InventairePotion} from "../model/inventairePotion";
 import {InventairePotionService} from "../inventairePotion/inventairePotion.service";
 import {MarchandArme} from "../model/MarchandArme";
+import {InventaireService} from "../inventaire.service";
 
 
 @Component({
@@ -26,9 +27,11 @@ export class UtilisateurComponent implements OnInit {
   utilisateurForm: Utilisateur = null;
   inventaire: Inventaire=new Inventaire();
 
-  constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmeService: InventaireArmeService, private inventaireArmureService: InventaireArmureService, private inventairePotionService: InventairePotionService) {
+  constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmeService: InventaireArmeService, private inventaireArmureService: InventaireArmureService, private inventairePotionService: InventairePotionService, private inventaireService: InventaireService) {
 
   }
+
+
 
   ngOnInit(): void {
 
@@ -43,6 +46,10 @@ export class UtilisateurComponent implements OnInit {
   ListInventaireArmure(): Array<InventaireArmure>{
     return this.inventaireArmureService.findAll();
   }
+  ListInventaire(): Array<Inventaire>{
+    return this.inventaireService.findAll();
+  }
+
   ListInventairePotion(): Array<InventairePotion>{
     return this.inventairePotionService.findAll();
 

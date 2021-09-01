@@ -6,6 +6,7 @@ import {Arme} from "./Arme";
 import {Armure} from "./Armure";
 import {Inventaire} from "./inventaire";
 import {InventairePotion} from "./inventairePotion";
+import {Personnage} from "./Personnage";
 
 export class Utilisateur extends Compte{
 
@@ -35,6 +36,7 @@ export class Utilisateur extends Compte{
   arme: Arme;
   armure: Armure;
   inventaire: Inventaire;
+  personnage:Personnage;
 
 
   constructor(id?: number, version?: number, pseudo?: string, mail?: string, mdp?: string, vie?: number, attaque?: number, defense?: number, agilite?: number, vitesse?: number, vieMax?: number, attaqueMax?: number, defenseMax?: number, agiliteMax?: number, vitesseMax?: number, cptEmpoisonnement?: number, cptEtourdissement?: number, cptSaignement?: number, cptBrulure?: number, cptCombat?: number, cptCombatGagne?: number, cptMonstreVaincu?: number, exp?: number) {

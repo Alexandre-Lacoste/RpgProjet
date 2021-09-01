@@ -1,124 +1,167 @@
-<router-outlet></router-outlet>
+
 <div class="utilisateur" >
 
-<div class="container-fluid utilisateur-info">
-<br>
-<br>
-  
+  <div class="container-fluid utilisateur-info">
+    <br>
+    <br>
 
-  <div class="row">
-    <div class="informations">
-
-      <h4 >Informations générales :</h4>
-
-      Pseudo : {{utilisateur.pseudo}} <br>
-      Mail : {{utilisateur.mail}} <br>
-
-
-    </div>
-  </div>
-  <br>
-
-    <div class="row">
-      <div class="caracteristiques">
-        <h4>Caractéristiques de votre Héro : </h4>
-
-        <strong>Xp :</strong> {{utilisateur.exp}} <br>
-       <strong>Arme : </strong> {{utilisateur.arme?.nom}} <br>
-        <strong>Armure :</strong> {{utilisateur.armure?.nom}} <br> <br>
-
-        <strong>Votre inventaires :</strong> <br> <br>
-
-        <option *ngFor="let armes of ListInventaireArme()" [value]="utilisateur.id">
-           - Arme : {{armes.arme?.nom}} - quantité: {{armes.quantite}} - attaque: {{armes.arme?.attaque}} - agilité: {{armes.arme?.agilite}} - description: {{armes.arme?.description}}  <br></option><br>
-
-        <option *ngFor="let armures of ListInventaireArmure()" [value]="utilisateur.id">
-          - Armure : {{armures.armure?.nom}} - quantité {{armures.qte}} - défense: {{armures.armure.defense}} - description: {{armures.armure?.description}} <br> </option> <br>
-
-        <option *ngFor="let potions of ListInventairePotion()" [value]="utilisateur.id">
-          - Potion : {{potions.potion?.nom}} - quantité: {{potions.qte}} - valeur: {{potions.potion.valeur}}  <br> </option> <br>
-
-      </div>
-
-      <br>
-
-      <div class="detail">
-       <!-- les boutons d'actions -->
-        <a class="btn btn-primary" href="#MonCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Détails de votre Héro </a>
-        <br>
-
-        <section id="MonCollapse" class="collapse">
-        <div class="well">
-        <br>
-
-          <div class="firstDetails">
-          Vie : {{utilisateur.vie}}   <br>
-        Attaque : {{utilisateur.attaque}} <br>
-        Defense : {{utilisateur.defense}} <br>
-        Agilité : {{utilisateur.agilite}} <br>
-        Vitesse : {{utilisateur.vitesse}} <br>
-        Vie Max : {{utilisateur.vieMax}} <br>
-        Attaque Max : {{utilisateur.attaqueMax}} <br>
-        Défense Max : {{utilisateur.defenseMax}} <br>
-        Agilité Max : {{utilisateur.agiliteMax}} <br>
-        Vitesse Max : {{utilisateur.vitesseMax}}
-          </div>
-         <div class="secondDetails">
-        Compteur Empoisonnement : {{utilisateur.cptEmpoisonnement}} <br>
-        Compteur Etourdissement : {{utilisateur.cptEtourdissement}} <br>
-        Compteur Saignement : {{utilisateur.cptSaignement}} <br>
-        Compteur Brulure : {{utilisateur.cptBrulure}} <br>
-          Compteur Saignement : {{utilisateur.cptSaignement}} <br>
-        Compteur Combat : {{utilisateur.cptCombat}} <br>
-        Compteur Combat gagné :  {{utilisateur.cptCombatGagne}} <br>
-        Compteur Monstre(s) vaincu(s) : {{utilisateur.cptMonstreVaincu}} <br>
-         </div>
-        </div>
-    </section>
-
-  </div>
-  </div>
-</div>
-
-
-  <div class="card mt-3" *ngIf="utilisateurForm">
-    <div class="card-header bg-info text-white">
-      <h3> Votre Profil de Joueur</h3>
-    </div>
+    <div class="row" *ngIf="!utilisateurForm">
 
       <div class="informations">
-        <h4 >Informations générales :</h4>
 
-        Pseudo : <input type="text" id="pseudo" [(ngModel)]="utilisateurForm.pseudo"> <br>
-        Mail : <input type="text" id="mail" [(ngModel)]="utilisateurForm.mail"> <br><br>
+        <h4 style="text-align: center" >Listes des différents Joeurs :</h4>
 
-        <div class="row">
-          <div class="caracteristiques">
-            <h4>Caractéristiques de votre Héro : </h4>
+      <!--  Pseudo : {{utilisateur.pseudo}} <br>
+        Mail : {{utilisateur.mail}} <br>
+        -->
 
-            <strong>Xp :</strong> <input type="text" id="xp" [(ngModel)]="utilisateurForm.exp"> <br>
-            <strong>Arme : </strong> <input type="text" id="arme" [(ngModel)]="utilisateurForm.arme.nom"><br>
-            <strong>Armure :</strong> <input type="text" id="armure" [(ngModel)]="utilisateurForm.armure.nom"><br> <br>
 
-            <strong>Votre inventaires :</strong> <br> <br>
+        <div class="card-body">
+          <table class="table table-dark">
+            <thead>
+            <tr>
+              <th>Pseudo </th>
+              <th>Nombre de Combats</th>
+              <th>Xp </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let util of list()">
 
-            <option *ngFor="let armes of ListInventaireArme()" [value]="utilisateurForm.id">
-              - Arme : {{armes.arme?.nom}} - quantité: {{armes.quantite}} - attaque: {{armes.arme?.attaque}} - agilité: {{armes.arme?.agilite}} - description: {{armes.arme?.description}}  <br></option><br>
+              <td>{{util.pseudo}}</td>
+              <td>{{util.cptCombat}}</td>
+              <td>{{util.exp}}</td>
 
-            <option *ngFor="let armures of ListInventaireArmure()" [value]="utilisateurForm.id">
-              - Armure : {{armures.armure?.nom}} - quantité {{armures.qte}} - défense: {{armures.armure?.defense}} - description: {{armures.armure?.description}} <br> </option> <br>
 
-            <option *ngFor="let potions of ListInventairePotion()" [value]="utilisateurForm.id">
-              - Potion : {{potions.potion?.nom}} - quantité: {{potions.qte}} - valeur: {{potions.potion?.valeur}}  <br> </option> <br>
+              <a class="btn btn-primary" (click)="edit(util.id)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+              </svg>
+              </a>
+
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br>
+    </div>
+
+
+      <div class="row">
+        <div class="caracteristiques">
+
+
+          <div class="card mt-3" *ngIf="utilisateurForm">
+            <div class="card-header">
+              <h3>  Profil du Joueur : {{utilisateurForm.pseudo}} </h3>  <br>
+            </div>
+
+
+
+
+
+
+
+            <div class="informations">
+              <!-- <h4 >Informations générales :</h4>
+
+             - Mail : <input type="text" id="mail" [(ngModel)]="utilisateurForm.mail"> <br><br> -->
+
+              <div class="row">
+                <div class="caracteristiques">
+                  <h4>Caractéristiques de votre Héro : </h4>
+                    
+                  <strong>Xp : {{utilisateurForm.exp}} </strong> <br>
+                  <strong>Arme : {{utilisateurForm.arme?.nom}} </strong><br>
+                  <strong>Armure : {{utilisateurForm.armure?.nom}} </strong><br><br>
+
+                    <strong>Votre inventaires :</strong> <br>
+
+                  <label for="arme">Armes:</label>
+                  <select class="form-control" id="arme" [(ngModel)]="utilisateurForm.inventaire.id">
+                  <option *ngFor="let armes of ListInventaireArme()" [value]="utilisateurForm.id">
+                   {{armes.arme.nom}} - attaque: {{armes.arme?.attaque}} - agilité: {{armes.arme?.agilite}} - description: {{armes.arme?.description}}  <br><br>
+                    </option>
+                    </select>
+
+                  <label for="armure">Armures:</label>
+                  <select class="form-control" id="armure" [(ngModel)]="utilisateurForm.inventaire.id">
+                    <option *ngFor="let armures of ListInventaireArmure()" [value]="utilisateurForm.id">
+                      {{armures.armure.nom}} - defense: {{armures.armure?.defense}} - vitesse: {{armures.armure?.vitesse}} - description: {{armures.armure?.description}}  <br><br>
+                    </option>
+                  </select>
+
+                  <label for="potion">Potions:</label>
+                  <select class="form-control" id="potion" [(ngModel)]="utilisateurForm.inventaire.id">
+                    <option *ngFor="let potions of ListInventairePotion()" [value]="utilisateurForm.id">
+                      {{potions.potion.nom}} - valeur: {{potions.potion?.valeur}}  <br><br>
+                    </option>
+                  </select>
+
+                </div>
+
+              </div>
+            </div>
+
+
 
           </div>
 
+          </div>
+
+
+        <div class="bouton" *ngIf="utilisateurForm">
+          <a  class="btn btn-primary" href="#MonCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Détails de votre Héro </a>
+
+
+
+<br>
+
+            <section id="MonCollapse" class="collapse">
+              <div class="card detail" *ngIf="utilisateurForm">
+              <div class="well">
+
+
+                <div class="firstDetails">
+                  Vie : {{utilisateurForm.vie}}   <br>
+                  Attaque : {{utilisateurForm.attaque}} <br>
+                  Defense : {{utilisateurForm.defense}} <br>
+                  Agilité : {{utilisateurForm.agilite}} <br>
+                  Vitesse : {{utilisateurForm.vitesse}} <br>
+                  Vie Max : {{utilisateurForm.vieMax}} <br>
+                  Attaque Max : {{utilisateurForm.attaqueMax}} <br>
+                  Défense Max : {{utilisateurForm.defenseMax}} <br>
+                  Agilité Max : {{utilisateurForm.agiliteMax}} <br>
+                  Vitesse Max : {{utilisateurForm.vitesseMax}} <br>
+
+                </div>
+                <div class="secondDetails">
+                  Empoisonnement : {{utilisateurForm.cptEmpoisonnement}} <br>
+                  Etourdissement : {{utilisateurForm.cptEtourdissement}} <br>
+                  Saignement : {{utilisateurForm.cptSaignement}} <br>
+                  Brulure : {{utilisateurForm.cptBrulure}} <br>
+                  Saignement : {{utilisateurForm.cptSaignement}} <br>
+                  Combat(s) : {{utilisateurForm.cptCombat}} <br>
+                  Combat(s) gagné(s) :  {{utilisateurForm.cptCombatGagne}} <br>
+                  Monstre(s) vaincu(s) : {{utilisateurForm.cptMonstreVaincu}} <br>
+                </div>
+              </div>
+              </div>
+            </section>
+
+
+
         </div>
+
+
       </div>
 
-  </div>
+
+
 
 </div>
-
+      </div>
 
 
