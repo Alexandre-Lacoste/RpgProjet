@@ -11,6 +11,7 @@ import {Objet} from "../model/objet";
 })
 export class ObjetService  {
 
+  objet : Objet;
   objets: Array<Objet> = new Array<Objet>();
   constructor(private http: HttpClient, private appConfigService: AppConfigService) { this.load();}
 
@@ -44,6 +45,11 @@ export class ObjetService  {
       this.objets = response;
     }, error => console.log(error));
   }
+
+  qtegold(id: number): number{
+    return this.objet.qte
+  }
+
 
 
 }
