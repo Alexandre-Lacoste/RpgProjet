@@ -5,9 +5,7 @@ import {Hero} from "./Hero";
 import {Arme} from "./Arme";
 import {Armure} from "./Armure";
 import {Inventaire} from "./inventaire";
-import {Arme} from "./Arme";
-import {Armure} from "./Armure";
-import {Inventaire} from "./inventaire";
+
 import {InventairePotion} from "./inventairePotion";
 import {Personnage} from "./Personnage";
 
@@ -35,9 +33,7 @@ export class Utilisateur extends Compte{
   hero:Hero;
   inventaireArme: InventaireArme;
   inventaireArmure: InventaireArmure;
-  arme:Arme;
-  armure:Armure;
-  inventaire:Inventaire;
+
   inventairePotion: InventairePotion;
   arme: Arme;
   armure: Armure;
