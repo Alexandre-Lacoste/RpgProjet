@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "./app-config.service";
 import {Observable} from "rxjs";
 import {Utilisateur} from "./model/utilisateur";
+import {Admin} from "./model/Admin";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,13 @@ export class UtilisateurHttpService {
       this.load();
     }, error => console.log(error));
   }
+
+  createbyInsc(utilisateur: Utilisateur) {
+    this.http.post<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/", utilisateur).subscribe(response => {
+      this.load();
+    }, error => console.log(error));
+  }
+
 
   modify(utilisateur: Utilisateur) {
     this.http.put<Utilisateur>(this.chemin + utilisateur.id, utilisateur).subscribe(response => {
