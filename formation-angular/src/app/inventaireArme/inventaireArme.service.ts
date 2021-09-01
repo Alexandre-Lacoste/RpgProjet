@@ -12,6 +12,7 @@ import {InventaireArme} from "../model/inventaireArme";
 export class InventaireArmeService  {
 
   inventaireArmes: Array<InventaireArme> = new Array<InventaireArme>();
+  inventaireArme : InventaireArme = new InventaireArme();
   constructor(private http: HttpClient, private appConfigService: AppConfigService) { this.load();}
 
   findAll(): Array<InventaireArme> {
@@ -48,4 +49,16 @@ export class InventaireArmeService  {
   findInventaireArmeByIdArme(id : number): Observable<InventaireArme> {
     return this.http.get<InventaireArme>(this.appConfigService.backEndUrl + "inventaireArme/idArme/" + id);
   }
+
+  findArmedeInventaireArmebyId(idArme : number) : InventaireArme{
+    this.findInventaireArmeByIdArme(idArme).subscribe(response => {
+        this.inventaireArme = response;
+        console.log(this.inventaireArme);
+        console.log(this.inventaireArme.quantite);
+      },
+      error => console.log(error));
+    return this.inventaireArme
+  }
+
+
 }

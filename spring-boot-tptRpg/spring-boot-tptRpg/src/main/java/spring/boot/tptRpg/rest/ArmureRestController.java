@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import spring.boot.tptRpg.model.Armure;
+import spring.boot.tptRpg.model.Armure;
 import spring.boot.tptRpg.model.Views;
 import spring.boot.tptRpg.repository.IArmureRepository;
 
@@ -46,7 +47,7 @@ public class ArmureRestController {
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewArmure.class)
 	public Armure findArmureId(@PathVariable Long id) {
-		Optional<Armure> optArmure = armureRepo.findByArmureId(id);
+		Optional<Armure> optArmure = armureRepo.findById(id);
 		
 		if (optArmure.isPresent()) {
 			return optArmure.get();
@@ -59,7 +60,7 @@ public class ArmureRestController {
 	@JsonView(Views.ViewArmureDetail.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public Armure findArmureDetailId(@PathVariable Long id) {
-		Optional<Armure> optArmure = armureRepo.findByArmureId(id);
+		Optional<Armure> optArmure = armureRepo.findById(id);
 		
 		if (optArmure.isPresent()) {
 			return optArmure.get();

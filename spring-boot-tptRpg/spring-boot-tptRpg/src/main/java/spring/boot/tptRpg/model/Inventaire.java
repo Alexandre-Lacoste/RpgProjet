@@ -40,7 +40,7 @@ public class Inventaire {
 	private Utilisateur utilisateur;
 	
 	@OneToMany(mappedBy = "inventaire")
-	@JsonView(Views.ViewUtilisateur.class)
+	@JsonView({Views.ViewUtilisateur.class,Views.ViewUtilisateurDetail.class})
 	private List<InventairePotion> inventairePotion = new ArrayList<InventairePotion>();
 	
 	@OneToMany(mappedBy = "inventaire")

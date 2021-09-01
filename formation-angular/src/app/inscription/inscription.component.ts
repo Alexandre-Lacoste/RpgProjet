@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UtilisateurHttpService} from "../utilisateur-http.service";
+import {Utilisateur} from "../model/utilisateur";
 
 @Component({
   selector: 'app-inscription',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InscriptionComponent implements OnInit {
 
-  constructor() { }
+  inscForm: Utilisateur = null;
+
+  constructor(private utilisateurService: UtilisateurHttpService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  add() {
+    this.inscForm = new Utilisateur();
+    console.log();
+  }
+
+  save() {
+    console.log();
+
+    this.inscForm.role = "USER" ;
+    this.inscForm.agilite = 2 ;
+    this.inscForm.attaque = 2 ;
+    this.inscForm.defense = 2 ;
+    this.inscForm.vie = 2 ;
+    this.inscForm.vitesse = 2 ;
+
+
+    this.utilisateurService.createbyInsc(this.inscForm);
+    this.inscForm = null;
+    console.log();
   }
 
 }

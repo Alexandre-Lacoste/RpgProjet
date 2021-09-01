@@ -11,6 +11,8 @@ import {InventaireArme} from "../model/inventaireArme";
 import {InventaireArmeService} from "../inventaireArme/inventaireArme.service";
 import {InventaireArmure} from "../model/inventaireArmure";
 import {InventaireArmureService} from "../inventaireArmure/inventaireArmure.service";
+import {InventairePotionService} from "../inventairePotion/inventairePotion.service";
+import {Potion} from "../model/Potion";
 
 @Component({
   selector: 'combat',
@@ -21,15 +23,19 @@ export class CombatComponent implements OnInit {
   monstre:Monstre = null;
   utilisateur:Utilisateur;
   phase:number=0;
+  potionPhase:number=1;
   vieMaxMonstre:number;
   monstres:Array<Monstre>=new Array<Monstre>();
+  potions:Array<InventairePotion>=new Array<InventairePotion>();
+  inventairePotion:InventairePotion=null;
 
 
 
-  constructor(private inventaireArmureService:InventaireArmureService, private inventaireArmeService:InventaireArmeService,private combatService:CombatHttpService,private monstreService:MonstreHttpService, private utilisateurService:UtilisateurHttpService) { }
+  constructor(private inventaireArmureService:InventaireArmureService, private inventaireArmeService:InventaireArmeService,private combatService:CombatHttpService,private monstreService:MonstreHttpService, private utilisateurService:UtilisateurHttpService, private inventairePotionService:InventairePotionService) { }
 
   ngOnInit(): void {
     this.phase=0;
+    this.potionPhase=1;
     this.listMonstre();
   }
 
@@ -51,6 +57,14 @@ export class CombatComponent implements OnInit {
       console.log(this.monstres);
     });
   }
+
+  listInvPotion(id:number){
+    this.inventairePotionService.findAllByUtilisateurId(id).subscribe(resp=>{
+      this.potions=resp;
+      console.log(this.potions)
+    });
+  }
+
 
   calculAttaqueUtilisateur():number {
     let jetDe = Math.floor(Math.random() * 6);
@@ -93,6 +107,7 @@ export class CombatComponent implements OnInit {
         defUtilisateur = this.utilisateur.defense + this.utilisateur.armure.defense;
       } else if (jetDe >= 4) {
         coefHero = this.utilisateur.hero.coefVitesse * this.utilisateur.vitesse;
+
         if (coefHero > (this.utilisateur.hero.coefDefense * this.utilisateur.defense)) {
           coefHero = (this.utilisateur.hero.coefDefense * this.utilisateur.defense) / coefHero;
         } else {
@@ -227,6 +242,86 @@ export class CombatComponent implements OnInit {
   }
 
   potion(){
-    this.phase=3;
+    this.listInvPotion(this.utilisateur.id);
+    this.potionPhase=0;
+  }
+
+  annulerPotion(){
+    this.potionPhase=1;
+  }
+
+  utiliserPotion(id:number,p:InventairePotion){
+
+    switch (p.potion.type) {
+      case "soin": {
+        this.utilisateur.vie = this.utilisateur.vie + p.potion.valeur;
+        if (this.utilisateur.vie > this.utilisateur.vieMax) {
+          this.utilisateur.vie = this.utilisateur.vieMax;
+        }
+        this.utilisateurService.modify(this.utilisateur);
+        this.inventairePotionService.deleteById(p.id).subscribe(resp=>{
+          this.inventairePotionService.load();
+        },error => console.log(error));
+        this.potionPhase=1;
+
+        break;
+      }
+
+      case "attaquePlus": {
+        this.utilisateur.attaque = this.utilisateur.attaque + p.potion.valeur;
+        if (this.utilisateur.attaque > this.utilisateur.attaqueMax) {
+          this.utilisateur.attaque = this.utilisateur.attaqueMax;
+        }
+        this.utilisateurService.modify(this.utilisateur);
+        this.inventairePotionService.deleteById(p.id).subscribe(resp=>{
+          this.inventairePotionService.load();
+        },error => console.log(error));
+        this.potionPhase=1;
+        break;
+      }
+
+      case "vitessePlus": {
+        this.utilisateur.vitesse = this.utilisateur.vitesse + p.potion.valeur;
+        if (this.utilisateur.vitesse > this.utilisateur.vitesseMax) {
+          this.utilisateur.vitesse = this.utilisateur.vitesseMax;
+        }
+        this.utilisateurService.modify(this.utilisateur);
+        this.inventairePotionService.deleteById(p.id).subscribe(resp=>{
+          this.inventairePotionService.load();
+        },error => console.log(error));
+        this.potionPhase=1;
+        break;
+      }
+
+      case "defensePlus": {
+        this.utilisateur.defense = this.utilisateur.defense + p.potion.valeur;
+        if (this.utilisateur.defense > this.utilisateur.defenseMax) {
+          this.utilisateur.defense = this.utilisateur.defenseMax;
+        }
+        this.utilisateurService.modify(this.utilisateur);
+        this.inventairePotionService.deleteById(p.id).subscribe(resp=>{
+          this.inventairePotionService.load();
+        },error => console.log(error));
+        this.potionPhase=1;
+        break;
+      }
+
+      case "agilitePlus": {
+        this.utilisateur.agilite = this.utilisateur.agilite + p.potion.valeur;
+        if (this.utilisateur.agilite > this.utilisateur.agiliteMax) {
+          this.utilisateur.agilite = this.utilisateur.agiliteMax;
+        }
+        this.utilisateurService.modify(this.utilisateur);
+        this.inventairePotionService.deleteById(p.id).subscribe(resp=>{
+          this.inventairePotionService.load();
+        },error => console.log(error));
+        this.potionPhase=1;
+        break;
+      }
+
+
+    }
+
+
   }
 }

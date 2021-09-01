@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import spring.boot.tptRpg.model.Potion;
 import spring.boot.tptRpg.model.InventairePotion;
-import spring.boot.tptRpg.model.InventairePotion;
 import spring.boot.tptRpg.model.Views;
 import spring.boot.tptRpg.repository.IPotionRepository;
 import spring.boot.tptRpg.repository.IInventairePotionRepository;
@@ -54,12 +53,11 @@ public class InventairePotionRestController {
 		}
 	}
 	
-	
-	@GetMapping("/idPotion/{id}")
+	@GetMapping("/utilisateur/{id}")
 	@JsonView(Views.ViewInventairePotion.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public InventairePotion findInventairePotionByIdPotion(@PathVariable Long id) {
-		Optional<InventairePotion> optInvPotion = invPotionRepo.findInventairePotionByIdPotion(id);
+	public List<InventairePotion> findAllInventairePotionByInventaireId(@PathVariable Long id) {
+		Optional<List<InventairePotion>> optInvPotion = invPotionRepo.findAllInventairePotionByInventaireId(id);
 		
 		if (optInvPotion.isPresent()) {
 			return optInvPotion.get();
@@ -67,6 +65,22 @@ public class InventairePotionRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
+	
+
+	
+	
+//	@PostMapping
+//	@JsonView(Views.ViewInventairePotion.class)
+//	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+//	public InventairePotion findInventairePotionByIdPotion(@PathVariable Long id) {
+//		Optional<InventairePotion> optInvPotion = invPotionRepo.findInventairePotionByIdPotion(id);
+//		
+//		if (optInvPotion.isPresent()) {
+//			return optInvPotion.get();
+//		} else {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+//		}
+//	}
 	
 	
 	@PostMapping("")
@@ -91,9 +105,12 @@ public class InventairePotionRestController {
 		return invPotion ;
 	}
 	
+	
+	
 	@DeleteMapping("/{id}")
-	@JsonView(Views.ViewInventairePotion.class)
+	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@JsonView(Views.ViewInventairePotion.class)	
 	public void delete(@PathVariable Long id) {
 		if(!invPotionRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");

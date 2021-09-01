@@ -1,6 +1,6 @@
 package spring.boot.tptRpg.model;
 
 public enum TypeArme {
-	epee,lance,dague;
+	epee,lance,dague,arc,hache;
 
 }
