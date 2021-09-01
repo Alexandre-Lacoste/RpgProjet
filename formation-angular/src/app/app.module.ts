@@ -20,6 +20,7 @@ import { MonstreComponent } from './monstre/monstre.component';
 import {CombatComponent} from "./combat/combat.component";
 import {ArmureComponent} from "./armure/armure.component";
 import { ConnexionComponent } from './connexion/connexion.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ConnexionComponent } from './connexion/connexion.component';
     ArmeComponent,
     AdminComponent,
     UtilisateurComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
