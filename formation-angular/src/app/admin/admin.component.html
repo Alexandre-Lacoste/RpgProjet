@@ -1,48 +1,10 @@
 <!--<!doctype html>-->
 <!--<html lang="fr">-->
 <head>
-
   <title>Game</title>
-
-<!--  <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">-->
-
-
-<!--  &lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
-<!--  <link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet"-->
-<!--        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
-
-
-<!--  &lt;!&ndash; Favicons &ndash;&gt;-->
-<!--  <link rel="apple-touch-icon" href="/docs/4.6/assets/img/favicons/apple-touch-icon.png" sizes="180x180">-->
-<!--  <link rel="icon" href="/docs/4.6/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">-->
-<!--  <link rel="icon" href="/docs/4.6/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">-->
-<!--  <link rel="manifest" href="/docs/4.6/assets/img/favicons/manifest.json">-->
-<!--  <link rel="mask-icon" href="/docs/4.6/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">-->
-<!--  <link rel="icon" href="/docs/4.6/assets/img/favicons/favicon.ico">-->
-<!--  <meta name="msapplication-config" content="/docs/4.6/assets/img/favicons/browserconfig.xml">-->
-<!--  <meta name="theme-color" content="#563d7c">-->
-
-
-<!--  <style>-->
-<!--    .bd-placeholder-img {-->
-<!--      font-size: 1.125rem;-->
-<!--      text-anchor: middle;-->
-<!--      -webkit-user-select: none;-->
-<!--      -moz-user-select: none;-->
-<!--      -ms-user-select: none;-->
-<!--      user-select: none;-->
-<!--    }-->
-
-<!--    @media (min-width: 768px) {-->
-<!--      .bd-placeholder-img-lg {-->
-<!--        font-size: 3.5rem;-->
-<!--      }-->
-<!--    }-->
-<!--  </style>-->
-
-
-  <link href="admin.component.scss" rel="stylesheet">
 </head>
+
+
 <body>
 
 <!--<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">-->
@@ -58,8 +20,6 @@
 <!--  </ul>-->
 <!--</nav>-->
 
-
-
 <div class="container-fluid">
   <div class="row">
 
@@ -73,10 +33,10 @@
             </a>
           </h6>
           <li class="nav-item">
-            <a class="nav-link" href="#listAdmin" data-toggle="collapse" data-target="#listAdmin" (click)="loadingAdmin()">
+            <a class="nav-link" href="#listAdmin" data-toggle="collapse" data-target="#listAdmin"
+               (click)="loadingAdmin()">
               <span data-feather="listAdmin"></span>
               Gestion des Admins
-<!--              <span class="sr-only">(current)</span>-->
             </a>
           </li>
           <li class="nav-item">
@@ -102,7 +62,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#listArmure" data-toggle="collapse" data-target="#listArmure" (click)="loadingArmure()">
+            <a class="nav-link" href="#listArmure" data-toggle="collapse" data-target="#listArmure"
+               (click)="loadingArmure()">
               <span data-feather="file-text"></span>
               Gestion des Armures
             </a>
@@ -125,12 +86,12 @@
               Gestion des Monstres
             </a>
           </li>
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="#listMarchand" data-toggle="collapse" (click)="loadingMarchand()">-->
-<!--              <span data-feather="file-text"></span>-->
-<!--              Gestion des Marchands-->
-<!--            </a>-->
-<!--          </li>-->
+          <!--          <li class="nav-item">-->
+          <!--            <a class="nav-link" href="#listMarchand" data-toggle="collapse" (click)="loadingMarchand()">-->
+          <!--              <span data-feather="file-text"></span>-->
+          <!--              Gestion des Marchands-->
+          <!--            </a>-->
+          <!--          </li>-->
         </ul>
       </div>
     </nav>
@@ -176,13 +137,15 @@
             </tbody>
           </table>
         </div>
-          <div class="card-footer">
-            <button class="btn btn-dark" type="button" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"
-                    aria-controls="editAdmin" (click)="add()">
-              <i class="fa fa-plus"></i>
-            </button>
-          </div>
+        <div class="card-footer">
+          <button class="btn btn-dark" type="button" data-target="#editAdmin" data-toggle="collapse"
+                  aria-expanded="false"
+                  aria-controls="editAdmin" (click)="add()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
       </section>
+
 
       <section id="editAdmin" class="collapse">
         <div class="card mt-3" *ngIf="adminForm">
@@ -205,8 +168,8 @@
             <div class="form-group">
               <label for="enable">Enable :</label>
               <select type="boolean" class="form-control" id="enable" [(ngModel)]="adminForm.enable">
-              <option value="true">true</option>
-              <option value="false">false</option>
+                <option value="true">true</option>
+                <option value="false">false</option>
               </select>
             </div>
             <div class="form-group">
@@ -235,8 +198,6 @@
 </div>
 
 
-
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -251,7 +212,6 @@
 <script src="dashboard.js"></script>
 
 
-
 <app-arme>
 </app-arme>
 <app-armure></app-armure>
@@ -263,9 +223,10 @@
 </app-monstre>
 
 
-
 </body>
 <!--</html>-->
+
+
 
 
 
@@ -313,7 +274,6 @@
 <!--          aria-controls="listCompte">Gestion des Comptes-->
 <!--  </button>-->
 <!--</div>-->
-
 
 
 <!--<section id="listCompte" class="collapse">-->
