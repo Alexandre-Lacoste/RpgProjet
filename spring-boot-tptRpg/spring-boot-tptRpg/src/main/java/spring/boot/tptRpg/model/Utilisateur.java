@@ -26,7 +26,7 @@ public class Utilisateur extends Compte {
 
 	@OneToOne
 	@JoinColumn(name="inventaire")
-	@JsonView(Views.ViewUtilisateur.class)
+	@JsonView({Views.ViewUtilisateur.class,Views.ViewUtilisateurDetail.class})
 	private Inventaire inventaire;
 	
 	

@@ -33,7 +33,7 @@ public class Objet {
 	@JsonView(Views.ViewCommon.class)
 	private double qte;
 	@OneToOne(mappedBy = "objet")
-	@JsonView(Views.ViewCommon.class)
+	//@JsonView(Views.ViewCommon.class)
 	private Inventaire inventaire;
 	
 	
