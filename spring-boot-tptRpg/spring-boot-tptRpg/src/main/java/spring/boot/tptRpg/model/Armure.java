@@ -24,7 +24,7 @@ public class Armure {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
+	@JsonView({Views.ViewArmureDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class})
 	private Long id;
 	
 	@Version

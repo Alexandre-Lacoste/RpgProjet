@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MarchandArme} from "../model/MarchandArme";
 import {MarchandArmeHttpService} from "./marchand-arme-http.service";
 import {ActivatedRoute} from "@angular/router";
+import {InventaireArme} from "../model/inventaireArme";
+import {InventaireArmeService} from "../inventaireArme/inventaireArme.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'marchand-arme',
@@ -10,20 +13,18 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class MarchandArmeComponent implements OnInit {
 
-  @Input()
-  mar: number;
 
-  private paramMar: any;
+  private marchandArme: MarchandArme;
+  inventaireArme: InventaireArme = new InventaireArme()
 
   marchandArmeForm: MarchandArme = null;
+  private invArm: Observable<InventaireArme>;
 
-  constructor(private route: ActivatedRoute, private marchandArmeService: MarchandArmeHttpService) {
+  constructor(private route: ActivatedRoute, private marchandArmeService: MarchandArmeHttpService, private inventaireArmeService : InventaireArmeService) {
   }
 
   ngOnInit() {
-    this.paramMar = this.route.params.subscribe(params => {
-      this.mar = +params['mar'];
-    });
+
   }
 
   list(): Array<MarchandArme> {
@@ -50,8 +51,6 @@ export class MarchandArmeComponent implements OnInit {
     this.marchandArmeForm = null;
   }
 
-  // pour l'exemple => mais de préférence coder le subscribe dans le service
-  marchandArme: MarchandArme;
 
 
   delete(id: number) {
@@ -64,5 +63,56 @@ export class MarchandArmeComponent implements OnInit {
     this.marchandArmeForm = null;
   }
 
+  find(id: number) {
+    this.marchandArmeService.findById(id).subscribe(response => {
+        this.marchandArme = response;
+      },
+      error => console.log(error));
+  }
+
+
+  ajoutdanslinventaire(marchandArme : MarchandArme, id:number) {
+    let idArme = marchandArme.arme.id;
+    console.log(idArme)
+    this.inventaireArmeService.findInventaireArmeByIdArme(idArme).subscribe(response => {
+        this.inventaireArme = response;
+        console.log(this.inventaireArme);
+        console.log(this.inventaireArme.quantite);
+      },
+      error => console.log(error));
+    console.log(this.inventaireArme);
+    console.log(this.inventaireArme.quantite);      // probleme de temps,  la ligne 80 se finit(ou lance) apres le debut du if, donc au lancement du if il prend les valeurs précédentes, avant la ligne 77
+    if (this.inventaireArme.quantite > 0) {
+      console.log(this.inventaireArme);
+
+    } else {
+      console.log(this.inventaireArme);
+
+      this.inventaireArme = new InventaireArme();
+    }
+  }
+    //
+    // delete(inventaireArme : InventaireArme, id : number){
+    //   if (inventaireArme.quantite > 1 ) {
+    //     inventaireArme.quantite = inventaireArme.quantite - 1;
+    //     this.inventaireArmeService.modify(inventaireArme);
+    //   } else if (inventaireArme.quantite = 1) {
+    //     this.inventaireArmeService.deleteById(id).subscribe(resp => {
+    //       this.inventaireArmeService.load();
+    //     }, error => console.log(error));
+    //   }
+    //
+    //   find(id: number) {
+    //     this.inventaireArmeService.findById(id).subscribe(response => {
+    //         this.inventaireArme = response;
+    //         console.log(this.inventaireArme);
+    //       },
+    //       error => console.log(error));
+    //   }
+
 
 }
+
+
+
+

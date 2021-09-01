@@ -94,8 +94,8 @@ public class ArmeRestController {
 		return arme ;
 	}
 	
-	@DeleteMapping("/{id}")
-	//@JsonView(Views.ViewAdmin.class)
+	@DeleteMapping
+	@JsonView(Views.ViewCommon.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
 		if(!armeRepo.existsById(id)) {

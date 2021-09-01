@@ -27,7 +27,9 @@ public class Views {
 	public static class ViewArmureDetail extends ViewArmure{}
 	
 	public static class ViewPotion extends ViewCommon{}
+	public static class ViewPotionDetail extends ViewCommon{}
 
+	
 	public static class ViewInventaire extends ViewCommon{}
 	
 	public static class ViewInventaireArme extends ViewCommon{}

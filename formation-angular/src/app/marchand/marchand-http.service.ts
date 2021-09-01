@@ -48,4 +48,6 @@ export class MarchandHttpService {
       this.marchands = response;
     }, error => console.log(error));
   }
+
+
 }

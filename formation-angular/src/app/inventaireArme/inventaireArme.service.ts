@@ -44,4 +44,8 @@ export class InventaireArmeService  {
       this.inventaireArmes = response;
     }, error => console.log(error));
   }
+
+  findInventaireArmeByIdArme(id : number): Observable<InventaireArme> {
+    return this.http.get<InventaireArme>(this.appConfigService.backEndUrl + "inventaireArme/idArme/" + id);
+  }
 }

@@ -6,32 +6,42 @@ import {InventairePotionService} from "../inventairePotion/inventairePotion.serv
 
 import {ActivatedRoute} from "@angular/router";
 import {InventairePotion} from "../model/inventairePotion";
+import {InventaireArme} from "../model/inventaireArme";
+import {Objet} from "../model/objet";
+import {ObjetService} from "../objet/objet.service";
+import {InventaireArmure} from "../model/inventaireArmure";
 @Component({
   selector: 'app-inventaire-potion',
   templateUrl: './inventaire-potion.component.html',
   styleUrls: ['../inventaireArme/inventaire-arme.component.scss']
 })
 export class InventairePotionComponent implements OnInit {
-  @Input()
-  mar: number;
 
   inventairePotion: InventairePotion= new InventairePotion();
   inventairePotionForm: InventairePotion = null;
 
-  private paramMar: any;
+  objet: Objet;
 
+  private qtegold: number;
 
   constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventairePotionService: InventairePotionService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private objetService: ObjetService) {
 
   }
-
   ngOnInit() {
-    this.paramMar = this.route.params.subscribe(params => {
-      this.mar = +params['mar'];
-    });
+    this.objetService.findById(1).subscribe(response=>
+      {
+        this.objet=response;
+
+        this.qtegold = this.objet.qte;
+        console.log(this.qtegold);
+
+
+      },
+      error=>console.log(error));
     this.find(1);
   }
+
 
   find(id : number){
     this.inventairePotionService.findById(id).subscribe(response=>
@@ -66,14 +76,41 @@ export class InventairePotionComponent implements OnInit {
   }
 
 
-  delete(id: number) {
-    this.inventairePotionService.deleteById(id).subscribe(resp => {
-      this.inventairePotionService.load();
-    }, error => console.log(error));
+  delete(inventairePotion : InventairePotion, id : number){
+    if (inventairePotion.qte > 1 ) {console.log(inventairePotion)
+      inventairePotion.qte = inventairePotion.qte - 1;
+      this.inventairePotionService.modify(inventairePotion);
+    } else if (inventairePotion.qte = 1) {console.log(inventairePotion.qte)
+      this.inventairePotionService.deleteById(id).subscribe(resp => {
+        this.inventairePotionService.load();
+      }, error => console.log(error));
+    }
+
   }
 
   cancel() {
     this.inventairePotionForm = null;
   }
 
+  gaingold(inventairePotion : InventairePotion,id:number) {
+
+    this.qtegold = this.qtegold + inventairePotion.potion.prixVente;
+    this.objet.qte = this.qtegold;
+    this.objetService.modify(this.objet);
+
+  }
+  timeOutAlert(nom :string,prixVente : number){
+    let qtegoldstring: string ;
+    let prixVentestring : string;
+    if ( this.qtegold != null )  qtegoldstring = this.qtegold.toString();
+    if ( this.qtegold != null )  prixVentestring = prixVente.toString();
+
+    setTimeout(function(){ alert("Vous avez acheté " +nom+ " pour la modique somme de " + prixVentestring + "  gold."  +
+      "" +
+      "                         Il vous reste " + qtegoldstring + " Gold"); }, 1500);
+  }
+
+  reloadCurrentPage() {
+    setTimeout(function (){window.location.reload();},1510);
+  }
 }

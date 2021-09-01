@@ -1,6 +1,7 @@
 package spring.boot.tptRpg.rest;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,10 +21,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import spring.boot.tptRpg.model.Arme;
+import spring.boot.tptRpg.model.Armure;
 import spring.boot.tptRpg.model.Hero;
 import spring.boot.tptRpg.model.Monstre;
 import spring.boot.tptRpg.model.Utilisateur;
 import spring.boot.tptRpg.model.Views;
+import spring.boot.tptRpg.repository.IArmeRepository;
+import spring.boot.tptRpg.repository.IArmureRepository;
 import spring.boot.tptRpg.repository.IPersonnageRepository;
 import spring.boot.tptRpg.repository.IUtilisateurRepository;
 import spring.boot.tptRpg.service.UtilisateurService;
@@ -37,7 +43,10 @@ public class UtilisateurRestController {
 	private IUtilisateurRepository utilRepo;
 	@Autowired 
 	private IPersonnageRepository monstreRepo;
-	
+	@Autowired 
+	private IArmeRepository armeRepo;
+	@Autowired
+	private IArmureRepository armureRepo;
 	@Autowired
 	UtilisateurService utilService;
 	
@@ -127,6 +136,26 @@ public class UtilisateurRestController {
 		util = utilRepo.save(util);
 
 		return util;
+	}
+	
+	@PatchMapping("/{id}")
+	@JsonView(Views.ViewUtilisateur.class)
+	public Utilisateur partialUpdate(@RequestBody Map<String, Object> updates, @PathVariable Long id) {
+		if (!utilRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+
+		Utilisateur utilFind = utilRepo.findById(id).get();
+		if(updates.containsKey("pseudo")) {
+			utilFind.setPseudo((String) updates.get("pseudo"));
+		}
+		if(updates.containsKey("arme")) {
+			utilFind.setArme((Arme) updates.get("arme"));
+		}
+
+		utilFind = utilRepo.save(utilFind);
+
+		return utilFind;
 	}
 	
 	@DeleteMapping
