@@ -106,13 +106,14 @@ export class MarchandArmeComponent implements OnInit {
       this.inventaireArme.quantite = inventaireArme.quantite + 1;
       this.inventaireArmeService.modify(this.inventaireArme);
 
-    } else {
-      let newinventArme = new InventaireArme();
-      newinventArme.arme.id = idArme;
-      newinventArme.quantite = 1;
-      newinventArme.inventaire.id = 1;
-      this.inventaireArmeService.create(newinventArme);
     }
+    // else {
+    //   let newinventArme = new InventaireArme();
+    //   newinventArme.arme.id = idArme;
+    //   newinventArme.quantite = 1;
+    //   newinventArme.inventaire.id = 1;
+    //   this.inventaireArmeService.create(newinventArme);
+    // }
   }
   creationinventlorsdelachat(inventaireArme: InventaireArme, idArme: number){
 
