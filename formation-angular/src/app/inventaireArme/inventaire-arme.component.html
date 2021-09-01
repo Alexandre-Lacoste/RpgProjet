@@ -36,7 +36,9 @@
 
           <a class="btn btn-warning"  (click)="gaingold(inventArme,1)
            ;delete(inventArme,inventArme.id)
-           // ;reloadCurrentPage()
+           ;timeOutAlert(inventArme.arme.nom,inventArme.arme.prixVente)
+
+           ;reloadCurrentPage()
 
             ">{{inventArme.arme.prixVente}}
             <br>

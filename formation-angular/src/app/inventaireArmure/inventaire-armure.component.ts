@@ -100,9 +100,18 @@ export class InventaireArmureComponent implements OnInit {
 
   }
 
+  timeOutAlert(nom :string,prixVente : number){
+    let qtegoldstring: string ;
+    let prixVentestring : string;
+    if ( this.qtegold != null )  qtegoldstring = this.qtegold.toString();
+    if ( this.qtegold != null )  prixVentestring = prixVente.toString();
 
+    setTimeout(function(){ alert("Vous avez acheté " +nom+ " pour la modique somme de " + prixVentestring + "  gold."  +
+      "" +
+      "                         Il vous reste " + qtegoldstring + " Gold"); }, 1500);
+  }
 
   reloadCurrentPage() {
-    window.location.reload();
+    setTimeout(function (){window.location.reload();},1510);
   }
 }

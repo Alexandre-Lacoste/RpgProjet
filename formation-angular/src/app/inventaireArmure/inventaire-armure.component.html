@@ -38,8 +38,9 @@
         <div class="btn-group btn-group-sm ">
           <a class="btn btn-warning"  (click)="gaingold(inventArmure,1)
            ;delete(inventArmure,inventArmure.id)
-           // ;reloadCurrentPage()
+           ;timeOutAlert(inventArmure.armure.nom,inventArmure.armure.prixVente)
 
+           ;reloadCurrentPage()
             ">{{inventArmure.armure.prixVente}}
             <br>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">

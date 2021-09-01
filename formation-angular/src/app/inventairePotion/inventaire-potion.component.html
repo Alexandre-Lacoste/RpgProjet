@@ -41,7 +41,9 @@
         <div class="btn-group btn-group-sm ">
           <a class="btn btn-warning"  (click)="gaingold(inventPotion,1)
            ;delete(inventPotion,inventPotion.id)
-           // ;reloadCurrentPage()
+           ;timeOutAlert(inventPotion.potion.nom,inventPotion.potion.prixVente)
+
+           ;reloadCurrentPage()
 
             ">{{inventPotion.potion.prixVente}}
             <br>
