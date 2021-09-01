@@ -1,0 +1,218 @@
+<!--<section id="listPotion" class="collapse">-->
+<!--  <div class="card mt-3">-->
+<!--    <div class="card-header bg-info text-white">-->
+<!--      <h3>Liste des Potions</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <table class="table table-striped">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>ID</th>-->
+<!--          <th>Version</th>-->
+<!--          <th>Nom</th>-->
+<!--          <th>Type</th>-->
+<!--          <th>Valeur</th>-->
+<!--          <th>Prix Achat</th>-->
+<!--          <th>Prix Vente</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngFor="let potion of list()">-->
+<!--          <td>{{potion.id}}</td>-->
+<!--          <td>{{potion.version}}</td>-->
+<!--          <td>{{potion.nom}}</td>-->
+<!--          <td>{{potion.type}}</td>-->
+<!--          <td>{{potion.valeur}}</td>-->
+<!--          <td>{{potion.prixAchat}}</td>-->
+<!--          <td>{{potion.prixVente}}</td>-->
+<!--          <td>-->
+<!--            <div class="btn-group btn-group-sm">-->
+<!--              <a class="btn btn-primary" data-target="#editPotion" data-toggle="collapse" aria-expanded="false"-->
+<!--                 aria-controls="editPotion" (click)="edit(potion.id)"><i class="fa fa-edit"></i></a>-->
+<!--              &lt;!&ndash;              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
+
+<!--              &lt;!&ndash;                            <a class="btn btn-primary" href="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme" (click)="edit(arme.id)"><i class="fa fa-edit"></i></a>&ndash;&gt;-->
+<!--              <a class="btn btn-danger" (click)="delete(potion.id)"><i class="fa fa-trash"></i></a>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="card-footer">-->
+<!--    <button class="btn btn-dark" type="button" data-target="#editPotion" data-toggle="collapse" aria-expanded="false"-->
+<!--            aria-controls="editPotion" (click)="add()">-->
+<!--      &lt;!&ndash;      data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
+<!--      <i class="fa fa-plus"></i>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+<!--<section id="editPotion" class="collapse">-->
+<!--  <div class="card mt-3" *ngIf="potionForm">-->
+<!--    <div class="card-header bg-info text-white">-->
+<!--      <h3>Edition potion</h3>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <div class="form-group">-->
+<!--        <label for="nom">Nom :</label>-->
+<!--        <input type="string" class="form-control" id="nom" [(ngModel)]="potionForm.nom">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="type">Type :</label>-->
+<!--        <select class="form-control" id="type" [(ngModel)]="potionForm.type">-->
+<!--          <option value="soin">Soin</option>-->
+<!--          <option value="attaquePlus">AttaquePlus</option>-->
+<!--          <option value="vitessePlus">VitessePlus</option>-->
+<!--          <option value="defensePlus">DefensePlus</option>-->
+<!--          <option value="agilitePlus">AgilitePlus</option>-->
+<!--          <option value="poisonMoins">PoisonMoins</option>-->
+<!--          <option value="saignerMoins">SaignerMoins</option>-->
+<!--          <option value="brulureMoins">BrulureMoins</option>-->
+<!--          <option value="etourdissementMoins">EtourdissementMoins</option>-->
+<!--        </select>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="valeur">Valeur :</label>-->
+<!--        <input type="number" class="form-control" id="valeur" [(ngModel)]="potionForm.valeur">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="prixAchat">Prix Achat :</label>-->
+<!--        <input type="number" class="form-control" id="prixAchat" [(ngModel)]="potionForm.prixAchat">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="prixVente">Prix Vente :</label>-->
+<!--        <input type="number" class="form-control" id="prixVente" [(ngModel)]="potionForm.prixVente">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card-footer">-->
+<!--      <div class="btn-group btn-group-lg float-right">-->
+<!--        <a class="btn btn-success" (click)="save()">-->
+<!--          <i class="fa fa-check"></i>-->
+<!--        </a>-->
+<!--        <a class="btn btn-warning" (click)="cancel()">-->
+<!--          <i class="fa fa-sync"></i>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+
+<link rel="stylesheet" href="../utilisateur/utilisateur.component.scss">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+  <!--<canvas class="my-4 w-100" id="myChart" width="0" height="0"></canvas>-->
+
+  <section id="listPotion" class="collapse">
+    <h2>Liste des Potions</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Version</th>
+          <th>Nom</th>
+          <th>Type</th>
+          <th>Valeur</th>
+          <th>Prix Achat</th>
+          <th>Prix Vente</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let potion of list()">
+          <td>{{potion.id}}</td>
+          <td>{{potion.version}}</td>
+          <td>{{potion.nom}}</td>
+          <td>{{potion.type}}</td>
+          <td>{{potion.valeur}}</td>
+          <td>{{potion.prixAchat}}</td>
+          <td>{{potion.prixVente}}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <a class="btn btn-primary" data-target="#editPotion" data-toggle="collapse" aria-expanded="false"
+                 aria-controls="editPotion" (click)="edit(potion.id)"><i class="fa fa-edit"></i></a>
+              <a class="btn btn-danger" (click)="delete(potion.id)"><i class="fa fa-trash"></i></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-dark" type="button" data-target="#editPotion" data-toggle="collapse" aria-expanded="false"
+              aria-controls="editPotion" (click)="add()">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+  </section>
+
+
+  <section id="editPotion" class="collapse">
+    <div class="card mt-3" *ngIf="potionForm">
+      <div class="card text-dark bg-light mb-3">
+        <h3>Edition Potion</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="nom">Nom :</label>
+          <input type="string" class="form-control" id="nom" [(ngModel)]="potionForm.nom">
+        </div>
+        <div class="form-group">
+          <label for="type">Type :</label>
+          <select class="form-control" id="type" [(ngModel)]="potionForm.type">
+            <option value="soin">Soin</option>
+            <option value="attaquePlus">AttaquePlus</option>
+            <option value="vitessePlus">VitessePlus</option>
+            <option value="defensePlus">DefensePlus</option>
+            <option value="agilitePlus">AgilitePlus</option>
+            <option value="poisonMoins">PoisonMoins</option>
+            <option value="saignerMoins">SaignerMoins</option>
+            <option value="brulureMoins">BrulureMoins</option>
+            <option value="etourdissementMoins">EtourdissementMoins</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="valeur">Valeur :</label>
+          <input type="number" class="form-control" id="valeur" [(ngModel)]="potionForm.valeur">
+        </div>
+        <div class="form-group">
+          <label for="prixAchat">Prix Achat :</label>
+          <input type="number" class="form-control" id="prixAchat" [(ngModel)]="potionForm.prixAchat">
+        </div>
+        <div class="form-group">
+          <label for="prixVente">Prix Vente :</label>
+          <input type="number" class="form-control" id="prixVente" [(ngModel)]="potionForm.prixVente">
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+          <a class="btn btn-success" (click)="save()">
+            <i class="fa fa-check"></i>
+          </a>
+          <a class="btn btn-warning" (click)="cancel()">
+            <i class="fa fa-sync"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="dashboard.js"></script>

@@ -14,7 +14,7 @@ export class Arme{
 //marchandsArmes = Array<MarchandArme>
   inventaireArme=Array<InventaireArme>();
 
-  constructor(id?:number,version?:number,typearme?:string,nom?:string,description?:string,attaque?:number,agilite?:number,prixAchat?:number,prixVente?:number) {
+  constructor(id?:number, version?:number, typearme?:string, nom?:string, description?:string, attaque?:number, agilite?:number, prixAchat?:number, prixVente?:number) {
     this.id=id;
     this.version=version;
     this.nom=nom;

@@ -21,7 +21,7 @@ export class UtilisateurHttpService {
     return this.utilisateurs;
   }
   findById(id: number): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(this.chemin + id);
+    return this.http.get<Utilisateur>(this.chemin + id+"/person/detail/");
   }
 
   create(utilisateur: Utilisateur) {
@@ -34,6 +34,10 @@ export class UtilisateurHttpService {
     this.http.put<Utilisateur>(this.chemin + utilisateur.id, utilisateur).subscribe(response => {
       this.load();
     }, error => console.log(error));
+  }
+
+  deleteById(id: number): Observable<void> {
+    return this.http.delete<void>(this.appConfigService.backEndUrl + "utilisateur/" + id);
   }
 
 
