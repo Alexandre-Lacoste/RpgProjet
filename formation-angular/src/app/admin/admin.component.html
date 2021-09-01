@@ -6,7 +6,6 @@
 
 
 <body>
-
 <!--<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">-->
 <!--  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>-->
 <!--  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">-->
@@ -22,7 +21,6 @@
 
 <div class="container-fluid">
   <div class="row">
-
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
@@ -45,8 +43,6 @@
               Gestion des Utilisateurs
             </a>
           </li>
-
-
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Administration du jeux</span>
@@ -98,7 +94,6 @@
 
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-
       <canvas class="my-4 w-100" id="myChart" width="0" height="0"></canvas>
 
       <section id="listAdmin" class="collapse">
@@ -193,9 +188,17 @@
         </div>
       </section>
 
+
     </main>
   </div>
 </div>
+
+
+
+
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -225,152 +228,3 @@
 
 </body>
 <!--</html>-->
-
-
-
-
-
-
-
-
-<!--<br/>-->
-<!--<br/>-->
-<!--<br/>-->
-<!--<br/>-->
-<!--<div>-->
-<!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listCompte" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listCompte">Gestion des Comptes-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  &lt;!&ndash;<a class="btn btn-secondary" href="#listArme" data-toggle="collapse" aria-expanded="false" aria-controls="listArme">Balise a</a>&ndash;&gt;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listArme" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listArme">Gestion des Armes-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listArmure" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listArmure">Gestion des Armures-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listPotion" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listPotion">Gestion des Potions-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listHero" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listhero">Gestion des Héros-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listMonstre" data-toggle="collapse"-->
-<!--          aria-expanded="false"-->
-<!--          aria-controls="listMonstre">Gestion des Monstres-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listmarchand" data-toggle="collapse"-->
-<!--          aria-expanded="false"-->
-<!--          aria-controls="listmarchand">Gestion des Marchands-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listCompte" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listCompte">Gestion des Comptes-->
-<!--  </button>-->
-<!--</div>-->
-
-
-<!--<section id="listCompte" class="collapse">-->
-<!--  <div class="card mt-3">-->
-<!--    <div class="card-header bg-info text-white">-->
-<!--      <h3>Liste des Admins</h3>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      <table class="table table-striped">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--          <th>ID</th>-->
-<!--          <th>Version</th>-->
-<!--          <th>Pseudo</th>-->
-<!--          <th>Mail</th>-->
-<!--          <th>MDP</th>-->
-<!--          <th>Enable</th>-->
-<!--          <th>Role</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr *ngFor="let admin of list()">-->
-<!--          <td>{{admin.id}}</td>-->
-<!--          <td>{{admin.version}}</td>-->
-<!--          <td>{{admin.pseudo}}</td>-->
-<!--          <td>{{admin.mail}}</td>-->
-<!--          <td>{{admin.mdp}}</td>-->
-<!--          <td>{{admin.enable}}</td>-->
-<!--          <td>{{admin.role}}</td>-->
-<!--          <td>-->
-<!--            <div class="btn-group btn-group-sm">-->
-<!--              <a class="btn btn-primary" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"-->
-<!--                 aria-controls="editAdmin" (click)="edit(admin.id)"><i class="fa fa-edit"></i></a>-->
-<!--              &lt;!&ndash;              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
-
-<!--              &lt;!&ndash;                            <a class="btn btn-primary" href="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme" (click)="edit(arme.id)"><i class="fa fa-edit"></i></a>&ndash;&gt;-->
-<!--              <a class="btn btn-danger" (click)="delete(admin.id)"><i class="fa fa-trash"></i></a>-->
-<!--            </div>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <div class="card-footer">-->
-<!--    <button class="btn btn-dark" type="button" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"-->
-<!--            aria-controls="editAdmin" (click)="add()">-->
-<!--      &lt;!&ndash;      data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
-<!--      <i class="fa fa-plus"></i>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</section>-->
-
-
-<!--<section id="editAdmin" class="collapse">-->
-<!--  <div class="card mt-3" *ngIf="adminForm">-->
-<!--    <div class="card-header bg-info text-white">-->
-<!--      <h3>Edition de l'admin</h3>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      <div class="form-group">-->
-<!--        <label for="pseudo">Pseudo :</label>-->
-<!--        <input type="string" class="form-control" id="pseudo" [(ngModel)]="adminForm.pseudo">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="mail">Mail :</label>-->
-<!--        <input type="string" class="form-control" id="mail" [(ngModel)]="adminForm.mail">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="mdp">MDP :</label>-->
-<!--        <input type="string" class="form-control" id="mdp" [(ngModel)]="adminForm.mdp">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="enable">Enable :</label>-->
-<!--        <select type="boolean" class="form-control" id="enable" [(ngModel)]="adminForm.enable">-->
-<!--        <option value="true">true</option>-->
-<!--        <option value="false">false</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="role">Role :</label>-->
-<!--        <select class="form-control" id="role" [(ngModel)]="adminForm.role">-->
-<!--          <option value="ADMIN">Admin</option>-->
-<!--          <option value="USER">User</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card-footer">-->
-<!--      <div class="btn-group btn-group-lg float-right">-->
-<!--        <a class="btn btn-success" (click)="save()">-->
-<!--          <i class="fa fa-check"></i>-->
-<!--        </a>-->
-<!--        <a class="btn btn-warning" (click)="cancel()">-->
-<!--          <i class="fa fa-sync"></i>-->
-<!--        </a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
