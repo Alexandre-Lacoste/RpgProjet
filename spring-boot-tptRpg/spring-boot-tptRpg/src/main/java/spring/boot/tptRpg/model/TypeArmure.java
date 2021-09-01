@@ -1,6 +1,5 @@
 package spring.boot.tptRpg.model;
 
 public enum TypeArmure {
-	bouclier,casque,plastron;
-
+	bouclier,casque,plastron,armure;
 }
