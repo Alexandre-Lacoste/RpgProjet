@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {InventairePotion} from "../model/inventairePotion";
+import {Monstre} from "../model/Monstre";
+import {Potion} from "../model/Potion";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,14 @@ export class InventairePotionService {
   findById(id: number): Observable<InventairePotion> {
     return this.http.get<InventairePotion>(this.appConfigService.backEndUrl + "inventairePotion/" + id);
   }
+
+  findByIdPotion(id:number) : Observable<InventairePotion>{
+    return this.http.get<InventairePotion>(this.appConfigService.backEndUrl+"inventairePotion/by/idPotion/"+id);
+  }
+
+ findAllByUtilisateurId(id:number): Observable<Array<InventairePotion>>{
+    return this.http.get<Array<InventairePotion>>(this.appConfigService.backEndUrl+ "inventairePotion/utilisateur/"+id);
+ }
 
 
   create(inventairePotion: InventairePotion) {

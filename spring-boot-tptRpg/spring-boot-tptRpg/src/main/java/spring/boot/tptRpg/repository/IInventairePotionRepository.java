@@ -13,8 +13,8 @@ import spring.boot.tptRpg.model.Potion;
 import spring.boot.tptRpg.model.TypePotion;
 
 public interface IInventairePotionRepository  extends JpaRepository<InventairePotion, Long>{
-	@Query("select ip.potion from InventairePotion ip  where ip.inventaire.id = :id")
-	List<Potion> findAllPotionByInventaireId(@Param("id") Long id); // @Query
+	@Query("select ip  from InventairePotion ip  where ip.inventaire.id = :id")
+	Optional<List<InventairePotion>> findAllInventairePotionByInventaireId(@Param("id") Long id); // @Query
 	
 	@Query("select ip.potion from InventairePotion ip  where ip.potion.type = :type")
 	List<Potion> findAllPotionByType( @Param("type") TypePotion type); // @Query
@@ -27,6 +27,7 @@ public interface IInventairePotionRepository  extends JpaRepository<InventairePo
 	
 	@Query("select ip from InventairePotion ip where ip.potion.id = :idP and ip.inventaire.id = :idInv")
 	InventairePotion findInventairePotionByIdPotionAndIdInv(@Param("idP") Long idP, @Param("idInv") Long idInv);
+	
 
 	@Query("select ip from InventairePotion ip where ip.potion.id = :id")
 	Optional<InventairePotion> findInventairePotionByIdPotion(@Param("id") Long id);
