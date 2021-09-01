@@ -23,10 +23,10 @@ public class Potion {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewPotionDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class})
 	private Long id;
 	@Column
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewPotionDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private String nom;
 	@Version
 	@JsonView(Views.ViewCommon.class)
@@ -36,19 +36,19 @@ public class Potion {
 	@JsonView(Views.ViewCommon.class)
 	private TypePotion type;
 	@Column
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewPotionDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double valeur;
 	@Column
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewPotionDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixAchat;
 	@Column
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewPotionDetail.class,Views.ViewMonstreDetail.class,Views.ViewUtilisateurDetail.class,Views.ViewUtilisateur.class,Views.ViewCommon.class})
 	private double prixVente;
 	@OneToMany(mappedBy = "potion")
-	@JsonView(Views.ViewPotion.class)
+	@JsonIgnore
 	private List<InventairePotion> inventairePotions = new ArrayList<InventairePotion>();
 	@OneToMany(mappedBy = "potion")
-	@JsonView(Views.ViewPotion.class)
+	@JsonIgnore
 	private List<MarchandPotion> marchandPotions = new ArrayList<MarchandPotion>();
 	
 	public Potion() {

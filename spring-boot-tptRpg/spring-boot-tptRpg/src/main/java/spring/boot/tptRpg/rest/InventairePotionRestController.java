@@ -18,8 +18,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import spring.boot.tptRpg.model.Potion;
 import spring.boot.tptRpg.model.InventairePotion;
 import spring.boot.tptRpg.model.Views;
+import spring.boot.tptRpg.repository.IPotionRepository;
 import spring.boot.tptRpg.repository.IInventairePotionRepository;
 
 @RestController
@@ -28,6 +30,9 @@ import spring.boot.tptRpg.repository.IInventairePotionRepository;
 public class InventairePotionRestController {
 	@Autowired
 	private IInventairePotionRepository invPotionRepo;
+
+	@Autowired
+	private IPotionRepository potionRepo;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewInventairePotion.class)
@@ -50,28 +55,44 @@ public class InventairePotionRestController {
 	
 	@PostMapping
 	@JsonView(Views.ViewInventairePotion.class)
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public InventairePotion findInventairePotionByIdPotion(@PathVariable Long id) {
+		Optional<InventairePotion> optInvPotion = invPotionRepo.findInventairePotionByIdPotion(id);
+		
+		if (optInvPotion.isPresent()) {
+			return optInvPotion.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+	}
+	
+	
+	@PostMapping("")
+	@JsonView(Views.ViewInventairePotion.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public InventairePotion create(@RequestBody InventairePotion invPotion) {
 		invPotion = invPotionRepo.save(invPotion);
 		return invPotion;
 	}
 	
+	
 	@PutMapping("/{id}")
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	@JsonView(Views.ViewInventairePotion.class)
-	public  InventairePotion update (@RequestBody InventairePotion invPotion , @PathVariable Long id) {
+	public  InventairePotion update(@RequestBody InventairePotion invPotion  , @PathVariable Long id) {
 		if (!invPotionRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 
-		invPotion = invPotionRepo.save(invPotion);
+		invPotion= invPotionRepo.save(invPotion);
 
-		return invPotion;
+		return invPotion ;
 	}
 	
 	@DeleteMapping
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
+	@JsonView(Views.ViewInventairePotion.class)	
 	public void delete(@PathVariable Long id) {
 		if(!invPotionRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");

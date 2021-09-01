@@ -27,7 +27,7 @@ export class MarchandComponent implements OnInit {
 
   ngOnInit() {
     this.paramMar = this.route.params.subscribe(params => {
-      this.mar = +params['mar'];
+      this.mar = params['mar'];
     });
   }
 

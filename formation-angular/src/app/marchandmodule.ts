@@ -13,6 +13,7 @@ import {InventaireArmureComponent} from "./inventaireArmure/inventaire-armure.co
 import {InventaireArmeComponent} from "./inventaireArme/inventaire-arme.component";
 import {InventairePotionComponent} from "./inventairePotion/inventaire-potion.component";
 import {ObjetComponent} from "./objet/objet.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -26,16 +27,16 @@ import {ObjetComponent} from "./objet/objet.component";
     InventairePotionComponent
   ],
   imports: [
+    CommonModule,
     // BrowserModule,
     // MarchandRoutingModule,
     // FormsModule,
     // HttpClientModule
 
+
   ],
   providers: [],
   exports: [
-    InventaireArmeComponent,
-    InventaireArmureComponent
   ],
   bootstrap: [MarchandComponent]
 })

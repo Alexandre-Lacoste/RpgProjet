@@ -19,6 +19,9 @@ import {MarchandRoutingModule} from "./marchand-routing.module";
 import { MonstreComponent } from './monstre/monstre.component';
 import {CombatComponent} from "./combat/combat.component";
 import {ArmureComponent} from "./armure/armure.component";
+import { ConnexionComponent } from './connexion/connexion.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import {InventairePotionComponent} from "./inventairePotion/inventaire-potion.component";
 
 @NgModule({
   declarations: [
@@ -28,11 +31,24 @@ import {ArmureComponent} from "./armure/armure.component";
     HeroComponent,
     CombatComponent,
     MonstreComponent,
+    UtilisateurComponent,
+    //InventaireArmureComponent,
+    //InventaireArmeComponent,
+    //InventairePotionComponent,
+    // MarchandComponent,
+    // MarchandPotionComponent,
+    // MarchandArmeComponent,
+    // MarchandArmureComponent,
+    AdminComponent,
+    ArmeComponent,
+    ArmureComponent,
     PotionComponent,
     ArmureComponent,
     ArmeComponent,
     AdminComponent,
-    UtilisateurComponent
+    UtilisateurComponent,
+    ConnexionComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
