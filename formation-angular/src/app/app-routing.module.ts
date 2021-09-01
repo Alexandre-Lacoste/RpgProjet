@@ -24,7 +24,7 @@ const routes: Routes = [
  // {path: "utilisateur/:id", component: UtilisateurComponent},
   {path: "inventaireArme", component: InventaireArmeComponent},
   {path: "inventaireArmure", component: InventaireArmureComponent},
-  {path:"combat",component:CombatComponent},
+  {path:"combat/:idUtil",component:CombatComponent},
   {path: "marchand/:mar", component: MarchandComponent},
   {path: "admin", component: AdminComponent},
   {path: "arme", component: ArmeComponent},

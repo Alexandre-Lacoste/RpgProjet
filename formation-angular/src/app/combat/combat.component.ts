@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CombatHttpService} from "./combat-http.service";
 import {Monstre} from "../model/Monstre";
 import {Utilisateur} from "../model/utilisateur";
@@ -13,6 +13,7 @@ import {InventaireArmure} from "../model/inventaireArmure";
 import {InventaireArmureService} from "../inventaireArmure/inventaireArmure.service";
 import {InventairePotionService} from "../inventairePotion/inventairePotion.service";
 import {Potion} from "../model/Potion";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'combat',
@@ -29,11 +30,19 @@ export class CombatComponent implements OnInit {
   potions:Array<InventairePotion>=new Array<InventairePotion>();
   inventairePotion:InventairePotion=null;
 
+  @Input()
+  idUtil:number;
+
+  private paramMar: any;
 
 
-  constructor(private inventaireArmureService:InventaireArmureService, private inventaireArmeService:InventaireArmeService,private combatService:CombatHttpService,private monstreService:MonstreHttpService, private utilisateurService:UtilisateurHttpService, private inventairePotionService:InventairePotionService) { }
+
+  constructor(private route: ActivatedRoute,private inventaireArmureService:InventaireArmureService, private inventaireArmeService:InventaireArmeService,private combatService:CombatHttpService,private monstreService:MonstreHttpService, private utilisateurService:UtilisateurHttpService, private inventairePotionService:InventairePotionService) { }
 
   ngOnInit(): void {
+    this.paramMar = this.route.params.subscribe(params => {
+      this.idUtil = params['idUtil'];
+    });
     this.phase=0;
     this.potionPhase=1;
     this.listMonstre();
@@ -44,7 +53,7 @@ export class CombatComponent implements OnInit {
       this.monstre=resp;
     });
 
-    this.utilisateurService.findById(1).subscribe(resp=>{
+    this.utilisateurService.findById(this.idUtil).subscribe(resp=>{
       this.utilisateur=resp;
     });
     this.phase=1;
