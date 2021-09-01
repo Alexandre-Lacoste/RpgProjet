@@ -1,6 +1,7 @@
 .utilisateur{
-  background-color: #9490aa;
+  background-color: darkslategrey;
   height: 600px;
+
 }
 
 .informations{
@@ -9,6 +10,7 @@
   width: 100%;
   font-family: Bahnschrift;
   margin-left: 15px;
+  border-color: white;
 }
 
 .caracteristiques{
@@ -50,11 +52,13 @@
   display: inline-block;
 }
 .card-header{
+
   background-color:darkgrey;
   text-align: center;
   font-family: BlinkMacSystemFont;
   display: block;
   width: 100%;
+  border-color: white;
 }
 .card Xdetails{
   background-color:grey;
@@ -62,6 +66,7 @@
   font-family: BlinkMacSystemFont;
   display: block;
   width: 100%;
+  border-color: white;
 }
 .bouton{
   text-align: center;
@@ -71,4 +76,9 @@
   margin-top: 15px;
   margin-left: 35px;
 }
-
+.btn-warning {
+  background-color: black;
+  color:white;
+  background-border:white;
+  margin-left: 750px;
+}
