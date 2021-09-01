@@ -47,55 +47,55 @@ public class Utilisateur extends Compte {
 
 	
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double vie;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double attaque;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double defense;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double agilite;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double vitesse;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double vieMax;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double attaqueMax;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double defenseMax;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double agiliteMax;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private double vitesseMax;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private int cptEmpoisonnement;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private int cptEtourdissement;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private int cptSaignement;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private int cptBrulure;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private int cptCombat;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private int cptCombatGagne;
 	@Column()
-	@JsonView(Views.ViewUtilisateurDetail.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private int cptMonstreVaincu;
 	@Column()
 	@JsonView(Views.ViewCommon.class)

@@ -1,0 +1,74 @@
+.utilisateur{
+  background-color: #9490aa;
+  height: 600px;
+}
+
+.informations{
+
+  display: inline-block;
+  width: 100%;
+  font-family: Bahnschrift;
+  margin-left: 15px;
+}
+
+.caracteristiques{
+
+  display: inline-block;
+  width: 60%;
+  font-family: Bahnschrift;
+  margin-left: 15px;
+}
+.detail{
+  display: inline-block;
+  //width: 38%;
+  background-color: #333333;
+  color:white;
+  font-family: Bahnschrift;
+  margin-left: 1px;
+  margin-top: 35px;
+  width: 100%;
+
+}
+.firstDetails{
+  display: inline-block;
+  width: 40%;
+  font-family: Bahnschrift;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.secondDetails{
+  display: inline-block;
+  width: 48%;
+  font-family: Bahnschrift;
+  text-align: left;
+}
+.pseudo{
+  border-color: #d47719;
+  border-style:solid;
+  border-width: 1px;
+  display: inline-block;
+}
+.card-header{
+  background-color:darkgrey;
+  text-align: center;
+  font-family: BlinkMacSystemFont;
+  display: block;
+  width: 100%;
+}
+.card Xdetails{
+  background-color:grey;
+  text-align: center;
+  font-family: BlinkMacSystemFont;
+  display: block;
+  width: 100%;
+}
+.bouton{
+  text-align: center;
+  display: inline-block;
+  width: 33%;
+  height: 5%;
+  margin-top: 15px;
+  margin-left: 35px;
+}
+

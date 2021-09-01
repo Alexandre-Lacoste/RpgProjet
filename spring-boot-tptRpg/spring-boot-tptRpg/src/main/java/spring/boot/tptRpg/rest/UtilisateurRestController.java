@@ -53,7 +53,7 @@ public class UtilisateurRestController {
 	
 	@GetMapping("")
 	@JsonView(Views.ViewUtilisateur.class)
-	//@PreAuthorize("hasAnyRole('ADMIN')")
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public List<Utilisateur> findAll(){
 		return utilRepo.findAll();
 	}

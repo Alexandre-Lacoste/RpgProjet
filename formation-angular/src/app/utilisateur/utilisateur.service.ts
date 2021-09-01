@@ -17,29 +17,32 @@ export class UtilisateurService  {
   }
 
   findById(id: number): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(this.appConfigService.backEndUrl + "monProfil/" + id);
+    return this.http.get<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + id);
   }
 
 
   create(utilisateur: Utilisateur) {
-    this.http.post<Utilisateur>(this.appConfigService.backEndUrl + "monProfil/", utilisateur).subscribe(response => {
+    this.http.post<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/", utilisateur).subscribe(response => {
       this.load();
     }, error => console.log(error));
   }
 
   modify(utilisateur: Utilisateur) {
-    this.http.put<Utilisateur>(this.appConfigService.backEndUrl + "monProfil/" + utilisateur.id, utilisateur).subscribe(response => {
+    this.http.put<Utilisateur>(this.appConfigService.backEndUrl + "utilisateur/" + utilisateur.id, utilisateur).subscribe(response => {
       this.load();
     }, error => console.log(error));
   }
 
   deleteById(id: number): Observable<void> {
-    return this.http.delete<void>(this.appConfigService.backEndUrl + "monProfil/" + id);
+    return this.http.delete<void>(this.appConfigService.backEndUrl + "utilisateur/" + id);
   }
 
+
+
   load() {
-    this.http.get<Array<Utilisateur>>(this.appConfigService.backEndUrl + "monProfil/").subscribe(response => {
+    this.http.get<Array<Utilisateur>>(this.appConfigService.backEndUrl + "utilisateur/").subscribe(response => {
       this.utilisateurs = response;
     }, error => console.log(error));
   }
+
 }
