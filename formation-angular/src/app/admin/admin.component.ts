@@ -10,6 +10,7 @@ import {MarchandHttpService} from "../marchand/marchand-http.service";
 import {UtilisateurHttpService} from "../utilisateur-http.service";
 import {Arme} from "../model/Arme";
 import {Utilisateur} from "../model/utilisateur";
+import {Hero} from "../model/Hero";
 
 @Component({
   selector: 'app-admin',
@@ -22,6 +23,7 @@ export class AdminComponent implements OnInit {
   adminForm: Admin = null;
   armeForm: Arme = null;
   userForm: Utilisateur = null;
+  heroForm: Hero = null;
 
   constructor(private adminService: AdminHttpService, private armeService: ArmeHttpService, private armureService: ArmureHttpService, private potionService: PotionHttpService,
               private heroService: HeroHttpService, private monstreService: MonstreHttpService, private marchandService: MarchandHttpService, private utilisateurService: UtilisateurHttpService) {
@@ -36,12 +38,18 @@ export class AdminComponent implements OnInit {
   listUser(): Array<Utilisateur> {
     return this.utilisateurService.findAll();
   }
+  listHero(): Array<Hero> {
+    return this.heroService.findAll();
+  }
 
   add() {
     this.adminForm = new Admin();
   }
   addUser() {
     this.userForm = new Utilisateur();
+  }
+  addHero() {
+    this.heroForm = new Hero();
   }
 
   edit(id: number) {
@@ -52,6 +60,11 @@ export class AdminComponent implements OnInit {
   editUser(id: number) {
     this.utilisateurService.findById(id).subscribe(resp => {
       this.userForm = resp;
+    })
+  }
+  editHero(id: number) {
+    this.heroService.findById(id).subscribe(resp => {
+      this.heroForm = resp;
     })
   }
 
@@ -71,6 +84,14 @@ export class AdminComponent implements OnInit {
     }
     this.userForm = null;
   }
+  saveHero() {
+    if (this.heroForm.id) {
+      this.heroService.modify(this.heroForm);
+    } else {
+      this.heroService.create(this.heroForm);
+    }
+    this.heroForm = null;
+  }
 
   delete(id: number){
     this.adminService.deleteById(id).subscribe(resp => {
@@ -82,12 +103,20 @@ export class AdminComponent implements OnInit {
       this.utilisateurService.load();
     }, error => console.log(error));
   }
+  deleteHero(id: number) {
+    this.heroService.deleteById(id).subscribe(resp => {
+      this.heroService.load();
+    }, error => console.log(error));
+  }
 
   cancel() {
     this.adminForm = null;
   }
   cancelUser() {
     this.userForm = null;
+  }
+  cancelHero() {
+    this.heroForm = null;
   }
 
   loading(){
