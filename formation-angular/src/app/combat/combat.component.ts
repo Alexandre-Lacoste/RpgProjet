@@ -107,6 +107,7 @@ export class CombatComponent implements OnInit {
         defUtilisateur = this.utilisateur.defense + this.utilisateur.armure.defense;
       } else if (jetDe >= 4) {
         coefHero = this.utilisateur.hero.coefVitesse * this.utilisateur.vitesse;
+
         if (coefHero > (this.utilisateur.hero.coefDefense * this.utilisateur.defense)) {
           coefHero = (this.utilisateur.hero.coefDefense * this.utilisateur.defense) / coefHero;
         } else {
