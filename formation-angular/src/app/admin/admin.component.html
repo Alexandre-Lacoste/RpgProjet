@@ -189,6 +189,101 @@
       </section>
 
 
+
+      <section id="listUser" class="collapse">
+        <h2>Liste des Utilisateurs</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Version</th>
+              <th>Pseudo</th>
+              <th>Mail</th>
+              <th>MDP</th>
+              <th>Enable</th>
+              <th>Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of listUser()">
+              <td>{{user.id}}</td>
+              <td>{{user.version}}</td>
+              <td>{{user.pseudo}}</td>
+              <td>{{user.mail}}</td>
+              <td>{{user.mdp}}</td>
+              <td>{{user.enable}}</td>
+              <td>{{user.role}}</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-primary" data-target="#editUser" data-toggle="collapse" aria-expanded="false"
+                     aria-controls="editUser" (click)="editUser(user.id)"><i class="fa fa-edit"></i></a>
+                  <!--              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"-->
+                  <a class="btn btn-danger" (click)="deleteUser(user.id)"><i class="fa fa-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-dark" type="button" data-target="#editUser" data-toggle="collapse"
+                  aria-expanded="false"
+                  aria-controls="editUser" (click)="addUser()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </section>
+
+
+      <section id="editUser" class="collapse">
+        <div class="card mt-3" *ngIf="userForm">
+          <div class="card text-dark bg-light mb-3">
+            <h3>Edition de l'utilisateur</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="pseudoUser">Pseudo :</label>
+              <input type="string" class="form-control" id="pseudoUser" [(ngModel)]="userForm.pseudo">
+            </div>
+            <div class="form-group">
+              <label for="mailUser">Mail :</label>
+              <input type="string" class="form-control" id="mailUser" [(ngModel)]="userForm.mail">
+            </div>
+            <div class="form-group">
+              <label for="mdpUser">MDP :</label>
+              <input type="string" class="form-control" id="mdpUser" [(ngModel)]="userForm.mdp">
+            </div>
+            <div class="form-group">
+              <label for="enableUser">Enable :</label>
+              <select type="boolean" class="form-control" id="enableUser" [(ngModel)]="userForm.enable">
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="roleUser">Role :</label>
+              <select class="form-control" id="roleUser" [(ngModel)]="userForm.role">
+                <option value="ADMIN">Admin</option>
+                <option value="USER">User</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+              <a class="btn btn-success" (click)="saveUser()">
+                <i class="fa fa-check"></i>
+              </a>
+              <a class="btn btn-warning" (click)="cancelUser()">
+                <i class="fa fa-sync"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
     </main>
   </div>
 </div>
