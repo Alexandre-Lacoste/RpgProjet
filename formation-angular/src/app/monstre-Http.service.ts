@@ -24,6 +24,8 @@ export class MonstreHttpService {
   findAllMonstre(): Observable <Array<Monstre>>{
     return this.http.get<Array<Monstre>>(this.appConfigService.backEndUrl + "monstre/");
   }
+
+
   findById(id: number): Observable<Monstre> {
     return this.http.get<Monstre>(this.appConfigService.backEndUrl + "monstre/" + id+"/detail");
   }

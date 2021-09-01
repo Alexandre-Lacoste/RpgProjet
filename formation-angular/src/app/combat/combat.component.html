@@ -41,6 +41,7 @@
 
 
 <div *ngIf="phase==1" class="centralBlock">
+
 <div class="battle-background">
   <img  id="bg" src="assets/BattleImage/floor/winter.jpg">
   <img src="assets/BattleImage/enemy/orc.png" id="enemy-sprite">
@@ -81,17 +82,53 @@
   </div>
 </div>
 
-<div  class="menu" style="margin-top: 5px">
- <div class="info" style="text-align: center;padding-top: 35px;">
+<div  class="menu" style="margin-top: 5px" *ngIf="potionPhase==1" >
+ <div class="info" style="text-align: center;padding-top: 35px;" *ngIf="potionPhase==1">
    <p>Que voulez vous faire ?</p>
 </div>
 
-  <div class="option">
+
+  <div class="option" >
     <button style="margin-top: 35px;margin-left:20px;margin-right: 15px;" (click)="attaquer()" type="button " class="btn btn-outline-dark btn-lg">Attaquer</button>
     <button  style="margin-top: 35px;margin-right: 15px;"(click)="fuir()"  type="button" class="btn btn-outline-dark btn-lg">Fuir</button>
     <button style="margin-top: 35px;margin-right: 15px;"(click)="potion()" type="button" class="btn btn-outline-dark btn-lg">Utiliser Potion</button>
   </div>
+
 </div>
+
+  <div  class="menu2" style="margin-top: 5px" *ngIf="potionPhase==0" >
+    <a class="btn btn-danger" style="float: right;" (click)="annulerPotion()" >Annuler l'operation</a>
+
+    <div class="card-body" >
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Identifiant</th>
+        <th>Nom</th>
+        <th>Type de potion</th>
+        <th>Puissance </th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let p of potions">
+        <td>{{p.potion.id}}</td>
+        <td>{{p.potion.nom}}</td>
+        <td>{{p.potion.type}}</td>
+        <td>{{p.potion.valeur}}</td>
+
+        <td>
+          <a class="btn btn-danger" (click)="utiliserPotion(utilisateur.id,p)">Combat</a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  </div>
+
 </div>
 
 <div *ngIf="phase==2" class="centralBlock">
@@ -107,9 +144,7 @@
 
 </div>
 
-<div *ngIf="phase==3">
 
-</div>
 
 
 

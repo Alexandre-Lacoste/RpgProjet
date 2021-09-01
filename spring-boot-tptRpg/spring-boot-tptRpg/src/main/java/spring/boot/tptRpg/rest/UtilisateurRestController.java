@@ -53,7 +53,7 @@ public class UtilisateurRestController {
 	
 	@GetMapping("")
 	@JsonView(Views.ViewUtilisateur.class)
-	//@PreAuthorize("hasAnyRole('ADMIN')")
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public List<Utilisateur> findAll(){
 		return utilRepo.findAll();
 	}
@@ -117,8 +117,8 @@ public class UtilisateurRestController {
 		}
 	}
 	
-	@PostMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@PostMapping("")
+	@JsonView(Views.ViewUtilisateur.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Utilisateur create(@RequestBody Utilisateur utilisateur) {
 		utilisateur = utilRepo.save(utilisateur);
@@ -158,7 +158,7 @@ public class UtilisateurRestController {
 		return utilFind;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
