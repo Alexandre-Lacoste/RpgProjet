@@ -31,7 +31,7 @@ public class Inventaire {
 	
 	@OneToOne
 	@JoinColumn(name = "objet_id")
-	@JsonView(Views.ViewInventaire.class)
+	@JsonView({Views.ViewInventaire.class, Views.ViewUtilisateur.class})
 	private Objet objet;	
 	
 	@OneToOne
