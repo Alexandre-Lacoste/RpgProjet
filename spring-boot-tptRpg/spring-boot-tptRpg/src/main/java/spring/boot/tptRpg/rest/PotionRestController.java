@@ -46,7 +46,7 @@ public class PotionRestController {
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewPotion.class)
 	public Potion findPotionId(@PathVariable Long id) {
-		Optional<Potion> optPotion = potionRepo.findByPotionId(id);
+		Optional<Potion> optPotion = potionRepo.findById(id);
 		
 		if (optPotion.isPresent()) {
 			return optPotion.get();
@@ -59,7 +59,7 @@ public class PotionRestController {
 	@JsonView(Views.ViewPotionDetail.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public Potion findPotionDetailId(@PathVariable Long id) {
-		Optional<Potion> optPotion = potionRepo.findByPotionId(id);
+		Optional<Potion> optPotion = potionRepo.findById(id);
 		
 		if (optPotion.isPresent()) {
 			return optPotion.get();

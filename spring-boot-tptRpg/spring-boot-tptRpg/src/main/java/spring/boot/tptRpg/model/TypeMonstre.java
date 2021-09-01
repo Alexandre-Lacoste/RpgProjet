@@ -1,6 +1,6 @@
 package spring.boot.tptRpg.model;
 
 public enum TypeMonstre {
-	Orc,Dragon,Troll,Loups;
+	Orc,Dragon,Troll,Loups,Aigle,Araigne,Creature;
 
 }
