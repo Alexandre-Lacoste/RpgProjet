@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import spring.boot.tptRpg.model.Armure;
+import spring.boot.tptRpg.model.Armure;
 import spring.boot.tptRpg.model.Views;
 import spring.boot.tptRpg.repository.IArmureRepository;
 
