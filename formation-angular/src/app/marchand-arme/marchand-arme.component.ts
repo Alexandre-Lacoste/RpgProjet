@@ -5,6 +5,9 @@ import {ActivatedRoute} from "@angular/router";
 import {InventaireArme} from "../model/inventaireArme";
 import {InventaireArmeService} from "../inventaireArme/inventaireArme.service";
 import {Observable} from "rxjs";
+import {timeout} from "rxjs/operators";
+import {ArmeHttpService} from "../arme/arme-http.service";
+import {Arme} from "../model/Arme";
 
 @Component({
   selector: 'marchand-arme',
@@ -19,8 +22,11 @@ export class MarchandArmeComponent implements OnInit {
 
   marchandArmeForm: MarchandArme = null;
   private invArm: Observable<InventaireArme>;
+  private inArme: InventaireArme;
 
-  constructor(private route: ActivatedRoute, private marchandArmeService: MarchandArmeHttpService, private inventaireArmeService : InventaireArmeService) {
+  inventaireArmes: Array<InventaireArme> = new Array<InventaireArme>();
+
+  constructor(private route: ActivatedRoute, private marchandArmeService: MarchandArmeHttpService, private inventaireArmeService: InventaireArmeService) {
   }
 
   ngOnInit() {
@@ -52,7 +58,6 @@ export class MarchandArmeComponent implements OnInit {
   }
 
 
-
   delete(id: number) {
     this.marchandArmeService.deleteById(id).subscribe(resp => {
       this.marchandArmeService.load();
@@ -70,47 +75,59 @@ export class MarchandArmeComponent implements OnInit {
       error => console.log(error));
   }
 
+  // InventaireArmetoIdArmetomodifyqte(marchandArme : MarchandArme,id:number){
+  //   let inArme = this.rechercheinventaireArmebyidArme(marchandArme, id);
+  //   console.log(inArme);
+  //   this.createoraddqte(inArme );
+  // }
 
-  ajoutdanslinventaire(marchandArme : MarchandArme, id:number) {
+  rechercheinventaireArmebyidArme(marchandArme: MarchandArme) {
     let idArme = marchandArme.arme.id;
     console.log(idArme)
     this.inventaireArmeService.findInventaireArmeByIdArme(idArme).subscribe(response => {
         this.inventaireArme = response;
         console.log(this.inventaireArme);
         console.log(this.inventaireArme.quantite);
+        this.createoraddqte(this.inventaireArme, idArme);
       },
-      error => console.log(error));
-    console.log(this.inventaireArme);
-    console.log(this.inventaireArme.quantite);      // probleme de temps,  la ligne 80 se finit(ou lance) apres le debut du if, donc au lancement du if il prend les valeurs précédentes, avant la ligne 77
+      error => {
+        console.log(error);
+        this.creationinventlorsdelachat(this.inventaireArme,idArme);
+
+      }
+      );
+  }
+
+
+  createoraddqte(inventaireArme: InventaireArme, idArme: number) {
+    this.inventaireArme = inventaireArme;
+
     if (this.inventaireArme.quantite > 0) {
-      console.log(this.inventaireArme);
+      this.inventaireArme.quantite = inventaireArme.quantite + 1;
+      this.inventaireArmeService.modify(this.inventaireArme);
 
     } else {
-      console.log(this.inventaireArme);
-
-      this.inventaireArme = new InventaireArme();
+      let newinventArme = new InventaireArme();
+      newinventArme.arme.id = idArme;
+      newinventArme.quantite = 1;
+      newinventArme.inventaire.id = 1;
+      this.inventaireArmeService.create(newinventArme);
     }
   }
-    //
-    // delete(inventaireArme : InventaireArme, id : number){
-    //   if (inventaireArme.quantite > 1 ) {
-    //     inventaireArme.quantite = inventaireArme.quantite - 1;
-    //     this.inventaireArmeService.modify(inventaireArme);
-    //   } else if (inventaireArme.quantite = 1) {
-    //     this.inventaireArmeService.deleteById(id).subscribe(resp => {
-    //       this.inventaireArmeService.load();
-    //     }, error => console.log(error));
-    //   }
-    //
-    //   find(id: number) {
-    //     this.inventaireArmeService.findById(id).subscribe(response => {
-    //         this.inventaireArme = response;
-    //         console.log(this.inventaireArme);
-    //       },
-    //       error => console.log(error));
-    //   }
+  creationinventlorsdelachat(inventaireArme: InventaireArme, idArme: number){
 
+  let newinventArme = new InventaireArme();
+  console.log(idArme);
 
+  let armeex = new Arme(idArme)
+    console.log(armeex)
+    newinventArme.arme = armeex;
+    console.log(newinventArme);
+  newinventArme.quantite = 1;
+  newinventArme.inventaire.id = 1;
+  this.inventaireArmeService.create(newinventArme);
+
+  }
 }
 
 

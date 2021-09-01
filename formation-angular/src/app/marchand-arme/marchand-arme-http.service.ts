@@ -45,4 +45,6 @@ export class MarchandArmeHttpService {
       this.marchandArmes = response;
     }, error => console.log(error));
   }
+
+
 }
