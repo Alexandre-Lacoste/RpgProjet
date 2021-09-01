@@ -12,7 +12,7 @@ export class HeroHttpService {
   heros: Array<Hero> = new Array<Hero>();
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.load();
+    // this.load();
   }
 
   findAll(): Array<Hero> {

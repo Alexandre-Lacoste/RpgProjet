@@ -3,6 +3,11 @@ import {Admin} from "../model/Admin";
 import {AdminHttpService} from "./admin-http.service";
 import {ArmeHttpService} from "../arme/arme-http.service";
 import {ArmureHttpService} from "../armure/armure-http.service";
+import {PotionHttpService} from "../potion/potion-http.service";
+import {HeroHttpService} from "../hero/hero-http.service";
+import {MonstreHttpService} from "../monstre-Http.service";
+import {MarchandHttpService} from "../marchand/marchand-http.service";
+import {UtilisateurHttpService} from "../utilisateur-http.service";
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +19,8 @@ export class AdminComponent implements OnInit {
 
   adminForm: Admin = null;
 
-  constructor(private adminService: AdminHttpService, private armeService: ArmeHttpService, private armureService: ArmureHttpService) {
+  constructor(private adminService: AdminHttpService, private armeService: ArmeHttpService, private armureService: ArmureHttpService, private potionService: PotionHttpService,
+              private heroService: HeroHttpService, private monstreService: MonstreHttpService, private marchandService: MarchandHttpService, private utilisateurService: UtilisateurHttpService) {
   }
 
   ngOnInit(): void {
@@ -57,13 +63,32 @@ export class AdminComponent implements OnInit {
     this.adminService.load();
   }
 
-loadingArme() {
+  loadingArme() {
     this.armeService.load();
   }
-
   loadingArmure() {
     this.armureService.load();
   }
+  loadingPotion() {
+    this.potionService.load();
+  }
+  loadingHero() {
+    this.heroService.load();
+  }
+  loadingMonstre() {
+    this.monstreService.load();
+  }
+  loadingMarchand() {
+    this.marchandService.load();
+  }
+  loadingAdmin() {
+    this.adminService.load();
+  }
+  loadingUser() {
+    this.utilisateurService.load();
+  }
+
+
 
 
 }

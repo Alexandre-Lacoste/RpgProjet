@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {Admin} from "../model/Admin";
 import {Observable} from "rxjs";
-import {Monstre} from "../model/Monstre";
 import {MonstreHttpService} from "../monstre-Http.service";
 
 @Injectable({
@@ -19,7 +18,6 @@ export class AdminHttpService {
   }
 
   findAll(): Array<Admin> {
-    // return this.http.get<Array<Admin>>(this.appConfigService.backEndUrl + "admin/admin");
     return this.admins;
   }
 
