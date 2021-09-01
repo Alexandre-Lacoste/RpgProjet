@@ -46,7 +46,7 @@ public class ArmureRestController {
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewArmure.class)
 	public Armure findArmureId(@PathVariable Long id) {
-		Optional<Armure> optArmure = armureRepo.findByArmureId(id);
+		Optional<Armure> optArmure = armureRepo.findById(id);
 		
 		if (optArmure.isPresent()) {
 			return optArmure.get();
@@ -59,7 +59,7 @@ public class ArmureRestController {
 	@JsonView(Views.ViewArmureDetail.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public Armure findArmureDetailId(@PathVariable Long id) {
-		Optional<Armure> optArmure = armureRepo.findByArmureId(id);
+		Optional<Armure> optArmure = armureRepo.findById(id);
 		
 		if (optArmure.isPresent()) {
 			return optArmure.get();
