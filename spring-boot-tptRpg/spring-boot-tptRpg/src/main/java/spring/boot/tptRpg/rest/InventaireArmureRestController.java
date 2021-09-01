@@ -18,8 +18,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import spring.boot.tptRpg.model.Armure;
+import spring.boot.tptRpg.model.InventaireArmure;
 import spring.boot.tptRpg.model.InventaireArmure;
 import spring.boot.tptRpg.model.Views;
+import spring.boot.tptRpg.repository.IArmureRepository;
 import spring.boot.tptRpg.repository.IInventaireArmureRepository;
 
 @RestController
@@ -28,6 +31,9 @@ import spring.boot.tptRpg.repository.IInventaireArmureRepository;
 public class InventaireArmureRestController {
 	@Autowired
 	private IInventaireArmureRepository invArmureRepo;
+
+	@Autowired
+	private IArmureRepository armureRepo;
 	
 	@GetMapping("")
 	@JsonView(Views.ViewInventaireArmure.class)
@@ -39,22 +45,38 @@ public class InventaireArmureRestController {
 	@JsonView(Views.ViewInventaireArmure.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public InventaireArmure findInventaireArmureById(@PathVariable Long id) {
-		Optional<InventaireArmure> optinvArmure = invArmureRepo.findById(id);
+		Optional<InventaireArmure> optInvArmure = invArmureRepo.findById(id);
 		
-		if (optinvArmure.isPresent()) {
-			return optinvArmure.get();
+		if (optInvArmure.isPresent()) {
+			return optInvArmure.get();
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
 	
-	@PostMapping
-	//@JsonView(Views.ViewAdmin.class)
+	
+	@GetMapping("/idArmure/{id}")
+	@JsonView(Views.ViewInventaireArmure.class)
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public InventaireArmure findInventaireArmureByIdArmure(@PathVariable Long id) {
+		Optional<InventaireArmure> optInvArmure = invArmureRepo.findInventaireArmureByIdArmure(id);
+		
+		if (optInvArmure.isPresent()) {
+			return optInvArmure.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+	}
+	
+	
+	@PostMapping("")
+	@JsonView(Views.ViewInventaireArmure.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public InventaireArmure create(@RequestBody InventaireArmure invArmure) {
 		invArmure = invArmureRepo.save(invArmure);
 		return invArmure;
 	}
+	
 	
 	@PutMapping("/{id}")
 	//@PreAuthorize("hasAnyRole('ADMIN')")
@@ -64,13 +86,13 @@ public class InventaireArmureRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 
-		invArmure = invArmureRepo.save(invArmure);
+		invArmure= invArmureRepo.save(invArmure);
 
 		return invArmure ;
 	}
 	
-	@DeleteMapping
-	//@JsonView(Views.ViewAdmin.class)
+	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewInventaireArmure.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
 		if(!invArmureRepo.existsById(id)) {

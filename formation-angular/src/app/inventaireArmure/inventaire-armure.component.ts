@@ -6,6 +6,9 @@ import {Hero} from "../model/Hero";
 import {ActivatedRoute} from "@angular/router";
 import {InventaireArmure} from "../model/inventaireArmure";
 import {InventaireArmureService} from "./inventaireArmure.service";
+import {InventaireArme} from "../model/inventaireArme";
+import {Objet} from "../model/objet";
+import {ObjetService} from "../objet/objet.service";
 
 @Component({
   selector: 'app-inventaire-armure',
@@ -13,26 +16,32 @@ import {InventaireArmureService} from "./inventaireArmure.service";
   styleUrls: ['../inventaireArme/inventaire-arme.component.scss']
 })
 export class InventaireArmureComponent implements OnInit {
-  @Input()
-  mar: number;
+
 
   inventaireArmure: InventaireArmure= new InventaireArmure();
   inventaireArmureForm: InventaireArmure = null;
+  objet: Objet;
 
-  private paramMar: any;
+  private qtegold: number;
 
-
-  constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmureService: InventaireArmureService,
+  constructor(private utilisateurService: UtilisateurService, private objetService: ObjetService, private heroService: HeroHttpService, private inventaireArmureService: InventaireArmureService,
               private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.paramMar = this.route.params.subscribe(params => {
-      this.mar = +params['mar'];
-    });
+    this.objetService.findById(1).subscribe(response=>
+      {
+        this.objet=response;
+
+        this.qtegold = this.objet.qte;
+
+
+      },
+      error=>console.log(error));
     this.find(1);
   }
+
 
   find(id : number){
     this.inventaireArmureService.findById(id).subscribe(response=>
@@ -67,14 +76,42 @@ export class InventaireArmureComponent implements OnInit {
   }
 
 
-  delete(id: number) {
-    this.inventaireArmureService.deleteById(id).subscribe(resp => {
-      this.inventaireArmureService.load();
-    }, error => console.log(error));
+  delete(inventaireArmure : InventaireArmure, id : number){
+    if (inventaireArmure.qte > 1 ) {console.log(inventaireArmure)
+      inventaireArmure.qte = inventaireArmure.qte - 1;
+      this.inventaireArmureService.modify(inventaireArmure);
+    } else if (inventaireArmure.qte = 1) {console.log(inventaireArmure.qte)
+      this.inventaireArmureService.deleteById(id).subscribe(resp => {
+        this.inventaireArmureService.load();
+      }, error => console.log(error));
+    }
+
   }
 
   cancel() {
     this.inventaireArmureForm = null;
   }
 
+  gaingold(inventaireArmure : InventaireArmure,id:number) {
+
+    this.qtegold = this.qtegold + inventaireArmure.armure.prixVente;
+    this.objet.qte = this.qtegold;
+    this.objetService.modify(this.objet);
+
+  }
+
+  timeOutAlert(nom :string,prixVente : number){
+    let qtegoldstring: string ;
+    let prixVentestring : string;
+    if ( this.qtegold != null )  qtegoldstring = this.qtegold.toString();
+    if ( this.qtegold != null )  prixVentestring = prixVente.toString();
+
+    setTimeout(function(){ alert("Vous avez acheté " +nom+ " pour la modique somme de " + prixVentestring + "  gold."  +
+      "" +
+      "                         Il vous reste " + qtegoldstring + " Gold"); }, 1500);
+  }
+
+  reloadCurrentPage() {
+    setTimeout(function (){window.location.reload();},1510);
+  }
 }
