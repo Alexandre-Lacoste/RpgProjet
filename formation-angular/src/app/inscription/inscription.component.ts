@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilisateurHttpService} from "../utilisateur-http.service";
 import {Utilisateur} from "../model/utilisateur";
+import {InventaireService} from "../inventaire.service";
+import {Inventaire} from "../model/inventaire";
 
 @Component({
   selector: 'app-inscription',
@@ -10,8 +12,10 @@ import {Utilisateur} from "../model/utilisateur";
 export class InscriptionComponent implements OnInit {
 
   inscForm: Utilisateur = null;
+  inv:Inventaire=null;
 
-  constructor(private utilisateurService: UtilisateurHttpService) {
+  constructor(private utilisateurService: UtilisateurHttpService,private inventaireService:InventaireService) {
+
   }
 
   ngOnInit(): void {

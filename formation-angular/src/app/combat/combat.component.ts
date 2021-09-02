@@ -223,6 +223,7 @@ export class CombatComponent implements OnInit {
       }
       if(this.utilisateur.vie<=0){
         this.utilisateur.vie=0;
+        this.utilisateur.cptCombatGagne=this.utilisateur.cptCombatGagne+1;
         this.utilisateurService.modify(this.utilisateur);
         this.phase=5;
       }else{
@@ -238,6 +239,8 @@ export class CombatComponent implements OnInit {
         }
 
         if(this.monstre.vie<=0) {
+          this.utilisateur.cptCombat=this.utilisateur.cptCombat+1;
+          this.utilisateur.cptCombatGagne=this.utilisateur.cptCombatGagne+1;
           this.utilisateurService.modify(this.utilisateur);
           this.monstre.vie = 0;
           let inventaireArme = new InventaireArme(1,this.monstre.arme,this.utilisateur.inventaire);
