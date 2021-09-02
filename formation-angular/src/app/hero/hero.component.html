@@ -1,147 +1,77 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-  <!--<canvas class="my-4 w-100" id="myChart" width="0" height="0"></canvas>-->
+<!--<!doctype html>-->
+<!--<html lang="fr">-->
+<head>
+  <title>Hero</title>
+</head>
 
-  <section id="listHero" class="collapse">
-    <h2>Liste des Héros</h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-sm">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>Version</th>
-          <th>Nom</th>
-          <th>Type</th>
-          <th>coef Attaque</th>
-          <th>coef Defense</th>
-          <th>coef Vie</th>
-          <th>coef Precision</th>
-          <th>coef Vitesse</th>
-          <th>attaque</th>
-          <th>defense</th>
-          <th>vie</th>
-          <th>agilite</th>
-          <th>vitesse</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let hero of list()">
-          <td>{{hero.id}}</td>
-          <td>{{hero.version}}</td>
-          <td>{{hero.nom}}</td>
-          <td>{{hero.typePersonnage}}</td>
-          <td>{{hero.coefAttaque}}</td>
-          <td>{{hero.coefDefense}}</td>
-          <td>{{hero.coefVie}}</td>
-          <td>{{hero.coefPrecision}}</td>
-          <td>{{hero.coefVitesse}}</td>
-          <td>{{hero.attaque}}</td>
-          <td>{{hero.defense}}</td>
-          <td>{{hero.vie}}</td>
-          <td>{{hero.agilite}}</td>
-          <td>{{hero.vitesse}}</td>
-          <td>
-            <div class="btn-group btn-group-sm">
-              <a class="btn btn-primary" data-target="#editHero" data-toggle="collapse" aria-expanded="false"
-                 aria-controls="editHero" (click)="edit(hero.id)"><i class="fa fa-edit"></i></a>
-              <a class="btn btn-danger" (click)="delete(hero.id)"><i class="fa fa-trash"></i></a>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card-footer">
-      <button class="btn btn-dark" type="button" data-target="#editHero" data-toggle="collapse" aria-expanded="false"
-              aria-controls="editHero" (click)="add()">
-        <i class="fa fa-plus"></i>
-      </button>
-    </div>
-  </section>
+<body>
 
 
-  <section id="editHero" class="collapse">
-    <div class="card mt-3" *ngIf="heroForm">
-      <div class="card text-dark bg-light mb-3">
-        <h3>Edition Potion</h3>
-      </div>
-      <div class="card-body">
-        <div class="form-group">
-          <label for="nom">Nom :</label>
-          <input type="string" class="form-control" id="nom" [(ngModel)]="heroForm.nom">
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Héros</h1>
+  <p class="lead">Vous découvrirez ici les caractéristiques de vos héros préférés, plus intrépides les uns que les
+    autres !</p>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+
+    <div *ngFor="let hero of list()">
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">{{hero.nom}}</h4>
         </div>
-        <div class="form-group">
-          <label for="typePersonnage">Type :</label>
-          <select class="form-control" id="typePersonnage" [(ngModel)]="heroForm.typePersonnage">
-            <option value="elf">elf</option>
-            <option value="guerrier">guerrier</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="coefAttaque">coef Attaque :</label>
-          <input type="number" class="form-control" id="coefAttaque" [(ngModel)]="heroForm.coefAttaque">
-        </div>
-        <div class="form-group">
-          <label for="coefDefense">coef Defense :</label>
-          <input type="number" class="form-control" id="coefDefense" [(ngModel)]="heroForm.coefDefense">
-        </div>
-        <div class="form-group">
-          <label for="coefVie">coef Vie :</label>
-          <input type="number" class="form-control" id="coefVie" [(ngModel)]="heroForm.coefVie">
-        </div>
-        <div class="form-group">
-          <label for="coefPrecision">coef Precision :</label>
-          <input type="number" class="form-control" id="coefPrecision" [(ngModel)]="heroForm.coefPrecision">
-        </div>
-        <div class="form-group">
-          <label for="coefVitesse">coef Vitesse :</label>
-          <input type="number" class="form-control" id="coefVitesse" [(ngModel)]="heroForm.coefVitesse">
-        </div>
-        <div class="form-group">
-          <label for="attaque">Attaque :</label>
-          <input type="number" class="form-control" id="attaque" [(ngModel)]="heroForm.attaque">
-        </div>
-        <div class="form-group">
-          <label for="defense">Defense :</label>
-          <input type="number" class="form-control" id="defense" [(ngModel)]="heroForm.defense">
-        </div>
-        <div class="form-group">
-          <label for="vie">Vie :</label>
-          <input type="number" class="form-control" id="vie" [(ngModel)]="heroForm.vie">
-        </div>
-        <div class="form-group">
-          <label for="agilite">Agilite :</label>
-          <input type="number" class="form-control" id="agilite" [(ngModel)]="heroForm.agilite">
-        </div>
-        <div class="form-group">
-          <label for="vitesse">Vitesse :</label>
-          <input type="number" class="form-control" id="vitesse" [(ngModel)]="heroForm.vitesse">
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="btn-group btn-group-lg float-right">
-          <a class="btn btn-success" (click)="save()">
-            <i class="fa fa-check"></i>
-          </a>
-          <a class="btn btn-warning" (click)="cancel()">
-            <i class="fa fa-sync"></i>
-          </a>
+        <div class="card-body">
+          <ul class="list-unstyled mt-3 mb-4">
+            <li><h5>Type : {{hero.typePersonnage}}</h5></li>
+            <li><h5>Attaque : {{hero.attaque}}</h5></li>
+            <li><h5>Defense : {{hero.defense}}</h5></li>
+            <li><h5>Vie : {{hero.vie}}</h5></li>
+            <li><h5>Agilite : {{hero.agilite}}</h5></li>
+            <li><h5>Vitesse : {{hero.vitesse}}</h5></li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
 
-</main>
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
+  </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-<script src="dashboard.js"></script>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <small class="d-block mb-3 text-muted">&copy; 2021</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">News du jeux</a></li>
+          <li><a class="text-muted" href="#">News de l'équipe</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="/accueil">Accueil</a></li>
+          <li><a class="text-muted" href="/combat">Combat</a></li>
+          <li><a class="text-muted" href="/marchand/1">Marchand</a></li>
+          <li><a class="text-muted" href="/hero">Héros</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          <li><a class="text-muted" href="#">Privacy</a></li>
+          <li><a class="text-muted" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+</body>
+<!--</html>-->
