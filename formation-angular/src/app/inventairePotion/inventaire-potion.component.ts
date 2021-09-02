@@ -34,7 +34,7 @@ export class InventairePotionComponent implements OnInit {
         this.objet=response;
 
         this.qtegold = this.objet.qte;
-        console.log(this.qtegold);
+
 
 
       },
@@ -47,7 +47,7 @@ export class InventairePotionComponent implements OnInit {
     this.inventairePotionService.findById(id).subscribe(response=>
       {
         this.inventairePotion=response;
-        console.log(this.inventairePotion);
+
       },
       error=>console.log(error));
   }
