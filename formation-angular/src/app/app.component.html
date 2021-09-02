@@ -5,8 +5,23 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
  <a class="navbar-brand" href="#" >TPTRPG</a>
+  <div class="collapse navbar-collapse" id="navbarText" *ngIf="user">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/accueil']">Accueil</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/connexion']">Se Connecter</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/inscription']">S'inscrire</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+    </span>
+  </div>
 
-  <div class="collapse navbar-collapse" id="navbarText">
+  <div class="collapse navbar-collapse" id="navbarTextConnect" *ngIf="!user">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/accueil']">Accueil</a>
@@ -21,13 +36,16 @@
         <a class="nav-link" [routerLink]="['/marchand/1']">Marchand</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/combat']">Combat</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active" >
-        <a class="nav-link" [routerLink]="['/connexion']">Se Connecter</a>
+        <a class="nav-link" [routerLink]="['/combat/1']">Combat</a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/inscription']">S'inscrire</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" (click)="logout()">Se deconnecter</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/connexion']">Se Connecter</a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/admin']">Admin</a>
@@ -45,6 +63,3 @@
   <router-outlet></router-outlet>
 </div>
 
-<footer class="navbar fixed-bottom bg-dark text-light ">
-  <span class="txtcenter">coin-coin</span>
-</footer>

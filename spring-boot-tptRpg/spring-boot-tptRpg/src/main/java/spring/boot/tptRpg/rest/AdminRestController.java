@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -75,9 +76,12 @@ public class AdminRestController {
 		}
 	}
 	
+	
+	
 	@GetMapping(value  = "/compte", params = "pseudo")
 	@JsonView(Views.ViewAdmin.class)
 //	@PreAuthorize("hasAnyRole('ADMIN')")
+	
 	public Compte findComptebyPseudo(@RequestParam("pseudo") String pseudo) {
 
 		Optional<Compte> optCompte = compteRepo.findByPseudo(pseudo);
@@ -132,6 +136,31 @@ public class AdminRestController {
 
 		admin = adminRepo.save(admin);
 		return admin;
+	}
+	
+//	@PostMapping("/compte/users/connexion/")
+////	@PreAuthorize("hasAnyRole('ADMIN')")
+//	@JsonView(Views.ViewAdmin.class)
+//	public Compte findConnexion(@RequestParam("pseudo") String pseudo ,@RequestParam("mdp") String mdp) {
+//		Optional<Compte> optAdmin = compteRepo.findByPseudoMdp(pseudo,mdp);
+//		
+//		if (optAdmin.isPresent()) {
+//			return optAdmin.get();
+//		} else {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+//		}
+//	}
+	
+	@RequestMapping(value="/compte/users/connexion",method=RequestMethod.POST)
+	@JsonView(Views.ViewAdmin.class)
+	public Compte findConnexion(@RequestParam("pseudo") String pseudo ,@RequestParam("mdp") String mdp) {
+		Optional<Compte> optAdmin = compteRepo.findByPseudoMdp(pseudo,mdp);
+		
+		if (optAdmin.isPresent()) {
+			return optAdmin.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
 	}
 	
 	@PutMapping("/{id}")

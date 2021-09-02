@@ -14,6 +14,8 @@ import {InventairePotion} from "../model/inventairePotion";
 import {InventairePotionService} from "../inventairePotion/inventairePotion.service";
 import {MarchandArme} from "../model/MarchandArme";
 import {InventaireService} from "../inventaire.service";
+import {Arme} from "../model/Arme";
+import {Armure} from "../model/Armure";
 
 
 @Component({
@@ -22,7 +24,8 @@ import {InventaireService} from "../inventaire.service";
   styleUrls: ['./utilisateur.component.scss']
 })
 export class UtilisateurComponent implements OnInit {
-
+  heroForm:Hero=null;
+  heros:Array<Hero>=new Array<Hero>();
   utilisateur: Utilisateur= new Utilisateur();
   utilisateurForm: Utilisateur = null;
   inventaire: Inventaire=new Inventaire();
@@ -34,8 +37,17 @@ export class UtilisateurComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.listHero();
   }
+
+  listHero() {
+    this.heroService.findAllHero().subscribe(resp=>{
+      this.heros=resp;
+      console.log(this.heros);
+    });
+  }
+
+
   list(): Array<Utilisateur> {
     return this.utilisateurService.findAll();
   }
@@ -96,4 +108,44 @@ export class UtilisateurComponent implements OnInit {
       return 0;
     }
   }
+
+  choixArme(arme:Arme,utilsateur:Utilisateur){
+    console.log(utilsateur.id);
+    console.log(arme);
+    utilsateur.arme=arme;
+    this.utilisateur=utilsateur;
+    this.utilisateurService.modify(this.utilisateur);
+
+  }
+
+  choixArmure(armure:Armure,utilsateur:Utilisateur){
+    utilsateur.armure=armure;
+    this.utilisateur=utilsateur;
+    this.utilisateurService.modify(this.utilisateur);
+
+  }
+
+  choixHero(hero:Hero,utilisateur:Utilisateur){
+    utilisateur.hero=hero;
+
+    utilisateur.vie=hero.vie;
+    utilisateur.vieMax=hero.vie;
+
+    utilisateur.attaque=hero.attaque;
+    utilisateur.attaqueMax=hero.attaque;
+
+    utilisateur.defense=hero.defense;
+    utilisateur.defenseMax=hero.defense;
+
+    utilisateur.agilite=hero.agilite;
+    utilisateur.agiliteMax=hero.agilite;
+
+    utilisateur.vitesse=hero.vitesse;
+    utilisateur.vitesseMax=hero.vitesse;
+
+    this.utilisateur=utilisateur;
+    this.utilisateurService.modify(this.utilisateur);
+  }
+
+
 }
