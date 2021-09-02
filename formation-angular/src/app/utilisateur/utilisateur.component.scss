@@ -1,6 +1,22 @@
 .utilisateur{
-  background-color: #9490aa;
-  height: 100%;
+  background-image: url("tt2.jpg");
+  height: 600px;
+
+}
+.table-dark {
+  color: #fff;
+  background-color: #343a408f;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(227 213 213 / 51%);
+  background-clip: border-box;
+  border: 1px solid #f8f9fa;
+  border-radius: 0.25rem;
 }
 
 .informations{
@@ -9,6 +25,7 @@
   width: 100%;
   font-family: Bahnschrift;
   margin-left: 15px;
+  border-color: white;
 }
 
 .caracteristiques{
@@ -17,6 +34,7 @@
   width: 60%;
   font-family: Bahnschrift;
   margin-left: 15px;
+  color: floralwhite;
 }
 .detail{
   display: inline-block;
@@ -50,11 +68,13 @@
   display: inline-block;
 }
 .card-header{
+
   background-color:darkgrey;
   text-align: center;
   font-family: BlinkMacSystemFont;
   display: block;
   width: 100%;
+  border-color: white;
 }
 .card Xdetails{
   background-color:grey;
@@ -62,6 +82,12 @@
   font-family: BlinkMacSystemFont;
   display: block;
   width: 100%;
+  border-color: white;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #dc3545b8;
+  border-color: #f8f9fa;
 }
 .bouton{
   text-align: center;
@@ -70,5 +96,11 @@
   height: 5%;
   margin-top: 15px;
   margin-left: 35px;
-}
 
+}
+.btn-warning {
+  background-color: white;
+  color:darkred;
+  background-border:white;
+  margin-left: 750px;
+}
