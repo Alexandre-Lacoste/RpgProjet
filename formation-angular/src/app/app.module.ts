@@ -52,7 +52,7 @@ import {CommonModule} from "@angular/common";
     ArmureComponent,
     ArmeComponent,
     AdminComponent,
-    ConnexionComponent
+    ConnexionComponent,
     InscriptionComponent,
     ObjetComponent
   ],
