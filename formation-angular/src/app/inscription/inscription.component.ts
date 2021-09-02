@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilisateurHttpService} from "../utilisateur-http.service";
 import {Utilisateur} from "../model/utilisateur";
+import {InventaireService} from "../inventaire.service";
+import {Inventaire} from "../model/inventaire";
 
 @Component({
   selector: 'app-inscription',
@@ -10,8 +12,10 @@ import {Utilisateur} from "../model/utilisateur";
 export class InscriptionComponent implements OnInit {
 
   inscForm: Utilisateur = null;
+  inv:Inventaire=null;
 
-  constructor(private utilisateurService: UtilisateurHttpService) {
+  constructor(private utilisateurService: UtilisateurHttpService,private inventaireService:InventaireService) {
+
   }
 
   ngOnInit(): void {
@@ -25,13 +29,26 @@ export class InscriptionComponent implements OnInit {
   save() {
     console.log();
 
-    this.inscForm.role = "USER" ;
-    this.inscForm.agilite = 2 ;
-    this.inscForm.attaque = 2 ;
-    this.inscForm.defense = 2 ;
-    this.inscForm.vie = 2 ;
-    this.inscForm.vitesse = 2 ;
+   this.inscForm.vie= 0;
+    this.inscForm.attaque=0;
+    this.inscForm.defense=0;
+    this.inscForm.agilite=0;
+    this.inscForm.vitesse=0;
+    this.inscForm.vieMax=0;
+    this.inscForm.attaqueMax=0;
+    this.inscForm.defenseMax=0;
+    this.inscForm.agiliteMax=0;
+    this.inscForm.vitesseMax=0;
+    this.inscForm.cptEmpoisonnement=0;
+    this.inscForm.cptEtourdissement=0;
+    this.inscForm.cptSaignement=0;
+    this.inscForm.cptBrulure=0;
+    this.inscForm.cptCombat=0;
+    this.inscForm.cptCombatGagne=0;
+    this.inscForm.cptMonstreVaincu=0;
+    this.inscForm.exp=0;
 
+    console.log(this.inscForm);
 
     this.utilisateurService.createbyInsc(this.inscForm);
     this.inscForm = null;
