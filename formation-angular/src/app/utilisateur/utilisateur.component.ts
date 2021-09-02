@@ -116,12 +116,13 @@ export class UtilisateurComponent implements OnInit {
   choixArme(arme:Arme,utilsateur:Utilisateur){
     console.log(utilsateur.id);
     console.log(arme);
-    this.arme=false;
-  this.armure=false;
-  this.hero=false;
+
     utilsateur.arme=arme;
     this.utilisateur=utilsateur;
     this.utilisateurService.modify(this.utilisateur);
+    this.arme=false;
+    this.armure=false;
+    this.hero=false;
 
   }
 
@@ -136,9 +137,9 @@ export class UtilisateurComponent implements OnInit {
   }
 
   choixHero(hero:Hero,utilisateur:Utilisateur){
-    this.arme=false;
-    this.armure=false;
-    this.hero=false;
+
+    console.log(utilisateur);
+
     utilisateur.hero=hero;
 
     utilisateur.vie=hero.vie;
@@ -155,9 +156,14 @@ export class UtilisateurComponent implements OnInit {
 
     utilisateur.vitesse=hero.vitesse;
     utilisateur.vitesseMax=hero.vitesse;
+    console.log(utilisateur.version)
 
     this.utilisateur=utilisateur;
+    console.log(this.utilisateur.version)
     this.utilisateurService.modify(this.utilisateur);
+    this.arme=false;
+    this.armure=false;
+    this.hero=false;
   }
 
   declencheHero(){

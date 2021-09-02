@@ -3,6 +3,7 @@
   background-attachment: fixed;
   image-resolution:1080x;
   height: 2000px;
+  width: 100%;
 
 }
 .table-dark {
@@ -123,4 +124,15 @@
 }
 .collapse{
   width: 100%;
+}
+
+footer {
+  margin-top : 5%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  color: white;
+  text-align: center;
 }

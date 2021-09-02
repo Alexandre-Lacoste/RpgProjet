@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 01 sep. 2021 à 15:13
+-- Généré le : jeu. 02 sep. 2021 à 16:21
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -494,13 +494,13 @@ CREATE TABLE IF NOT EXISTS `personnage` (
 --
 
 INSERT INTO `personnage` (`type`, `id`, `nom`, `version`, `agilite`, `attaque`, `coef_attaque`, `coef_defense`, `coef_precision`, `coef_vie`, `coef_vitesse`, `defense`, `type_personnage`, `vie`, `vitesse`, `exp`, `gold`, `type_monstre`, `arme_id`, `armure_id`) VALUES
-('monstre', 1, 'Troll des cavernes', 0, 2, 60, NULL, NULL, NULL, NULL, NULL, 50, NULL, 150, 2, 10, 0, 'Troll', 7, NULL),
-('monstre', 2, 'Wargs', 0, 30, 25, NULL, NULL, NULL, NULL, NULL, 10, NULL, 70, 100, 10, 0, 'Loups', NULL, NULL),
-('monstre', 3, 'Aigles geants', 0, 50, 40, NULL, NULL, NULL, NULL, NULL, 6, NULL, 90, 150, 4, 0, 'Aigle', NULL, NULL),
-('monstre', 4, 'Arachnee', 0, 20, 35, NULL, NULL, NULL, NULL, NULL, 20, NULL, 100, 50, 14, 0, 'Araigne', NULL, NULL),
-('monstre', 5, 'Le guetteur des eaux', 0, 40, 29, NULL, NULL, NULL, NULL, NULL, 70, NULL, 80, 40, 1, 0, 'Creature', 10, NULL),
-('monstre', 6, 'Azog', 0, 65, 40, NULL, NULL, NULL, NULL, NULL, 10, NULL, 150, 20, 15, 1800, 'Orc', 5, NULL),
-('monstre', 7, 'Bolg', 0, 25, 40, NULL, NULL, NULL, NULL, NULL, 30, NULL, 140, 50, 14, 5, 'Orc', 10, NULL),
+('monstre', 1, 'Troll des cavernes', 0, 2, 60, NULL, NULL, NULL, NULL, NULL, 50, NULL, 150, 2, 10, 0, 'Troll', 7, 6),
+('monstre', 2, 'Wargs', 0, 30, 25, NULL, NULL, NULL, NULL, NULL, 10, NULL, 70, 100, 10, 0, 'Loups', 11, 6),
+('monstre', 3, 'Aigles geants', 0, 50, 40, NULL, NULL, NULL, NULL, NULL, 6, NULL, 90, 150, 4, 0, 'Aigle', 9, 5),
+('monstre', 4, 'Arachnee', 0, 20, 35, NULL, NULL, NULL, NULL, NULL, 20, NULL, 100, 50, 14, 0, 'Araigne', 11, 3),
+('monstre', 5, 'Le guetteur des eaux', 0, 40, 29, NULL, NULL, NULL, NULL, NULL, 70, NULL, 80, 40, 1, 0, 'Creature', 10, 4),
+('monstre', 6, 'Azog', 0, 65, 40, NULL, NULL, NULL, NULL, NULL, 10, NULL, 150, 20, 15, 1800, 'Orc', 5, 4),
+('monstre', 7, 'Bolg', 0, 25, 40, NULL, NULL, NULL, NULL, NULL, 30, NULL, 140, 50, 14, 5, 'Orc', 10, 4),
 ('hero', 8, 'Archer', 0, 20, 24, 1, 1, 1, 1, 1, 10, 'archer', 100, 50, NULL, NULL, NULL, 10, 6),
 ('hero', 9, 'elfes', 0, 25, 18, 1, 1, 1, 1, 1, 10, 'archer', 120, 40, NULL, NULL, NULL, 10, 6),
 ('hero', 28, 'Ranger', 0, 18, 10, 1, 1, 1, 1, 1, 17, 'archer', 75, 25, NULL, NULL, NULL, 12, 4),
