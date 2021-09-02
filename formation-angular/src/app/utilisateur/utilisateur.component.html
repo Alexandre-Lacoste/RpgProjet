@@ -49,13 +49,13 @@
     </div>
 
     <div class="bouton" *ngIf="utilisateurForm">
-      <a  class="btn btn-primary" href="#MonCollapse2" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Hero </a>
-      <a  class="btn btn-primary" href="#MonCollapse3" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Arme </a>
-      <a  class="btn btn-primary" href="#MonCollapse4" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Armure </a>
+      <a  class="btn btn-primary" href="#MonCollapse2"  (click)="declencheHero()" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Hero </a>
+      <a  class="btn btn-primary" href="#MonCollapse3" (click)="declencheArme()" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Arme </a>
+      <a  class="btn btn-primary" href="#MonCollapse4" (click)="declencheArmure()" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Armure </a>
 
       <br>
-      <section id="MonCollapse2" class="collapse">
-        <div  *ngIf="utilisateurForm">
+      <section id="MonCollapse2" class="collapse" >
+        <div *ngIf="hero &&utilisateurForm &&!arme &&!armure" >
           <table class="table table-striped">
             <thead>
             <tr>
@@ -94,7 +94,7 @@
       </section>
       <br>
       <section id="MonCollapse3" class="collapse">
-        <div  *ngIf="utilisateurForm">
+        <div  *ngIf="arme &&utilisateurForm &&!armure &&!hero">
           <table class="table table-striped">
             <thead>
             <tr>
@@ -126,7 +126,7 @@
       </section>
 
       <section id="MonCollapse4" class="collapse">
-        <div  *ngIf="utilisateurForm" >
+        <div  *ngIf="armure &&utilisateurForm &&!arme &&!hero">
           <table class="table table-striped">
             <thead>
             <tr>
@@ -165,7 +165,7 @@
 
 
 
-          <div class="card mt-3" *ngIf="utilisateurForm" >
+          <div class="card mt-3" *ngIf="utilisateurForm &&!hero &&!arme &&!armure  " >
 
             <div class="card-header" >
 
@@ -223,7 +223,7 @@
           </div>
 
 
-        <div class="bouton" *ngIf="utilisateurForm">
+        <div class="bouton" *ngIf="utilisateurForm &&!hero &&!arme &&!armure">
           <a  class="btn btn-primary" href="#MonCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Détails de votre Héro </a>
 
 
@@ -231,7 +231,7 @@
 
 <br>
 
-            <section id="MonCollapse" class="collapse" >
+            <section id="MonCollapse" class="collapse">
               <div class="card detail" *ngIf="utilisateurForm">
               <div class="well">
 

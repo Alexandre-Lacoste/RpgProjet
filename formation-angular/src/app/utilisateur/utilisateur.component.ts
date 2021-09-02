@@ -29,7 +29,9 @@ export class UtilisateurComponent implements OnInit {
   utilisateur: Utilisateur= new Utilisateur();
   utilisateurForm: Utilisateur = null;
   inventaire: Inventaire=new Inventaire();
-  profil:number=0;
+  arme:boolean;
+  hero:boolean;
+  armure:boolean;
   constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmeService: InventaireArmeService, private inventaireArmureService: InventaireArmureService, private inventairePotionService: InventairePotionService, private inventaireService: InventaireService) {
 
   }
@@ -114,6 +116,9 @@ export class UtilisateurComponent implements OnInit {
   choixArme(arme:Arme,utilsateur:Utilisateur){
     console.log(utilsateur.id);
     console.log(arme);
+    this.arme=false;
+  this.armure=false;
+  this.hero=false;
     utilsateur.arme=arme;
     this.utilisateur=utilsateur;
     this.utilisateurService.modify(this.utilisateur);
@@ -124,10 +129,16 @@ export class UtilisateurComponent implements OnInit {
     utilsateur.armure=armure;
     this.utilisateur=utilsateur;
     this.utilisateurService.modify(this.utilisateur);
+    this.arme=false;
+    this.armure=false;
+    this.hero=false;
 
   }
 
   choixHero(hero:Hero,utilisateur:Utilisateur){
+    this.arme=false;
+    this.armure=false;
+    this.hero=false;
     utilisateur.hero=hero;
 
     utilisateur.vie=hero.vie;
@@ -149,5 +160,20 @@ export class UtilisateurComponent implements OnInit {
     this.utilisateurService.modify(this.utilisateur);
   }
 
+  declencheHero(){
+    this.hero=true;
+    this.arme=false;
+    this.armure=false;
+  }
+  declencheArme(){
+    this.arme=true;
+    this.hero=false;
+    this.armure=false;
+  }
+  declencheArmure(){
+    this.armure=true;
+    this.hero=false;
+    this.arme=false;
+  }
 
 }

@@ -95,7 +95,7 @@
 .bouton{
   text-align: center;
   display: inline-block;
-  width: 33%;
+
   height: 5%;
   margin-top: 15px;
   margin-left: 35px;
@@ -121,4 +121,7 @@
   background-clip: border-box;
   border: 1px solid #f8f9fa;
   border-radius: 0.25rem;
+}
+.collapse{
+  width: 100%;
 }
