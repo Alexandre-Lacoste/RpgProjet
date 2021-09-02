@@ -44,7 +44,7 @@ public class ArmeRestController {
 	}
 	
 	@GetMapping("/{id}")
-	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class,Views.ViewMonstreDetail.class})
+	@JsonView({Views.ViewArme.class})
 	public Arme findArmeId(@PathVariable Long id) {
 		Optional<Arme> optArme = armeRepo.findByArmeId(id);
 		

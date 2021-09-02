@@ -30,7 +30,6 @@ const routes: Routes = [
   {path: "arme", component: ArmeComponent},
   {path: "armure", component: ArmureComponent},
   {path: "potion", component: PotionComponent},
-  {path: "hero", component: HeroComponent},
   {path: "monstre", component: MonstreComponent},
   {path:"inscription", component: InscriptionComponent},
   {path: "", redirectTo: "accueil", pathMatch: "full"}
