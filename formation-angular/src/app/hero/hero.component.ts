@@ -11,7 +11,9 @@ export class HeroComponent implements OnInit {
 
   heroForm: Hero = null;
 
-  constructor(private heroService: HeroHttpService) { }
+  constructor(private heroService: HeroHttpService) {
+    this.list();
+  }
 
   ngOnInit(): void {
   }

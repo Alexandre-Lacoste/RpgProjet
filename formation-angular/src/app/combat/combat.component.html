@@ -1,6 +1,6 @@
 <div *ngIf="phase==0" class="card mt-3">
 
-  <div class="card-header bg-info text-white">
+  <div class="card-header text-black " style="background-color:whitesmoke">
     <h2>Liste des monstres disponibles pour un combat</h2>
   </div>
 
@@ -27,7 +27,7 @@
         <td>{{mons.attaque}}</td>
         <td>{{mons.defense}}</td>
         <td>
-            <a class="btn btn-danger" (click)="initCombat(mons.id)">Combat</a>
+            <a class="btn btn-danger" (click)="initCombat(mons.id)">Combattez</a>
         </td>
       </tr>
 
@@ -51,7 +51,7 @@
     <div>
       <div class="hp-bar">
         <div
-          [style.width]="monstre.vie +'%'"
+          [style.width]="(100*monstre.vie)/monstre.vie +'%'"
           style="background-color: white"
         ></div>
       </div>
@@ -70,7 +70,7 @@
     <div>
       <div class="hp-bar">
         <div
-          [style.width]="utilisateur.vie +'%'"
+          [style.width]="(100*utilisateur.vie)/utilisateur.vie +'%'"
           style="background-color: white"
         ></div>
       </div>
@@ -97,12 +97,13 @@
 </div>
 
   <div  class="menu2" style="margin-top: 5px" *ngIf="potionPhase==0" >
-    <a class="btn btn-danger" style="float: right;" (click)="annulerPotion()" >Annuler l'operation</a>
+    <a class="btn btn-outline-light" style="float: right;" (click)="annulerPotion()" >Annuler l'operation</a>
 
     <div class="card-body" >
     <table class="table table-striped">
       <thead>
       <tr>
+
         <th>Identifiant</th>
         <th>Nom</th>
         <th>Type de potion</th>
@@ -119,7 +120,7 @@
         <td>{{p.potion.valeur}}</td>
 
         <td>
-          <a class="btn btn-danger" (click)="utiliserPotion(utilisateur.id,p)">Combat</a>
+          <a class="btn btn-danger" (click)="utiliserPotion(utilisateur.id,p)">Utiliser la potion</a>
         </td>
       </tr>
 
@@ -131,20 +132,71 @@
 
 </div>
 
-<div *ngIf="phase==2" class="centralBlock">
-  <p>Vous avez fuit le combat comme un lache.</p>
-  <p>Voici vous infos suite à cette fuite : </p>
+<div *ngIf="phase==2" class="blockFuite" style="text-align: center">
+  <img  id="Gmaesover" src="assets/BattleImage/gamesOver.jpg">
+  <br>
+  <br>
+  <h5 style="margin-top: 3px;">Vous avez fuit le combat !</h5>
+  <p>Toute fuite implique des malus pour votre utilisateur, votre arme et votre armure prinicpale ont disparu</p>
+  <br>
 
-  <br>
-  <p>Nom : {{utilisateur.pseudo}}</p>
-  <p>Vie : {{utilisateur.vie}}</p>
-  <p> Arme : {{utilisateur.arme}}</p>
-  <p>Armure : {{utilisateur.armure}}</p>
-  <br>
+  <a class="btn btn-outline-dark btn-lg"  style="margin-right: 15px;" [routerLink]="['/utilisateur']">Restaurer les attributs de votre heros</a>
+  <a class="btn btn-outline-dark btn-lg ">Nouveau combat</a>
 
 </div>
 
+<div *ngIf="phase==4" class="blockFuite" style="text-align: center">
+  <img style="margin-bottom: 15px;" id="win" src="assets/BattleImage/win.jpg">
+  <a class="btn btn-outline-dark btn-lg"  style="margin-right: 15px;" (click)="seReposer()" >Restaurer les attributs de votre heros</a>
+  <a class="btn btn-outline-dark btn-lg " [routerLink]="['/combat/1']">Nouveau combat</a>
 
+</div>
+
+<div *ngIf="phase==5" class="blockFuite" style="text-align: center">
+  <img style="margin-bottom: 15px;" id="loose" src="assets/BattleImage/loose.jpg">
+  <a class="btn btn-outline-dark btn-lg"  style="margin-right: 15px;" (click)="seReposer()">Restaurer vos attributs</a>
+  <a class="btn btn-outline-dark btn-lg"  style="margin-right: 15px;" [routerLink]="['/utilisateur']">Changer vos caracteristiques</a>
+  <a class="btn btn-outline-dark btn-lg " [routerLink]="['/']">Nouveau combat</a>
+
+</div>
+
+<div *ngIf="phase==6" class="blockFuite">
+  <h1>Vous êtes apte au combat</h1>
+  <a routerLinkActive="active" class="btn btn-outline-dark btn-lg " [routerLink]="['/']">Nouveau combat</a>
+</div>
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top" style="margin-top: 10px;">
+  <div class="row">
+    <div class="col-12 col-md">
+      <small class="d-block mb-3 text-muted">&copy; 2021</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">News du jeux</a></li>
+        <li><a class="text-muted" href="#">News de l'équipe</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="/accueil">Accueil</a></li>
+        <li><a class="text-muted" href="/combat">Combat</a></li>
+        <li><a class="text-muted" href="/marchand/1">Marchand</a></li>
+        <li><a class="text-muted" href="/hero">Héros</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Team</a></li>
+        <li><a class="text-muted" href="#">Locations</a></li>
+        <li><a class="text-muted" href="#">Privacy</a></li>
+        <li><a class="text-muted" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
 
 

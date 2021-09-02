@@ -17,6 +17,9 @@ public interface ICompteRepository extends JpaRepository<Compte, Long> {
 	@Query("select u from Compte u where u.pseudo = :pseudo")
 	Optional<Compte> findByPseudo(@Param("pseudo") String pseudo); // @Query
 	
+	@Query("select u from Compte u where u.pseudo = :pseudo and u.mdp = :mdp")
+	Optional<Compte> findByPseudoMdp(@Param("pseudo") String pseudo,@Param("mdp") String mdp); 
+	
 	@Query("select u from Compte u where u.mail = :mail")
 	Optional<Compte> findCompteByMail(@Param("mail") String mail); // @Query
 

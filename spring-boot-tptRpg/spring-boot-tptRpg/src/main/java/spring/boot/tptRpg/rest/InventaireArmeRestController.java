@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -55,11 +56,11 @@ public class InventaireArmeRestController {
 	}
 	
 	
-	@GetMapping("/idArme/{id}")
+	@GetMapping("/idArme/{idA}/{idInv}")
 	@JsonView(Views.ViewInventaireArme.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public InventaireArme findInventaireArmeByIdArme(@PathVariable Long id) {
-		Optional<InventaireArme> optInvArme = invArmeRepo.findInventaireArmeByIdArme(id);
+	public InventaireArme findInventaireArmeByIdArmeAndIdInv(@PathVariable("idA") Long idA, @PathVariable("idInv") Long idInv) {
+		Optional<InventaireArme> optInvArme = invArmeRepo.findInventaireArmeByIdArmeAndIdInv(idA,idInv);
 		
 		if (optInvArme.isPresent()) {
 			return optInvArme.get();

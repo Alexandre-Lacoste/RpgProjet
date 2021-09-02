@@ -25,7 +25,7 @@ public interface IInventaireArmureRepository  extends JpaRepository<InventaireAr
 	Armure findArmureNameInInveantaire(@Param("nom") String nom, @Param("id") Long id);
 	
 	@Query("select ip from InventaireArmure ip where ip.armure.id = :idAr and ip.inventaire.id = :idInv")
-	InventaireArmure findInventaireArmureByIdArmureAndIdInv(@Param("idAr") Long idAr, @Param("idInv") Long idInv);
+	Optional<InventaireArmure> findInventaireArmureByIdArmureAndIdInv(@Param("idAr") Long idAr, @Param("idInv") Long idInv);
 	
 	@Query("select ip from InventaireArmure ip where ip.armure.id = :id")
 	Optional<InventaireArmure> findInventaireArmureByIdArmure(@Param("id") Long id);

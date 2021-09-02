@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 01 sep. 2021 à 13:22
+-- Généré le : mer. 01 sep. 2021 à 15:13
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -141,10 +141,10 @@ CREATE TABLE IF NOT EXISTS `compte` (
 --
 
 INSERT INTO `compte` (`type`, `id`, `enable`, `mail`, `mdp`, `pseudo`, `role`, `version`, `agilite`, `agilite_max`, `attaque`, `attaque_max`, `cpt_brulure`, `cpt_combat`, `cpt_combat_gagne`, `cpt_empoisonnement`, `cpt_etourdissement`, `cpt_monstre_vaincu`, `cpt_saignement`, `defense`, `defense_max`, `exp`, `vie`, `vie_max`, `vitesse`, `vitesse_max`, `arme`, `armure`, `hero_id`, `histoire`, `inventaire`) VALUES
-('user', 1, b'0', 'lacosteA@gmail.com', '1234', 'lacoste64', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, 14, 0, 0, 0, 0, 9, 6, 31, NULL, NULL),
-('user', 2, b'0', 'xavierD@gmail.com', '1234', 'XavierD', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 11, 4, 28, NULL, NULL),
-('user', 3, b'0', 'FlorianF', '12345', 'FlorianF', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL),
-('user', 4, b'0', 'stanislasD@gmail.com', '1234', 'StanislasD', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL),
+('user', 1, b'0', 'lacosteA@gmail.com', '1234', 'lacoste64', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 9, 6, 31, NULL, 1),
+('user', 2, b'0', 'xavierD@gmail.com', '1234', 'XavierD', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 11, 4, 28, NULL, 2),
+('user', 3, b'0', 'FlorianF', '12345', 'FlorianF', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 3),
+('user', 4, b'0', 'stanislasD@gmail.com', '1234', 'StanislasD', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 4),
 ('Admin', 5, b'0', 'admin@gmail.com', 'admin', 'admin', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -312,7 +312,6 @@ CREATE TABLE IF NOT EXISTS `inventaire_potion` (
 
 INSERT INTO `inventaire_potion` (`id`, `qte`, `version`, `inventaire_id`, `potion_id`) VALUES
 (1, 10, 0, 1, 1),
-(2, 10, 0, 1, 2),
 (3, 1, 0, 1, 3),
 (4, 4, 0, 1, 4),
 (5, 100, 0, 1, 6),
@@ -495,7 +494,7 @@ CREATE TABLE IF NOT EXISTS `personnage` (
 --
 
 INSERT INTO `personnage` (`type`, `id`, `nom`, `version`, `agilite`, `attaque`, `coef_attaque`, `coef_defense`, `coef_precision`, `coef_vie`, `coef_vitesse`, `defense`, `type_personnage`, `vie`, `vitesse`, `exp`, `gold`, `type_monstre`, `arme_id`, `armure_id`) VALUES
-('monstre', 1, 'Troll des cavernes', 0, 2, 60, NULL, NULL, NULL, NULL, NULL, 50, NULL, 150, 2, 10, NULL, 'Troll', 7, NULL),
+('monstre', 1, 'Troll des cavernes', 0, 2, 60, NULL, NULL, NULL, NULL, NULL, 50, NULL, 150, 2, 10, 0, 'Troll', 7, NULL),
 ('monstre', 2, 'Wargs', 0, 30, 25, NULL, NULL, NULL, NULL, NULL, 10, NULL, 70, 100, 10, 0, 'Loups', NULL, NULL),
 ('monstre', 3, 'Aigles geants', 0, 50, 40, NULL, NULL, NULL, NULL, NULL, 6, NULL, 90, 150, 4, 0, 'Aigle', NULL, NULL),
 ('monstre', 4, 'Arachnee', 0, 20, 35, NULL, NULL, NULL, NULL, NULL, 20, NULL, 100, 50, 14, 0, 'Araigne', NULL, NULL),
@@ -536,7 +535,7 @@ CREATE TABLE IF NOT EXISTS `potion` (
 INSERT INTO `potion` (`id`, `nom`, `prix_achat`, `prix_vente`, `type`, `valeur`, `version`) VALUES
 (1, 'Sang de dragon', 180, 500, 'soin', 40, 0),
 (2, 'Graine de glace', 40, 50, 'soin', 15, 0),
-(3, 'graine de feu', 45, 50, 'attPlus', 20, 0),
+(3, 'graine de feu', 45, 50, 'attaquePlus', 20, 0),
 (4, 'Graine d\'air', 100, 25, 'vitessePlus', 10, 0),
 (5, 'Graine de terre', 80, 8, 'defensePlus', 24, 0),
 (6, 'Feu Grecque', 2, 50, 'soin', 4, 0),
