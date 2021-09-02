@@ -45,4 +45,9 @@ export class InventaireArmureService  {
       this.inventaireArmures = response;
     }, error => console.log(error));
   }
+
+  findInventaireArmureByIdArmureAndIdInv(idA : number,idInv: number): Observable<InventaireArmure> {
+    return this.http.get<InventaireArmure>(this.appConfigService.backEndUrl + "inventaireArmure/idArmure/" + idA +"/"+ idInv);
+  }
+
 }

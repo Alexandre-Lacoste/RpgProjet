@@ -26,7 +26,7 @@ public interface IInventairePotionRepository  extends JpaRepository<InventairePo
 	Potion findPotionNameInInveantaire(@Param("nom") String nom, @Param("id") Long id);
 	
 	@Query("select ip from InventairePotion ip where ip.potion.id = :idP and ip.inventaire.id = :idInv")
-	InventairePotion findInventairePotionByIdPotionAndIdInv(@Param("idP") Long idP, @Param("idInv") Long idInv);
+	Optional<InventairePotion> findInventairePotionByIdPotionAndIdInv(@Param("idP") Long idP, @Param("idInv") Long idInv);
 	
 
 	@Query("select ip from InventairePotion ip where ip.potion.id = :id")
