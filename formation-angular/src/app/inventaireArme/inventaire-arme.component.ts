@@ -114,9 +114,9 @@ timeOutAlert(nom :string,prixVente : number){
   if ( this.qtegold != null )  qtegoldstring = this.qtegold.toString();
   if ( this.qtegold != null )  prixVentestring = prixVente.toString();
 
-  setTimeout(function(){ alert("Vous avez acheté " +nom+ " pour la modique somme de " + prixVentestring + "  gold."  +
+  setTimeout(function(){ alert("Vous avez vendu " +nom+ " pour la modique somme de " + prixVentestring + "  gold. " + "  Selon moi vous vous etes fait arnaquer"+
     "" +
-    "                         Il vous reste " + qtegoldstring + " Gold"); }, 1500);
+    "                         Vous avez quand même " + qtegoldstring + " Gold restants"); }, 1500);
 }
 
   reloadCurrentPage() {
