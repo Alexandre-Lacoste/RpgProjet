@@ -1,5 +1,7 @@
 .utilisateur{
   background-image: url("tt2.jpg");
+  background-attachment: fixed;
+  image-resolution:1080x;
   height: 600px;
 
 }
@@ -103,4 +105,19 @@
   color:darkred;
   background-border:white;
   margin-left: 750px;
+}
+.le_div_visible {
+  display: block;
+  background: silver;
+}
+
+.le_div_masque {
+  display: none;
+}
+.table-striped{
+
+  background-color: rgb(227 213 213 / 51%);
+  background-clip: border-box;
+  border: 1px solid #f8f9fa;
+  border-radius: 0.25rem;
 }
