@@ -46,12 +46,12 @@ export class InventaireArmeService  {
     }, error => console.log(error));
   }
 
-  findInventaireArmeByIdArme(id : number): Observable<InventaireArme> {
-    return this.http.get<InventaireArme>(this.appConfigService.backEndUrl + "inventaireArme/idArme/" + id);
+  findInventaireArmeByIdArmeAndIdInv(idA : number,idInv: number): Observable<InventaireArme> {
+    return this.http.get<InventaireArme>(this.appConfigService.backEndUrl + "inventaireArme/idArme/" + idA +"/"+ idInv);
   }
 
-  findArmedeInventaireArmebyId(idArme : number) : InventaireArme{
-    this.findInventaireArmeByIdArme(idArme).subscribe(response => {
+  findArmedeInventaireArmebyId(idArme : number,idInv:number) : InventaireArme{
+    this.findInventaireArmeByIdArmeAndIdInv(idArme,idInv).subscribe(response => {
         this.inventaireArme = response;
         console.log(this.inventaireArme);
         console.log(this.inventaireArme.quantite);

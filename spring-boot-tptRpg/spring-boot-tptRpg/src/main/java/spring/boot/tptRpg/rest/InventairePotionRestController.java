@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import spring.boot.tptRpg.model.Potion;
 import spring.boot.tptRpg.model.InventairePotion;
+import spring.boot.tptRpg.model.InventairePotion;
 import spring.boot.tptRpg.model.Views;
 import spring.boot.tptRpg.repository.IPotionRepository;
 import spring.boot.tptRpg.repository.IInventairePotionRepository;
@@ -52,6 +53,20 @@ public class InventairePotionRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
+	
+	@GetMapping("/idPotion/{idA}/{idInv}")
+	@JsonView(Views.ViewInventairePotion.class)
+	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	public InventairePotion findInventairePotionByIdPotionAndIdInv(@PathVariable("idA") Long idA, @PathVariable("idInv") Long idInv) {
+		Optional<InventairePotion> optInvPotion = invPotionRepo.findInventairePotionByIdPotionAndIdInv(idA,idInv);
+		
+		if (optInvPotion.isPresent()) {
+			return optInvPotion.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
+		}
+	}
+	
 	
 	@GetMapping("/utilisateur/{id}")
 	@JsonView(Views.ViewInventairePotion.class)
