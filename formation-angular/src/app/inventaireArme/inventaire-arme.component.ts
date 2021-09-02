@@ -50,7 +50,7 @@ private qtegoldstring : string;
   find(id: number) {
     this.inventaireArmeService.findById(id).subscribe(response => {
         this.inventaireArme = response;
-        console.log(this.inventaireArme);
+     //   console.log(this.inventaireArme);
       },
       error => console.log(error));
   }

@@ -3,7 +3,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Id</th>
+      <th>Propriétaire</th>
       <th>Nom</th>
       <th> </th>
       <th>Attaque</th>
@@ -12,7 +12,7 @@
       <th> </th>
       <th>Quantité</th>
       <th> </th>
-      <!--
+      <!-- -->
       <!--      <th>Valeur </th>-->
       <th>Description</th>
       <th></th>
@@ -21,7 +21,7 @@
     <tbody>
     <tr *ngFor="let inventArme of list()">
 
-      <td>{{inventArme.id}}</td>
+      <td>{{inventArme.inventaire.id}}</td>
       <!--        <td>{{marchArme.version}}</td>-->
       <!--        <td>{{marchArme.qte}}</td>-->
       <td>{{inventArme.arme.nom}}</td>
