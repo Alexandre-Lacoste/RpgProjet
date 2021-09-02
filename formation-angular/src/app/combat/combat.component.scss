@@ -13,10 +13,46 @@
   height: auto;
 }
 
+.blockFuite{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top:3%;
+  border-radius: 10%;
+  border-color: black;
+  border-style: double;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  height: auto;
+}
 .battle-background {
   position: relative;
 }
 
+#Gmaesover{
+  height: 500px ;
+  width: 100%;
+  border: 0.3rem #000 solid;
+  border-radius: 1.5rem;
+  user-select: none;
+}
+
+#loose{
+  height: 500px ;
+  width: 100%;
+  border: 0.3rem #000 solid;
+  border-radius: 1.5rem;
+  user-select: none;
+}
+
+#win{
+  height: 500px ;
+  width: 100%;
+  border: 0.3rem #000 solid;
+  border-radius: 1.5rem;
+  user-select: none;
+}
 #bg {
   width: 100%;
 

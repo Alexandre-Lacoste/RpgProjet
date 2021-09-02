@@ -34,7 +34,7 @@ public class Compte {
 	private int version;
 	
 	@Column()
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	private String pseudo;
 	
 	@Column()
@@ -42,7 +42,7 @@ public class Compte {
 	private String mail;
 	
 	@Column()
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewCommon.class,Views.ViewAdmin.class})
 	private String mdp;
 	
 	@JsonView(Views.ViewCommon.class)

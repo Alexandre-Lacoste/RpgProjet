@@ -3,6 +3,7 @@ import {Hero} from "../model/Hero";
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../app-config.service";
 import {Observable} from "rxjs";
+import {Monstre} from "../model/Monstre";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class HeroHttpService {
 
   findAll(): Array<Hero> {
     return this.heros;
+  }
+
+  findAllHero(): Observable <Array<Hero>>{
+    return this.http.get<Array<Hero>>(this.appConfigService.backEndUrl + "hero/");
   }
 
   findById(id: number):  Observable<Hero> {
