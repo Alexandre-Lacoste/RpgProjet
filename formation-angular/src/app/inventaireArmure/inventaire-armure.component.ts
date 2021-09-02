@@ -47,7 +47,7 @@ export class InventaireArmureComponent implements OnInit {
     this.inventaireArmureService.findById(id).subscribe(response=>
       {
         this.inventaireArmure=response;
-        console.log(this.inventaireArmure);
+   //     console.log(this.inventaireArmure);
       },
       error=>console.log(error));
   }
@@ -77,10 +77,10 @@ export class InventaireArmureComponent implements OnInit {
 
 
   delete(inventaireArmure : InventaireArmure, id : number){
-    if (inventaireArmure.qte > 1 ) {console.log(inventaireArmure)
+    if (inventaireArmure.qte > 1 ) {
       inventaireArmure.qte = inventaireArmure.qte - 1;
       this.inventaireArmureService.modify(inventaireArmure);
-    } else if (inventaireArmure.qte = 1) {console.log(inventaireArmure.qte)
+    } else if (inventaireArmure.qte = 1) {
       this.inventaireArmureService.deleteById(id).subscribe(resp => {
         this.inventaireArmureService.load();
       }, error => console.log(error));

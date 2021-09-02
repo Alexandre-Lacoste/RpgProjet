@@ -53,8 +53,6 @@ export class InventaireArmeService  {
   findArmedeInventaireArmebyId(idArme : number,idInv:number) : InventaireArme{
     this.findInventaireArmeByIdArmeAndIdInv(idArme,idInv).subscribe(response => {
         this.inventaireArme = response;
-        console.log(this.inventaireArme);
-        console.log(this.inventaireArme.quantite);
       },
       error => console.log(error));
     return this.inventaireArme
