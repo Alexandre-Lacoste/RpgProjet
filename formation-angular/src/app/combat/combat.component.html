@@ -147,7 +147,7 @@
 
 <div *ngIf="phase==4" class="blockFuite" style="text-align: center">
   <img style="margin-bottom: 15px;" id="win" src="assets/BattleImage/win.jpg">
-  <a class="btn btn-outline-dark btn-lg"  style="margin-right: 15px;" (click)="seReposer()" >Restaurer les attributs de votre heros</a>
+  <a class="btn btn-outline-dark btn-lg"  style="margin-right: 15px;" [routerLink]="['/utilisateur']" >Restaurer les attributs de votre heros</a>
   <a class="btn btn-outline-dark btn-lg " [routerLink]="['/']">Nouveau combat</a>
 
 </div>

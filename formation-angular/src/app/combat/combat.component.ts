@@ -153,24 +153,11 @@ export class CombatComponent implements OnInit {
 
   attaquer(){
 
-    console.log(this.monstre);
-
     let attUtilisateur=this.calculAttaqueUtilisateur();
     let defMonstre=this.calculDefenseMonstre();
     let defUtilisateur=this.defenseUtilisateur();
     let attMonstre=this.calculAttaqueMonstre();
 
-    console.log("####################################################################################")
-    console.log("att utili "+attUtilisateur);
-    console.log("def monstre "+defMonstre);
-    console.log("def util "+defUtilisateur);
-    console.log("att monstre "+attMonstre);
-    console.log("####################################################################################")
-    console.log(this.monstre);
-    console.log(this.utilisateur);
-    console.log("####################################################################################")
-    console.log("####################################################################################")
-    console.log()
     if(this.utilisateur.vitesse>=this.monstre.vitesse){
 
       if(defMonstre>attUtilisateur){
@@ -184,6 +171,8 @@ export class CombatComponent implements OnInit {
       }
 
       if(this.monstre.vie<=0) {
+        this.utilisateur.cptCombat=this.utilisateur.cptCombat+1;
+        this.utilisateur.cptCombatGagne=this.utilisateur.cptCombatGagne+1;
         this.utilisateurService.modify(this.utilisateur);
         this.monstre.vie = 0;
         let inventaireArme = new InventaireArme(1,this.monstre.arme,this.utilisateur.inventaire);
@@ -202,7 +191,7 @@ export class CombatComponent implements OnInit {
             this.utilisateur.vie = this.utilisateur.vie + defUtilisateur - attMonstre;
           }
         }
-        if(this.utilisateur.vie<0){
+        if(this.utilisateur.vie<=0){
           this.utilisateur.vie=0;
           this.phase=5;
           this.utilisateurService.modify(this.utilisateur);
@@ -223,7 +212,7 @@ export class CombatComponent implements OnInit {
       }
       if(this.utilisateur.vie<=0){
         this.utilisateur.vie=0;
-        this.utilisateur.cptCombatGagne=this.utilisateur.cptCombatGagne+1;
+        this.utilisateur.cptCombat=this.utilisateur.cptCombat+1;
         this.utilisateurService.modify(this.utilisateur);
         this.phase=5;
       }else{
@@ -349,11 +338,7 @@ export class CombatComponent implements OnInit {
   }
 
   seReposer(){
-    console.log(this.utilisateur.vie);
-    console.log(this.utilisateur.vieMax)
-  this.utilisateur.vie=this.utilisateur.vieMax;
-    console.log(this.utilisateur.vie);
-  this.utilisateurService.modify(this.utilisateur);
-  console.log(this.utilisateur);
+    this.utilisateur.vie=this.utilisateur.vieMax;
+    this.utilisateurService.modify(this.utilisateur);
   }
 }
