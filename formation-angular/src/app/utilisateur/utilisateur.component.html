@@ -48,33 +48,124 @@
       <br>
     </div>
 
+    <div class="bouton" *ngIf="utilisateurForm">
+      <a  class="btn btn-primary" href="#MonCollapse2" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Hero </a>
+      <a  class="btn btn-primary" href="#MonCollapse3" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Arme </a>
+      <a  class="btn btn-primary" href="#MonCollapse4" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Armure </a>
 
+      <br>
+      <section id="MonCollapse2" class="collapse">
+        <div  *ngIf="utilisateurForm">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+
+              <th>Identifiant</th>
+              <th>Nom</th>
+              <th>Type de Personnage</th>
+              <th>Vie </th>
+              <th>Attaque </th>
+              <th>Agilite </th>
+              <th>Defense </th>
+              <th>Vitesse </th>
+
+              <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let her of heros">
+              <td>{{her.id}}</td>
+              <td>{{her.nom}}</td>
+              <td>{{her.typePersonnage}}</td>
+              <td>{{her.vie}}</td>
+              <td>{{her.attaque}}</td>
+              <td>{{her.defense}}</td>
+              <td>{{her.agilite}}</td>
+              <td>{{her.vitesse}}</td>
+
+              <td>
+                <a class="btn btn-danger" (click)="choixHero(her,utilisateurForm)">Choisir Hero</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <br>
+      <section id="MonCollapse3" class="collapse">
+        <div  *ngIf="utilisateurForm">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+
+              <th>Identifiant</th>
+              <th>Nom</th>
+              <th>Type d'arme</th>
+              <th>Attaque </th>
+              <th>Agilite </th>
+              <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let a of ListInventaireArme()">
+              <td>{{a.arme.id}}</td>
+              <td>{{a.arme.nom}}</td>
+              <td>{{a.arme.typearme}}</td>
+              <td>{{a.arme.attaque}}</td>
+              <td>{{a.arme.agilite}}</td>
+              <td>
+                <a class="btn btn-danger" (click)="choixArme(a.arme,utilisateurForm)">Choisir arme</a>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="MonCollapse4" class="collapse">
+        <div  *ngIf="utilisateurForm">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+
+              <th>Identifiant</th>
+              <th>Nom</th>
+              <th>Type d'armure</th>
+              <th>Defense </th>
+              <th>Vitesse </th>
+              <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let ar of ListInventaireArmure()">
+              <td>{{ar.armure.id}}</td>
+              <td>{{ar.armure.nom}}</td>
+              <td>{{ar.armure.typearmure}}</td>
+              <td>{{ar.armure.defense}}</td>
+              <td>{{ar.armure.vitesse}}</td>
+              <td>
+                <a class="btn btn-danger" (click)="choixArmure(ar.armure,utilisateurForm)">Choisir armure</a>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
       <div class="row">
         <div class="caracteristiques">
 
 
-          
 
 
 
 
-
-
-
-
-
-          <div class="card mt-3" *ngIf="utilisateurForm  " >
-
-
-
-
-
-
-
-
-
-
-
+          <div class="card mt-3" *ngIf="utilisateurForm" >
 
             <div class="card-header" >
 
@@ -177,115 +268,7 @@
   </div>
 
 
-  <div class="bouton" *ngIf="utilisateurForm">
-    <a  class="btn btn-primary" href="#MonCollapse2" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Hero </a>
-    <a  class="btn btn-primary" href="#MonCollapse3" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Arme </a>
-    <a  class="btn btn-primary" href="#MonCollapse4" data-toggle="collapse" aria-expanded="false" aria-controls="MonCollapse">Changer d'Armure </a>
 
-    <br>
-    <section id="MonCollapse2" class="collapse">
-      <div  *ngIf="utilisateurForm">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-
-            <th>Identifiant</th>
-            <th>Nom</th>
-            <th>Type de Personnage</th>
-            <th>Vie </th>
-            <th>Attaque </th>
-            <th>Agilite </th>
-            <th>Defense </th>
-            <th>Vitesse </th>
-
-            <th></th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr *ngFor="let her of heros">
-            <td>{{her.id}}</td>
-            <td>{{her.nom}}</td>
-            <td>{{her.typePersonnage}}</td>
-            <td>{{her.vie}}</td>
-            <td>{{her.attaque}}</td>
-            <td>{{her.defense}}</td>
-            <td>{{her.agilite}}</td>
-            <td>{{her.vitesse}}</td>
-
-            <td>
-              <a class="btn btn-danger" (click)="choixHero(her,utilisateurForm)">Choisir Hero</a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  <br>
-    <section id="MonCollapse3" class="collapse">
-      <div  *ngIf="utilisateurForm">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-
-            <th>Identifiant</th>
-            <th>Nom</th>
-            <th>Type d'arme</th>
-            <th>Attaque </th>
-            <th>Agilite </th>
-            <th></th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr *ngFor="let a of ListInventaireArme()">
-            <td>{{a.arme.id}}</td>
-            <td>{{a.arme.nom}}</td>
-            <td>{{a.arme.typearme}}</td>
-            <td>{{a.arme.attaque}}</td>
-            <td>{{a.arme.agilite}}</td>
-            <td>
-              <a class="btn btn-danger" (click)="choixArme(a.arme,utilisateurForm)">Choisir arme</a>
-            </td>
-          </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="MonCollapse4" class="collapse">
-      <div  *ngIf="utilisateurForm">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-
-            <th>Identifiant</th>
-            <th>Nom</th>
-            <th>Type d'armure</th>
-            <th>Defense </th>
-            <th>Vitesse </th>
-            <th></th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr *ngFor="let ar of ListInventaireArmure()">
-            <td>{{ar.armure.id}}</td>
-            <td>{{ar.armure.nom}}</td>
-            <td>{{ar.armure.typearmure}}</td>
-            <td>{{ar.armure.defense}}</td>
-            <td>{{ar.armure.vitesse}}</td>
-            <td>
-              <a class="btn btn-danger" (click)="choixArmure(ar.armure,utilisateurForm)">Choisir armure</a>
-            </td>
-          </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </div>
 
 
   <footer class="pt-4 my-md-5 pt-md-5 border-top" style="margin-top: 10px;">

@@ -40,6 +40,8 @@ export class UtilisateurComponent implements OnInit {
     this.listHero();
   }
 
+
+
   listHero() {
     this.heroService.findAllHero().subscribe(resp=>{
       this.heros=resp;
