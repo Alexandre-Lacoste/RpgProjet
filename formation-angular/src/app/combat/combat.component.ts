@@ -83,17 +83,14 @@ export class CombatComponent implements OnInit {
     if(this.utilisateur.arme==null){
       attUtilisateur=this.utilisateur.hero.coefAttaque* this.utilisateur.attaque;
     }else {
-      if (jetDe < 2) {
-        attUtilisateur = this.utilisateur.attaque + this.utilisateur.arme.attaque;
+      if (jetDe < 4) {
+        attUtilisateur = (this.utilisateur.hero.coefAttaque * this.utilisateur.attaque) + this.utilisateur.arme.attaque;
       } else {
-        if (jetDe >= 4) {
-          console.log("choix 2");
           coefHero = this.utilisateur.hero.coefPrecision * this.utilisateur.agilite;
           coefHero=(coefHero/100)+1;
+          console.log(coefHero);
+          console.log(((this.utilisateur.hero.coefAttaque * this.utilisateur.attaque) + this.utilisateur.arme.attaque))
           attUtilisateur = ((this.utilisateur.hero.coefAttaque * this.utilisateur.attaque) + this.utilisateur.arme.attaque) * coefHero;
-        } else {
-          attUtilisateur = (this.utilisateur.hero.coefAttaque * this.utilisateur.attaque) + this.utilisateur.arme.attaque;
-        }
       }
       attUtilisateur = Math.round(attUtilisateur);
       console.log("att hero " + attUtilisateur);
@@ -108,21 +105,14 @@ export class CombatComponent implements OnInit {
     if (this.utilisateur.armure == null) {
       defUtilisateur=this.utilisateur.hero.coefDefense * this.utilisateur.defense;
     } else {
-      if (jetDe < 2) {
+      if (jetDe < 4) {
         defUtilisateur = this.utilisateur.defense + this.utilisateur.armure.defense;
       } else if (jetDe >= 4) {
-        coefHero = this.utilisateur.hero.coefVitesse * this.utilisateur.vitesse;
-        coefHero=(coefHero/100)+1;
-        defUtilisateur = ((this.utilisateur.hero.coefDefense * this.utilisateur.defense) + this.utilisateur.armure.defense) * coefHero;
-
-      } else {
-        coefHero = this.utilisateur.vitesse / this.utilisateur.armure.vitesse;
-        coefHero=(coefHero/100)+1;
+        coefHero = (this.utilisateur.hero.coefVitesse * this.utilisateur.vitesse) / this.utilisateur.armure.vitesse;
+        coefHero = (coefHero / 100) + 1;
         defUtilisateur = ((this.utilisateur.hero.coefDefense * this.utilisateur.defense) + this.utilisateur.armure.defense) * coefHero;
       }
       defUtilisateur = Math.round(defUtilisateur);
-      console.log("def utili" + defUtilisateur);
-
     }
     return defUtilisateur;
   }
@@ -165,15 +155,26 @@ export class CombatComponent implements OnInit {
 
     console.log(this.monstre);
 
+    let attUtilisateur=this.calculAttaqueUtilisateur();
+    let defMonstre=this.calculDefenseMonstre();
+    let defUtilisateur=this.defenseUtilisateur();
+    let attMonstre=this.calculAttaqueMonstre();
+
+    console.log("####################################################################################")
+    console.log("att utili "+attUtilisateur);
+    console.log("def monstre "+defMonstre);
+    console.log("def util "+defUtilisateur);
+    console.log("att monstre "+attMonstre);
+    console.log("####################################################################################")
+    console.log(this.monstre);
+    console.log(this.utilisateur);
+    console.log("####################################################################################")
+    console.log("####################################################################################")
+    console.log()
     if(this.utilisateur.vitesse>=this.monstre.vitesse){
-      let attUtilisateur=this.calculAttaqueUtilisateur();
-      let defMonstre=this.calculDefenseMonstre();
-      console.log("####################################################################################")
-      console.log("att utili "+attUtilisateur);
-      console.log("def monstre "+defMonstre);
-      console.log("####################################################################################")
+
       if(defMonstre>attUtilisateur){
-        this.monstre.vie=this.monstre.vie;
+        this.monstre.vie=this.monstre.vie-attUtilisateur;
       }else {
         if((attUtilisateur-defMonstre)<10){
           this.monstre.vie = (this.monstre.vie + defMonstre) - (attUtilisateur*1.5);
@@ -181,10 +182,8 @@ export class CombatComponent implements OnInit {
           this.monstre.vie = this.monstre.vie + defMonstre - attUtilisateur;
         }
       }
-      console.log("vie "+this.monstre.vie);
 
       if(this.monstre.vie<=0) {
-        console.log("version "+this.utilisateur.version);
         this.utilisateurService.modify(this.utilisateur);
         this.monstre.vie = 0;
         let inventaireArme = new InventaireArme(1,this.monstre.arme,this.utilisateur.inventaire);
@@ -194,13 +193,6 @@ export class CombatComponent implements OnInit {
        this.inventaireArmureService.create(inventaireArmure);
        this.phase=4;
       }else{
-        let attMonstre = this.calculAttaqueMonstre();
-        let defUtilisateur=this.defenseUtilisateur();
-        console.log("####################################################################################")
-        console.log("att monstre "+attMonstre);
-        console.log("def util "+defUtilisateur);
-        console.log("####################################################################################")
-
         if(attMonstre<defUtilisateur){
           this.utilisateur.vie=this.utilisateur.vie;
         }else {
@@ -211,7 +203,6 @@ export class CombatComponent implements OnInit {
           }
         }
         if(this.utilisateur.vie<0){
-          console.log("version " +this.utilisateur.version);
           this.utilisateur.vie=0;
           this.phase=5;
           this.utilisateurService.modify(this.utilisateur);
@@ -219,15 +210,7 @@ export class CombatComponent implements OnInit {
       }
 
     }  else{
-      let attMonstre = this.calculAttaqueMonstre();
-      let defUtilisateur=this.defenseUtilisateur();
 
-      console.log("####################################################################################")
-      console.log("####################################################################################")
-      console.log("att minstre "+attMonstre);
-      console.log("def utisateur "+defUtilisateur);
-      console.log("####################################################################################")
-      console.log("####################################################################################")
 
       if(attMonstre<defUtilisateur){
         this.utilisateur.vie=this.utilisateur.vie;
@@ -243,17 +226,9 @@ export class CombatComponent implements OnInit {
         this.utilisateurService.modify(this.utilisateur);
         this.phase=5;
       }else{
-        let attUtilisateur=this.calculAttaqueUtilisateur();
-        let defMonstre=this.calculDefenseMonstre();
 
-        console.log("####################################################################################")
-        console.log("####################################################################################")
-        console.log("def minstre "+defMonstre);
-        console.log("att utisateur "+attUtilisateur);
-        console.log("####################################################################################")
-        console.log("####################################################################################")
         if(defMonstre>attUtilisateur){
-          this.monstre.vie=this.monstre.vie;
+          this.monstre.vie=this.monstre.vie-attUtilisateur;
         }else {
           if((attUtilisateur-defMonstre)<10){
             this.monstre.vie = (this.monstre.vie + defMonstre) - (attUtilisateur*1.5);
@@ -263,7 +238,6 @@ export class CombatComponent implements OnInit {
         }
 
         if(this.monstre.vie<=0) {
-          console.log("version "+this.utilisateur.version);
           this.utilisateurService.modify(this.utilisateur);
           this.monstre.vie = 0;
           let inventaireArme = new InventaireArme(1,this.monstre.arme,this.utilisateur.inventaire);
@@ -375,7 +349,8 @@ export class CombatComponent implements OnInit {
     console.log(this.utilisateur.vie);
     console.log(this.utilisateur.vieMax)
   this.utilisateur.vie=this.utilisateur.vieMax;
+    console.log(this.utilisateur.vie);
   this.utilisateurService.modify(this.utilisateur);
-  this.phase=6;
+  console.log(this.utilisateur);
   }
 }
