@@ -17,7 +17,7 @@ import { PotionComponent } from './potion/potion.component';
 import { MonstreComponent } from './monstre/monstre.component';
 import {CombatComponent} from "./combat/combat.component";
 import {ArmureComponent} from "./armure/armure.component";
-//import { ConnexionComponent } from './connexion/connexion.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import {InventairePotionComponent} from "./inventairePotion/inventaire-potion.component";
 import {MarchandArmeComponent} from "./marchand-arme/marchand-arme.component";
@@ -52,6 +52,7 @@ import {CommonModule} from "@angular/common";
     ArmureComponent,
     ArmeComponent,
     AdminComponent,
+    ConnexionComponent
     InscriptionComponent,
     ObjetComponent
   ],
