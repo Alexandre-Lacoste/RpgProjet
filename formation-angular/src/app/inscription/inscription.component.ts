@@ -28,13 +28,13 @@ export class InscriptionComponent implements OnInit {
 
   save() {
     console.log();
-      this.inscForm.enable= false;
+    this.inscForm.enable= false;
     this.inscForm.role=null;
     this.inscForm.hero=null;
     this.inscForm.inventaire=null,
-    this.inscForm.arme=null,
-    this.inscForm.armure=null,
-    this.inscForm.vie=0;
+      this.inscForm.arme=null,
+      this.inscForm.armure=null,
+      this.inscForm.vie=0;
     this.inscForm.attaque=0;
     this.inscForm.defense=0;
     this.inscForm.agilite=0;
