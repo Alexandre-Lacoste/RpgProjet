@@ -44,7 +44,7 @@ public class ArmeRestController {
 	}
 	
 	@GetMapping("/{id}")
-	@JsonView({Views.ViewArme.class})
+	@JsonView(Views.ViewArme.class)
 	public Arme findArmeId(@PathVariable Long id) {
 		Optional<Arme> optArme = armeRepo.findByArmeId(id);
 		
@@ -69,7 +69,7 @@ public class ArmeRestController {
 	}
 	
 	@PostMapping("")
-	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class,Views.ViewMonstreDetail.class})
+	@JsonView(Views.ViewCommon.class)
 	//@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public Arme create(@RequestBody Arme arme) {
@@ -83,7 +83,7 @@ public class ArmeRestController {
 	@PutMapping("/{id}")
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 //	@JsonView({Views.ViewInventaireArme.class, Views.ViewArme.class})
-	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class,Views.ViewMonstreDetail.class})
+	@JsonView(Views.ViewCommon.class)
 	public  Arme update(@RequestBody Arme arme  , @PathVariable Long id) {
 		if (!armeRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
@@ -95,7 +95,7 @@ public class ArmeRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class,Views.ViewMonstreDetail.class})
+	@JsonView(Views.ViewCommon.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
 		if(!armeRepo.existsById(id)) {
