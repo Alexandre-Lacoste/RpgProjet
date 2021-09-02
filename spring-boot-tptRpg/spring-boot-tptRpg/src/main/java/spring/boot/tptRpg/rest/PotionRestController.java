@@ -68,7 +68,7 @@ public class PotionRestController {
 		}
 	}
 	
-	@PostMapping
+	@PostMapping("")
 	@JsonView(Views.ViewCommon.class)
 //	@JsonView(Views.ViewAdmin.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
@@ -90,7 +90,7 @@ public class PotionRestController {
 		return potion ;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	@JsonView(Views.ViewCommon.class)
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {

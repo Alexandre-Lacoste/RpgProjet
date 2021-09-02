@@ -47,7 +47,7 @@ export class MonstreHttpService {
   }
 
   deleteByIdAdmin(id: number): Observable<void> {
-    return this.http.delete<void>(this.chemin + id);
+    return this.http.delete<void>(this.appConfigService.backEndUrl + "monstre/" + id);
   }
 
 

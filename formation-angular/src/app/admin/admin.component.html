@@ -6,11 +6,21 @@
 
 
 <body>
-
+<!--<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">-->
+<!--  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>-->
+<!--  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+<!--  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--  <ul class="navbar-nav px-3">-->
+<!--    <li class="nav-item text-nowrap">-->
+<!--      <a class="nav-link" href="#">Sign out</a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</nav>-->
 
 <div class="container-fluid">
   <div class="row">
-
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
@@ -33,8 +43,6 @@
               Gestion des Utilisateurs
             </a>
           </li>
-
-
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Administration du jeux</span>
@@ -86,7 +94,6 @@
 
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-
       <canvas class="my-4 w-100" id="myChart" width="0" height="0"></canvas>
 
       <section id="listAdmin" class="collapse">
@@ -134,7 +141,6 @@
         </div>
       </section>
 
-
       <section id="editAdmin" class="collapse">
         <div class="card mt-3" *ngIf="adminForm">
           <div class="card text-dark bg-light mb-3">
@@ -181,23 +187,238 @@
         </div>
       </section>
 
+
+
+      <section id="listUser" class="collapse">
+        <h2>Liste des Utilisateurs</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Version</th>
+              <th>Pseudo</th>
+              <th>Mail</th>
+              <th>MDP</th>
+              <th>Enable</th>
+              <th>Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of listUser()">
+              <td>{{user.id}}</td>
+              <td>{{user.version}}</td>
+              <td>{{user.pseudo}}</td>
+              <td>{{user.mail}}</td>
+              <td>{{user.mdp}}</td>
+              <td>{{user.enable}}</td>
+              <td>{{user.role}}</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-primary" data-target="#editUser" data-toggle="collapse" aria-expanded="false"
+                     aria-controls="editUser" (click)="editUser(user.id)"><i class="fa fa-edit"></i></a>
+                  <!--              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"-->
+                  <a class="btn btn-danger" (click)="deleteUser(user.id)"><i class="fa fa-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-dark" type="button" data-target="#editUser" data-toggle="collapse"
+                  aria-expanded="false"
+                  aria-controls="editUser" (click)="addUser()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </section>
+
+      <section id="editUser" class="collapse">
+        <div class="card mt-3" *ngIf="userForm">
+          <div class="card text-dark bg-light mb-3">
+            <h3>Edition de l'utilisateur</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="pseudoUser">Pseudo :</label>
+              <input type="string" class="form-control" id="pseudoUser" [(ngModel)]="userForm.pseudo">
+            </div>
+            <div class="form-group">
+              <label for="mailUser">Mail :</label>
+              <input type="string" class="form-control" id="mailUser" [(ngModel)]="userForm.mail">
+            </div>
+            <div class="form-group">
+              <label for="mdpUser">MDP :</label>
+              <input type="string" class="form-control" id="mdpUser" [(ngModel)]="userForm.mdp">
+            </div>
+            <div class="form-group">
+              <label for="enableUser">Enable :</label>
+              <select type="boolean" class="form-control" id="enableUser" [(ngModel)]="userForm.enable">
+                <option value="true">true</option>
+                <option value="false">false</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="roleUser">Role :</label>
+              <select class="form-control" id="roleUser" [(ngModel)]="userForm.role">
+                <option value="ADMIN">Admin</option>
+                <option value="USER">User</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+              <a class="btn btn-success" (click)="saveUser()">
+                <i class="fa fa-check"></i>
+              </a>
+              <a class="btn btn-warning" (click)="cancelUser()">
+                <i class="fa fa-sync"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section id="listHero" class="collapse">
+        <h2>Liste des Héros</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Version</th>
+              <th>Nom</th>
+              <th>Type</th>
+              <th>coef Attaque</th>
+              <th>coef Defense</th>
+              <th>coef Vie</th>
+              <th>coef Precision</th>
+              <th>coef Vitesse</th>
+              <th>attaque</th>
+              <th>defense</th>
+              <th>vie</th>
+              <th>agilite</th>
+              <th>vitesse</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let hero of listHero()">
+              <td>{{hero.id}}</td>
+              <td>{{hero.version}}</td>
+              <td>{{hero.nom}}</td>
+              <td>{{hero.typePersonnage}}</td>
+              <td>{{hero.coefAttaque}}</td>
+              <td>{{hero.coefDefense}}</td>
+              <td>{{hero.coefVie}}</td>
+              <td>{{hero.coefPrecision}}</td>
+              <td>{{hero.coefVitesse}}</td>
+              <td>{{hero.attaque}}</td>
+              <td>{{hero.defense}}</td>
+              <td>{{hero.vie}}</td>
+              <td>{{hero.agilite}}</td>
+              <td>{{hero.vitesse}}</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-primary" data-target="#editHero" data-toggle="collapse" aria-expanded="false"
+                     aria-controls="editHero" (click)="editHero(hero.id)"><i class="fa fa-edit"></i></a>
+                  <a class="btn btn-danger" (click)="deleteHero(hero.id)"><i class="fa fa-trash"></i></a>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-dark" type="button" data-target="#editHero" data-toggle="collapse" aria-expanded="false"
+                  aria-controls="editHero" (click)="addHero()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </section>
+
+      <section id="editHero" class="collapse">
+        <div class="card mt-3" *ngIf="heroForm">
+          <div class="card text-dark bg-light mb-3">
+            <h3>Edition Potion</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="nom">Nom :</label>
+              <input type="string" class="form-control" id="nom" [(ngModel)]="heroForm.nom">
+            </div>
+            <div class="form-group">
+              <label for="typePersonnage">Type :</label>
+              <select class="form-control" id="typePersonnage" [(ngModel)]="heroForm.typePersonnage">
+                <option value="elf">elf</option>
+                <option value="guerrier">guerrier</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="coefAttaque">coef Attaque :</label>
+              <input type="number" class="form-control" id="coefAttaque" [(ngModel)]="heroForm.coefAttaque">
+            </div>
+            <div class="form-group">
+              <label for="coefDefense">coef Defense :</label>
+              <input type="number" class="form-control" id="coefDefense" [(ngModel)]="heroForm.coefDefense">
+            </div>
+            <div class="form-group">
+              <label for="coefVie">coef Vie :</label>
+              <input type="number" class="form-control" id="coefVie" [(ngModel)]="heroForm.coefVie">
+            </div>
+            <div class="form-group">
+              <label for="coefPrecision">coef Precision :</label>
+              <input type="number" class="form-control" id="coefPrecision" [(ngModel)]="heroForm.coefPrecision">
+            </div>
+            <div class="form-group">
+              <label for="coefVitesse">coef Vitesse :</label>
+              <input type="number" class="form-control" id="coefVitesse" [(ngModel)]="heroForm.coefVitesse">
+            </div>
+            <div class="form-group">
+              <label for="attaque">Attaque :</label>
+              <input type="number" class="form-control" id="attaque" [(ngModel)]="heroForm.attaque">
+            </div>
+            <div class="form-group">
+              <label for="defense">Defense :</label>
+              <input type="number" class="form-control" id="defense" [(ngModel)]="heroForm.defense">
+            </div>
+            <div class="form-group">
+              <label for="vie">Vie :</label>
+              <input type="number" class="form-control" id="vie" [(ngModel)]="heroForm.vie">
+            </div>
+            <div class="form-group">
+              <label for="agilite">Agilite :</label>
+              <input type="number" class="form-control" id="agilite" [(ngModel)]="heroForm.agilite">
+            </div>
+            <div class="form-group">
+              <label for="vitesse">Vitesse :</label>
+              <input type="number" class="form-control" id="vitesse" [(ngModel)]="heroForm.vitesse">
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+              <a class="btn btn-success" (click)="saveHero()">
+                <i class="fa fa-check"></i>
+              </a>
+              <a class="btn btn-warning" (click)="cancelHero()">
+                <i class="fa fa-sync"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
     </main>
   </div>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.6/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-<script src="/docs/4.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-<script src="dashboard.js"></script>
 
 
 <app-arme>
@@ -205,160 +426,11 @@
 <app-armure></app-armure>
 <app-potion>
 </app-potion>
-<app-hero>
-</app-hero>
+<!--<app-hero>-->
+<!--</app-hero>-->
 <app-monstre>
 </app-monstre>
 
 
 </body>
 <!--</html>-->
-
-
-
-
-
-
-
-
-<!--<br/>-->
-<!--<br/>-->
-<!--<br/>-->
-<!--<br/>-->
-<!--<div>-->
-<!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listCompte" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listCompte">Gestion des Comptes-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  &lt;!&ndash;<a class="btn btn-secondary" href="#listArme" data-toggle="collapse" aria-expanded="false" aria-controls="listArme">Balise a</a>&ndash;&gt;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listArme" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listArme">Gestion des Armes-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listArmure" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listArmure">Gestion des Armures-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listPotion" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listPotion">Gestion des Potions-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listHero" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listhero">Gestion des Héros-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listMonstre" data-toggle="collapse"-->
-<!--          aria-expanded="false"-->
-<!--          aria-controls="listMonstre">Gestion des Monstres-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listmarchand" data-toggle="collapse"-->
-<!--          aria-expanded="false"-->
-<!--          aria-controls="listmarchand">Gestion des Marchands-->
-<!--  </button>-->
-<!--  &nbsp;&nbsp;&nbsp;-->
-<!--  <button type="button" class="btn btn-secondary" data-target="#listCompte" data-toggle="collapse" aria-expanded="false"-->
-<!--          aria-controls="listCompte">Gestion des Comptes-->
-<!--  </button>-->
-<!--</div>-->
-
-
-<!--<section id="listCompte" class="collapse">-->
-<!--  <div class="card mt-3">-->
-<!--    <div class="card-header bg-info text-white">-->
-<!--      <h3>Liste des Admins</h3>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      <table class="table table-striped">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--          <th>ID</th>-->
-<!--          <th>Version</th>-->
-<!--          <th>Pseudo</th>-->
-<!--          <th>Mail</th>-->
-<!--          <th>MDP</th>-->
-<!--          <th>Enable</th>-->
-<!--          <th>Role</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr *ngFor="let admin of list()">-->
-<!--          <td>{{admin.id}}</td>-->
-<!--          <td>{{admin.version}}</td>-->
-<!--          <td>{{admin.pseudo}}</td>-->
-<!--          <td>{{admin.mail}}</td>-->
-<!--          <td>{{admin.mdp}}</td>-->
-<!--          <td>{{admin.enable}}</td>-->
-<!--          <td>{{admin.role}}</td>-->
-<!--          <td>-->
-<!--            <div class="btn-group btn-group-sm">-->
-<!--              <a class="btn btn-primary" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"-->
-<!--                 aria-controls="editAdmin" (click)="edit(admin.id)"><i class="fa fa-edit"></i></a>-->
-<!--              &lt;!&ndash;              data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
-
-<!--              &lt;!&ndash;                            <a class="btn btn-primary" href="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme" (click)="edit(arme.id)"><i class="fa fa-edit"></i></a>&ndash;&gt;-->
-<!--              <a class="btn btn-danger" (click)="delete(admin.id)"><i class="fa fa-trash"></i></a>-->
-<!--            </div>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <div class="card-footer">-->
-<!--    <button class="btn btn-dark" type="button" data-target="#editAdmin" data-toggle="collapse" aria-expanded="false"-->
-<!--            aria-controls="editAdmin" (click)="add()">-->
-<!--      &lt;!&ndash;      data-target="#editArme" data-toggle="collapse" aria-expanded="false" aria-controls="editArme"&ndash;&gt;-->
-<!--      <i class="fa fa-plus"></i>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</section>-->
-
-
-<!--<section id="editAdmin" class="collapse">-->
-<!--  <div class="card mt-3" *ngIf="adminForm">-->
-<!--    <div class="card-header bg-info text-white">-->
-<!--      <h3>Edition de l'admin</h3>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      <div class="form-group">-->
-<!--        <label for="pseudo">Pseudo :</label>-->
-<!--        <input type="string" class="form-control" id="pseudo" [(ngModel)]="adminForm.pseudo">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="mail">Mail :</label>-->
-<!--        <input type="string" class="form-control" id="mail" [(ngModel)]="adminForm.mail">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="mdp">MDP :</label>-->
-<!--        <input type="string" class="form-control" id="mdp" [(ngModel)]="adminForm.mdp">-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="enable">Enable :</label>-->
-<!--        <select type="boolean" class="form-control" id="enable" [(ngModel)]="adminForm.enable">-->
-<!--        <option value="true">true</option>-->
-<!--        <option value="false">false</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--      <div class="form-group">-->
-<!--        <label for="role">Role :</label>-->
-<!--        <select class="form-control" id="role" [(ngModel)]="adminForm.role">-->
-<!--          <option value="ADMIN">Admin</option>-->
-<!--          <option value="USER">User</option>-->
-<!--        </select>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card-footer">-->
-<!--      <div class="btn-group btn-group-lg float-right">-->
-<!--        <a class="btn btn-success" (click)="save()">-->
-<!--          <i class="fa fa-check"></i>-->
-<!--        </a>-->
-<!--        <a class="btn btn-warning" (click)="cancel()">-->
-<!--          <i class="fa fa-sync"></i>-->
-<!--        </a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->

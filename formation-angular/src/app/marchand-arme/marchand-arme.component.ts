@@ -8,6 +8,8 @@ import {Observable} from "rxjs";
 import {timeout} from "rxjs/operators";
 import {ArmeHttpService} from "../arme/arme-http.service";
 import {Arme} from "../model/Arme";
+import {InventaireService} from "../inventaire.service";
+import {Inventaire} from "../model/inventaire";
 
 @Component({
   selector: 'marchand-arme',
@@ -24,9 +26,13 @@ export class MarchandArmeComponent implements OnInit {
   private invArm: Observable<InventaireArme>;
   private inArme: InventaireArme;
 
-  inventaireArmes: Array<InventaireArme> = new Array<InventaireArme>();
+  private idPossesseur: number;
+  private idAcheteur: number;
 
-  constructor(private route: ActivatedRoute, private marchandArmeService: MarchandArmeHttpService, private inventaireArmeService: InventaireArmeService) {
+  inventaireArmes: Array<InventaireArme> = new Array<InventaireArme>();
+  private inventaire: Inventaire;
+
+  constructor(private route: ActivatedRoute,private inventaireService: InventaireService, private armeService: ArmeHttpService, private marchandArmeService: MarchandArmeHttpService, private inventaireArmeService: InventaireArmeService) {
   }
 
   ngOnInit() {
@@ -81,51 +87,88 @@ export class MarchandArmeComponent implements OnInit {
   //   this.createoraddqte(inArme );
   // }
 
+
   rechercheinventaireArmebyidArme(marchandArme: MarchandArme) {
     let idArme = marchandArme.arme.id;
+    this.idAcheteur = 1;                        // Pour avoir l'id de l'acheteur même si ici on le force à etre le 1
+    // let idInventaire = this.inventaireArme.inventaire.id;
     console.log(idArme)
+
     this.inventaireArmeService.findInventaireArmeByIdArme(idArme).subscribe(response => {
         this.inventaireArme = response;
         console.log(this.inventaireArme);
         console.log(this.inventaireArme.quantite);
-        this.createoraddqte(this.inventaireArme, idArme);
+
+        // comment recuper l'inventaire_id de la personne connectée ? ici on obtient juste celui qui a deja l'arme dans son inventeur
+        this.idPossesseur = this.inventaireArme.inventaire.id;
+        console.log(this.idPossesseur);
+        // ----------------------------------------------------------------------------------
+
+        if (this.idAcheteur=this.idPossesseur)
+        {this.createoraddqte(this.inventaireArme, idArme);}
       },
       error => {
         console.log(error);
-        this.creationinventlorsdelachat(this.inventaireArme,idArme);
 
+
+
+        this.inventaireService.findById(this.idAcheteur).subscribe(response => {
+            this.inventaire = response;                                                       // inventaire de l'acheteur et par conditions precedentes, il n'a pas l'arme dans son inventaireArme
+            console.log(this.inventaire);
+            this.creationinventArmelorsdelachat(this.inventaire,idArme);                      // du coup, creation de l'inventaire
+
+          },
+          error =>{ console.log(error)});
       }
       );
   }
 
 
-  createoraddqte(inventaireArme: InventaireArme, idArme: number) {
+  createoraddqte(inventaireArme: InventaireArme, idArme: number, ) {
     this.inventaireArme = inventaireArme;
 
     if (this.inventaireArme.quantite > 0) {
       this.inventaireArme.quantite = inventaireArme.quantite + 1;
       this.inventaireArmeService.modify(this.inventaireArme);
 
-    } else {
-      let newinventArme = new InventaireArme();
-      newinventArme.arme.id = idArme;
-      newinventArme.quantite = 1;
-      newinventArme.inventaire.id = 1;
-      this.inventaireArmeService.create(newinventArme);
     }
+    // else {
+    //   let newinventArme = new InventaireArme();
+    //   newinventArme.arme.id = idArme;
+    //   newinventArme.quantite = 1;
+    //   newinventArme.inventaire.id = 1;
+    //   this.inventaireArmeService.create(newinventArme);
+    // }
   }
-  creationinventlorsdelachat(inventaireArme: InventaireArme, idArme: number){
+  creationinventArmelorsdelachat(inventaire: Inventaire, idArme: number){
 
   let newinventArme = new InventaireArme();
-  console.log(idArme);
+  console.log(this.idAcheteur);
+  console.log(this.inventaire);
 
-  let armeex = new Arme(idArme)
-    console.log(armeex)
-    newinventArme.arme = armeex;
-    console.log(newinventArme);
-  newinventArme.quantite = 1;
-  newinventArme.inventaire.id = 1;
-  this.inventaireArmeService.create(newinventArme);
+    this.armeService.findById(idArme).subscribe(response => {
+        let armeachetee = response;                                                //objet Arme qui à l'id de celle à achetée, donc arme à achetée
+        console.log(armeachetee);
+        this.inventaireArme = new InventaireArme(1, armeachetee, inventaire);
+        console.log(this.inventaireArme);
+        this.inventaireArmeService.create(this.inventaireArme);
+        },
+      error =>{ console.log(error)});
+
+  //   console.log(armeex)
+  //   this.armeService.findById(idArme).subscribe(response => {
+  //       newinventArme.arme = response;
+  //
+  //       console.log("newinventArme"+newinventArme);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  //   console.log(newinventArme);
+  // newinventArme.quantite = 1;
+  // newinventArme.inventaire.id = 1;
+  // this.inventaireArmeService.create(newinventArme);
 
   }
 }

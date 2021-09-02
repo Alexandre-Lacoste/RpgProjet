@@ -44,7 +44,7 @@ public class ArmeRestController {
 	}
 	
 	@GetMapping("/{id}")
-	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class,Views.ViewMonstreDetail.class})
+	@JsonView({Views.ViewArme.class})
 	public Arme findArmeId(@PathVariable Long id) {
 		Optional<Arme> optArme = armeRepo.findByArmeId(id);
 		
@@ -94,7 +94,7 @@ public class ArmeRestController {
 		return arme ;
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	@JsonView({Views.ViewArme.class,Views.ViewUtilisateurDetail.class,Views.ViewCommon.class,Views.ViewMonstreDetail.class})
 	//@PreAuthorize("hasAnyRole('ADMIN')")
 	public void delete(@PathVariable Long id) {
