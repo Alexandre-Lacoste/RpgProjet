@@ -29,7 +29,7 @@ export class UtilisateurComponent implements OnInit {
   utilisateur: Utilisateur= new Utilisateur();
   utilisateurForm: Utilisateur = null;
   inventaire: Inventaire=new Inventaire();
-
+  profil:number=0;
   constructor(private utilisateurService: UtilisateurService, private heroService: HeroHttpService, private inventaireArmeService: InventaireArmeService, private inventaireArmureService: InventaireArmureService, private inventairePotionService: InventairePotionService, private inventaireService: InventaireService) {
 
   }
