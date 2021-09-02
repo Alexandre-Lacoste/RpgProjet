@@ -28,17 +28,22 @@ export class InscriptionComponent implements OnInit {
 
   save() {
     console.log();
-
-   this.inscForm.vie= 0;
+      this.inscForm.enable= false;
+    this.inscForm.role=null;
+    this.inscForm.hero=null;
+    this.inscForm.inventaire=null,
+    this.inscForm.arme=null,
+    this.inscForm.armure=null,
+    this.inscForm.vie=0;
     this.inscForm.attaque=0;
     this.inscForm.defense=0;
     this.inscForm.agilite=0;
     this.inscForm.vitesse=0;
     this.inscForm.vieMax=0;
-    this.inscForm.attaqueMax=0;
-    this.inscForm.defenseMax=0;
-    this.inscForm.agiliteMax=0;
-    this.inscForm.vitesseMax=0;
+    this.inscForm.attaqueMax=18.0;
+    this.inscForm.defenseMax=10.0;
+    this.inscForm.agiliteMax=25.0;
+    this.inscForm.vitesseMax=40.0;
     this.inscForm.cptEmpoisonnement=0;
     this.inscForm.cptEtourdissement=0;
     this.inscForm.cptSaignement=0;
