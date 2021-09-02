@@ -1,6 +1,6 @@
 <div *ngIf="phase==0" class="card mt-3">
 
-  <div class="card-header bg-info text-white">
+  <div class="card-header text-black " style="background-color:whitesmoke">
     <h2>Liste des monstres disponibles pour un combat</h2>
   </div>
 
@@ -27,7 +27,7 @@
         <td>{{mons.attaque}}</td>
         <td>{{mons.defense}}</td>
         <td>
-            <a class="btn btn-danger" (click)="initCombat(mons.id)">Combat</a>
+            <a class="btn btn-danger" (click)="initCombat(mons.id)">Combattez</a>
         </td>
       </tr>
 
@@ -164,6 +164,39 @@
   <h1>Vous êtes apte au combat</h1>
   <a routerLinkActive="active" class="btn btn-outline-dark btn-lg " [routerLink]="['/']">Nouveau combat</a>
 </div>
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top" style="margin-top: 10px;">
+  <div class="row">
+    <div class="col-12 col-md">
+      <small class="d-block mb-3 text-muted">&copy; 2021</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">News du jeux</a></li>
+        <li><a class="text-muted" href="#">News de l'équipe</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="/accueil">Accueil</a></li>
+        <li><a class="text-muted" href="/combat">Combat</a></li>
+        <li><a class="text-muted" href="/marchand/1">Marchand</a></li>
+        <li><a class="text-muted" href="/hero">Héros</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted" href="#">Team</a></li>
+        <li><a class="text-muted" href="#">Locations</a></li>
+        <li><a class="text-muted" href="#">Privacy</a></li>
+        <li><a class="text-muted" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
 
 

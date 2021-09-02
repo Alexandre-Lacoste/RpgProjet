@@ -39,7 +39,13 @@
         <a class="nav-link" [routerLink]="['/combat/1']">Combat</a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/inscription']">S'inscrire</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
         <a class="nav-link" (click)="logout()">Se deconnecter</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/connexion']">Se Connecter</a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/admin']">Admin</a>
@@ -57,13 +63,3 @@
   <router-outlet></router-outlet>
 </div>
 
-<footer class="navbar fixed-bottom bg-light text-dark ">
-
-<div class="info_reseau">
-
-  <!-- Copyright -->
-    <p class="mb-1">&copy; 2021 FAXs Games</p>
-</div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
