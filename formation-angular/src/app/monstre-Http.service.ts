@@ -26,6 +26,7 @@ export class MonstreHttpService {
   }
 
 
+
   findById(id: number): Observable<Monstre> {
     return this.http.get<Monstre>(this.appConfigService.backEndUrl + "monstre/" + id+"/detail");
   }
