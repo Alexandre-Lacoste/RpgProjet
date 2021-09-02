@@ -1,7 +1,22 @@
 .utilisateur{
-  background-color: darkslategrey;
+  background-image: url("tt2.jpg");
   height: 600px;
 
+}
+.table-dark {
+  color: #fff;
+  background-color: #343a408f;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(227 213 213 / 51%);
+  background-clip: border-box;
+  border: 1px solid #f8f9fa;
+  border-radius: 0.25rem;
 }
 
 .informations{
@@ -19,6 +34,7 @@
   width: 60%;
   font-family: Bahnschrift;
   margin-left: 15px;
+  color: floralwhite;
 }
 .detail{
   display: inline-block;
@@ -68,6 +84,11 @@
   width: 100%;
   border-color: white;
 }
+.btn-primary {
+  color: #fff;
+  background-color: #dc3545b8;
+  border-color: #f8f9fa;
+}
 .bouton{
   text-align: center;
   display: inline-block;
@@ -75,10 +96,11 @@
   height: 5%;
   margin-top: 15px;
   margin-left: 35px;
+
 }
 .btn-warning {
-  background-color: black;
-  color:white;
+  background-color: white;
+  color:darkred;
   background-border:white;
   margin-left: 750px;
 }
