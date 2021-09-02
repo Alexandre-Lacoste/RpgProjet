@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import spring.boot.tptRpg.model.Armure;
 import spring.boot.tptRpg.model.InventaireArmure;
 import spring.boot.tptRpg.model.InventaireArmure;
+import spring.boot.tptRpg.model.InventaireArmure;
 import spring.boot.tptRpg.model.Views;
 import spring.boot.tptRpg.repository.IArmureRepository;
 import spring.boot.tptRpg.repository.IInventaireArmureRepository;
@@ -55,11 +56,11 @@ public class InventaireArmureRestController {
 	}
 	
 	
-	@GetMapping("/idArmure/{id}")
+	@GetMapping("/idArmure/{idA}/{idInv}")
 	@JsonView(Views.ViewInventaireArmure.class)
 	//@PreAuthorize("hasAnyRole('USER','ADMIN')")
-	public InventaireArmure findInventaireArmureByIdArmure(@PathVariable Long id) {
-		Optional<InventaireArmure> optInvArmure = invArmureRepo.findInventaireArmureByIdArmure(id);
+	public InventaireArmure findInventaireArmureByIdArmureAndIdInv(@PathVariable("idA") Long idA, @PathVariable("idInv") Long idInv) {
+		Optional<InventaireArmure> optInvArmure = invArmureRepo.findInventaireArmureByIdArmureAndIdInv(idA,idInv);
 		
 		if (optInvArmure.isPresent()) {
 			return optInvArmure.get();
@@ -67,6 +68,7 @@ public class InventaireArmureRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
 	}
+	
 	
 	
 	@PostMapping("")

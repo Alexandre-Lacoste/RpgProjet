@@ -10,6 +10,9 @@ import {ArmeHttpService} from "../arme/arme-http.service";
 import {Arme} from "../model/Arme";
 import {InventaireService} from "../inventaire.service";
 import {Inventaire} from "../model/inventaire";
+import {InventairePotion} from "../model/inventairePotion";
+import {Objet} from "../model/objet";
+import {ObjetService} from "../objet/objet.service";
 
 @Component({
   selector: 'marchand-arme',
@@ -32,10 +35,24 @@ export class MarchandArmeComponent implements OnInit {
   inventaireArmes: Array<InventaireArme> = new Array<InventaireArme>();
   private inventaire: Inventaire;
 
-  constructor(private route: ActivatedRoute,private inventaireService: InventaireService, private armeService: ArmeHttpService, private marchandArmeService: MarchandArmeHttpService, private inventaireArmeService: InventaireArmeService) {
+  private qtegold: number;
+  private objet: Objet;
+
+  constructor(private route: ActivatedRoute,private objetService : ObjetService,private inventaireService: InventaireService, private armeService: ArmeHttpService, private marchandArmeService: MarchandArmeHttpService, private inventaireArmeService: InventaireArmeService) {
   }
 
   ngOnInit() {
+
+    this.objetService.findById(1).subscribe(response=>
+      {
+        this.objet=response;
+
+        this.qtegold = this.objet.qte;
+        console.log(this.qtegold);
+
+
+      },
+      error=>console.log(error));
 
   }
 
@@ -93,8 +110,8 @@ export class MarchandArmeComponent implements OnInit {
     this.idAcheteur = 1;                        // Pour avoir l'id de l'acheteur même si ici on le force à etre le 1
     // let idInventaire = this.inventaireArme.inventaire.id;
     console.log(idArme)
-
-    this.inventaireArmeService.findInventaireArmeByIdArme(idArme).subscribe(response => {
+console.log(this.idAcheteur)
+    this.inventaireArmeService.findInventaireArmeByIdArmeAndIdInv(idArme,this.idAcheteur).subscribe(response => {
         this.inventaireArme = response;
         console.log(this.inventaireArme);
         console.log(this.inventaireArme.quantite);
@@ -103,8 +120,9 @@ export class MarchandArmeComponent implements OnInit {
         this.idPossesseur = this.inventaireArme.inventaire.id;
         console.log(this.idPossesseur);
         // ----------------------------------------------------------------------------------
-
-        if (this.idAcheteur=this.idPossesseur)
+console.log(this.idPossesseur)
+console.log(this.idAcheteur)
+        if (this.idAcheteur==this.idPossesseur)
         {this.createoraddqte(this.inventaireArme, idArme);}
       },
       error => {
@@ -132,13 +150,7 @@ export class MarchandArmeComponent implements OnInit {
       this.inventaireArmeService.modify(this.inventaireArme);
 
     }
-    // else {
-    //   let newinventArme = new InventaireArme();
-    //   newinventArme.arme.id = idArme;
-    //   newinventArme.quantite = 1;
-    //   newinventArme.inventaire.id = 1;
-    //   this.inventaireArmeService.create(newinventArme);
-    // }
+
   }
   creationinventArmelorsdelachat(inventaire: Inventaire, idArme: number){
 
@@ -155,21 +167,30 @@ export class MarchandArmeComponent implements OnInit {
         },
       error =>{ console.log(error)});
 
-  //   console.log(armeex)
-  //   this.armeService.findById(idArme).subscribe(response => {
-  //       newinventArme.arme = response;
-  //
-  //       console.log("newinventArme"+newinventArme);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  //   console.log(newinventArme);
-  // newinventArme.quantite = 1;
-  // newinventArme.inventaire.id = 1;
-  // this.inventaireArmeService.create(newinventArme);
+  }
 
+
+  gaingold(marchandArme : MarchandArme,id:number) {
+
+    this.qtegold = this.qtegold - marchandArme.arme.prixAchat;
+    console.log(this.qtegold)
+    this.objet.qte = this.qtegold;
+    this.objetService.modify(this.objet);
+
+  }
+  timeOutAlert(nom :string,prixAchat : number){
+    let qtegoldstring: string ;
+    let prixAchatstring : string;
+    if ( this.qtegold != null )  qtegoldstring = this.qtegold.toString();
+    if ( this.qtegold != null )  prixAchatstring = prixAchat.toString();
+
+    setTimeout(function(){ alert("Vous avez acheté " +nom+ " pour la modique somme de " + prixAchatstring + "  gold. " + "  Une bonne affaire !!   " + "  Vous mangerez des pates ce mois ci   " +
+      "" +
+      "                         mais il vous reste encore " + qtegoldstring + " Gold "); }, 1500);
+  }
+
+  reloadCurrentPage() {
+    setTimeout(function (){window.location.reload();},1510);
   }
 }
 
